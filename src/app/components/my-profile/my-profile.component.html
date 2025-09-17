@@ -1,0 +1,62 @@
+<div class="ct_px_30 ct_mt_30 pb-4">
+    <div class="container-fluid">
+        <h4 class="ct_fs_24 ct_fw_600 ct_text_061F61 mb-4 ct_ff_Saira">Edit Profile</h4>
+        <div class="ct_px_30_new ct_grey_bg">
+            <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_col_767">
+                <div class="d-flex align-items-center gap-4">
+                    <div class="ct_upload_user_profile_img">
+                        <img [src]="profile_image ? profile_image : 'img/np_pro.png'" alt="" />
+                        <label for="ct_upload_user_profile2" class="position-relative d-block">
+                            <input type="file" class="d-none" id="ct_upload_user_profile2"
+                                (change)="onLogoChange($event)" accept="image/*" />
+                            <div class="ct_authore_banner_upload_icon_12">
+                                <i class="fa-solid fa-pencil"></i>
+                            </div>
+                        </label>
+                    </div>
+                    <div>
+                        <h4 class="ct_fs_18 ct_fw_700 mb-1 ct_text_061F61">
+                            {{name}}
+                        </h4>
+                        <p class="mb-0 ct_text_op_05 ct_fs_14 ct_text_061F61">
+                            {{Form.get('email')?.value}}
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <form [formGroup]="Form" class="mt-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-4">
+                            <label for="" class="ct_fw_600 mb-2 ct_text_061F61 ct_text_061F61">Full Name</label>
+                            <input type="text" class="form-control ct_input" placeholder="Full name" value="Alice "
+                                formControlName="name" />
+                            <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('Full
+                                name',
+                                Form.get('name'))}}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-4">
+                            <label for="" class="ct_fw_600 mb-2 ct_text_061F61 ct_text_061F61">Email Address</label>
+                            <input type="email" class="form-control ct_input" placeholder="Email address"
+                                value="alicegmail.com" formControlName="email" />
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4" (click)="submitDetails()">
+                    <button type="button" class="ct_dark_green_btn ms-auto">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="ct_loader_main" *ngIf="isLoading">
+    <span class="loader"></span>
+</div>

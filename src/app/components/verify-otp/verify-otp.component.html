@@ -1,0 +1,51 @@
+<section class="ct_login_bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-10 col-xl-10 col-lg-10 col-md- mx-auto">
+                <div class="ct_login_white_bg ct_mt_60 ct_mb_60 ">
+                    <div class="ct_login_form ">
+                        <div class="ct_login_right_form py-4">
+                            <div class=" mb-4">
+                                <img src="img/logo.svg" alt="" class="ct_login_logo">
+                                <h4 class="ct_fs_28 ct_dark_blue_text ct_fw_600 ct_ff_Saira mb-2">Reset Password</h4>
+                                <p class="ct_text_op_07  mb-0">OTP is sent to
+                                    <br> {{userEmail}}
+                                </p>
+                            </div>
+                            <form [formGroup]="Form" class="ct_mt_30">
+
+                                <div class="form-group mb-4 ct_otp_inputs">
+                                    <nz-flex nzVertical [nzGap]="20">
+                                        <nz-flex nzVertical>
+                                            <!-- <label for="" class="mb-2 ">OTP</label> -->
+                                            <nz-input-otp formControlName="otp" [nzLength]="4" [nzSize]="'default'">
+                                            </nz-input-otp>
+                                            <span class="ct_text_red mt-2">
+                                                {{ validationErrorService.getErrorMessage('OTP', Form.get('otp')) }}
+                                            </span>
+                                        </nz-flex>
+                                    </nz-flex>
+                                </div>
+
+                                <p class="mb-0 mt-2 text-center ">Didn't get OTP? <a (click)="resendOtp()"
+                                    class="ct_forgot_link ct_fw_600">Resend</a></p>
+
+                                <div class="mt-4">
+                                    <a href="javascript:void(0)" type="button" (click)="onSubmit()"
+                                        class="ct_blue_btn text-center w-100">Submit</a>
+                                </div>
+
+                                <p class="mb-0 text-center mt-3 ct_fw_500">Already know your password? <a routerLink="/"
+                                        class="ct_text_clr_151540 ct_fw_700">Login</a></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="ct_loader_main" *ngIf="isLoading || isLoadingResend">
+      <span class="loader"></span>
+</div>

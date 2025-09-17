@@ -1,0 +1,91 @@
+<div class="ct_side_bar">
+    <div class="ct_close_sidebar">
+        <i class="fa-solid fa-xmark"></i>
+    </div>
+    <div class="ct_admin_logo text-center">
+        <img src="img/logo.svg" alt="">
+    </div>
+
+    <ul>
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/dashboard" [ngClass]="{ 'active': isActive('/home/dashboard')}">
+                <img src="img/dashboard_icon.svg" alt="" />
+                Dashboard
+            </a>
+        </li>
+        <li class="dropdown" [ngClass]="{ 'active': isUserManagementActive() }">
+            <a id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="img/user_management_icon.svg" alt="" />
+                User Management <span class="ms-auto"><i class="fa-solid fa-angle-down"></i></span>
+            </a>
+            <ul class="dropdown-menu ct_custom_dropdown" aria-labelledby="dropdownMenuButton1">
+                <li (click)="toggleMenu()">
+                    <a class="dropdown-item" routerLink="/home/buyer" [ngClass]="{ 'active': isActive('/home/buyer')}">
+                        <img src="img/buyer_icon.svg" alt=""> Buyer
+                    </a>
+                </li>
+                <li (click)="toggleMenu()">
+                    <a class="dropdown-item" routerLink="/home/agent" [ngClass]="{ 'active': isActive('/home/agent')}">
+                        <img src="img/agent_icon.svg" alt=""> Agent
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/properties" [ngClass]="{ 'active': isActive('/home/properties')}">
+                <img src="img/property_icon.svg" alt="" />
+                Property Listing
+            </a>
+        </li>
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/schedule-visit" [ngClass]="{ 'active': isActive('/home/schedule-visit')}">
+                <img src="img/mynaui_calendar-up.svg" alt="" />
+                Scheduled Visits
+            </a>
+        </li>
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/post-namagement" [ngClass]="{ 'active': isActive('/home/post-namagement')}">
+                <img src="img/post_management_icon.svg" alt="" />
+                Post Management
+            </a>
+        </li>
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/rating-reviews" [ngClass]="{ 'active': isActive('/home/rating-reviews')}">
+                <img src="img/Ratings_ Reviews_icons.svg" alt="" />
+                Ratings & Reviews
+            </a>
+        </li>
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/live-ama" [ngClass]="{ 'active': isActive('/home/live-ama')}">
+                <img src="img/live_ama_icon.svg" alt="" />
+                Live AMA
+            </a>
+        </li>
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/revenue" [ngClass]="{ 'active': isActive('/home/revenue')}">
+                <img src="img/revenue_icon.svg" alt="" />
+                Revenue
+            </a>
+        </li>
+
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/listing&boost" [ngClass]="{ 'active': isActive('/home/listing&boost')}">
+                <img src="img/listing_icon.svg" alt="" />
+                Listing & Boost Fee
+            </a>
+        </li>
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/sweepstacks" [ngClass]="{ 'active': isActive('/home/sweepstacks')}">
+                <img src="img/seepstackes_icon.svg" alt="" />
+                Sweepstakes
+            </a>
+        </li>
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/referrals" [ngClass]="{ 'active': isActive('/home/referrals')}">
+                <img src="img/Referrals_icon.svg" alt="" />
+                Referrals
+            </a>
+        </li>
+    </ul>
+</div>

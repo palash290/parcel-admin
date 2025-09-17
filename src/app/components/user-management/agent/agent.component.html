@@ -1,0 +1,84 @@
+<div class="ct_px_30 ct_mt_30 pb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex align-items-center justify-content-between mb-3 ct_flex_col_575 gap-3">
+                    <h4 class="ct_fs_24 ct_fw_600 mb-0 ct_text_061F61 ct_ff_Saira">Agent Management</h4>
+                    <div class="d-flex align-items-center gap-2 ct_w_100_575">
+                        <div class="ct_search ct_w_100_575">
+                            <input type="text" class="form-control" placeholder="Search " [(ngModel)]="searchText"
+                                (input)="filterTable()" />
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+
+                    </div>
+                </div>
+
+                <h4 class="ct_fs_18 ct_fw_700 mb-3">Agent</h4>
+                <div class="table-responsive ct_custom_table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Agent Name</th>
+                                <th>Email Id </th>
+                                <th>Date Joined</th>
+                                <th>Block</th>
+                                <th>KYC Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="filteredData.length == 0">
+                                <td colspan="8" class="text-center">No agent found</td>
+                            </tr>
+                            <tr
+                                *ngFor="let item of filteredData | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                                <td>{{(p - 1) * 10 + i + 1}}</td>
+                                <td>{{item.full_name}}</td>
+                                <td>
+                                    <span class="ct_overlay_text">{{item.email}}</span>
+                                </td>
+                                <td>{{item.created_at | date:'dd-MMM-yyyy'}}</td>
+
+                                <td>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" [(ngModel)]="item.is_user_banned"
+                                            [ngModel]="item.is_active == false" (click)="handleCheckboxChange(item)">
+                                        <div class="toggle-switch-background">
+                                            <div class="toggle-switch-handle"></div>
+                                        </div>
+                                    </label>
+                                </td>
+                                <td>
+                                    @if(item.status == 'APPROVED'){
+                                    <span class="ct_green_clr ct_fw_600">Approved</span>
+                                    }
+                                    @if(item.status == 'REJECTED'){
+                                    <span class="ct_red_clr ct_fw_600">Rejcted</span>
+                                    }
+                                    @if(item.status == 'PENDING'){
+                                    <span class="ct_orange_clr ct_fw_600">Pending</span>
+                                    }
+                                </td>
+                                <td>
+                                    <a [routerLink]="['/home/view-agent']" [queryParams]="{ agent_id: item.agent_id }"
+                                        class="ct_text_39A1FF">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- (pageChange)="onPageChange($event)" -->
+                <pagination-controls class="ct_pagination_div" *ngIf="!(data?.length == 0)"
+                    (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ct_loader_main" *ngIf="isLoading">
+    <img src="assets/img/loader.gif" alt="">
+</div>

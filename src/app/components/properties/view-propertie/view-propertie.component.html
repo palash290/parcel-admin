@@ -1,0 +1,372 @@
+<div class="ct_px_30 ct_mt_30 pb-4">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center gap-3 justify-content-between ct_flex_col_575 mb-4">
+          <h4 class="d-flex align-items-center gap-2 ct_fw_600 mb-0 ct_text_061F61 ct_ff_Saira">
+            <a routerLink="/home/properties" class="ct_black_text"><i class="fa-solid fa-angle-left"></i></a>Property
+            Details
+          </h4>
+          @if(this.properyData?.status == 'PENDING'){
+          <div class="d-flex align-items-center justify-content-end gap-3">
+            <button class="ct_approve_green_btn ct_dark_green_btn" data-bs-toggle="modal" data-bs-target="#ct_accept">
+              <i class="fa-solid fa-check me-2"></i> Approve
+            </button>
+            <button class="ct_reject_red_btn ct_dark_green_btn" data-bs-toggle="modal" data-bs-target="#ct_reject">
+              <i class="fa-solid fa-xmark me-2"></i>Reject
+            </button>
+          </div>
+          }
+
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12">
+        @if(properyData?.status == 'PENDING'){
+        <!-- Pending Alert S -->
+        <div class="ct_light_orange_alert mb-3 justify-content-between">
+          <div class="d-flex gap-2 align-items-center">
+            <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <mask id="mask0_164_21791" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="2" width="20"
+                height="20">
+                <path d="M0 2H20V22H0V2Z" fill="white" />
+              </mask>
+              <g mask="url(#mask0_164_21791)">
+                <mask id="mask1_164_21791" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="2" width="20"
+                  height="20">
+                  <path d="M0 2H20V22H0V2Z" fill="white" />
+                </mask>
+                <g mask="url(#mask1_164_21791)">
+                  <path
+                    d="M10 4.1875C5.69219 4.1875 2.1875 7.69219 2.1875 12C2.1875 16.3078 5.69219 19.8125 10 19.8125C14.3078 19.8125 17.8125 16.3078 17.8125 12C17.8125 7.69219 14.3078 4.1875 10 4.1875ZM10 7.39062C10.2805 7.39062 10.5198 7.48978 10.7182 7.68809C10.9165 7.88641 11.0156 8.12579 11.0156 8.40625C11.0156 8.68671 10.9165 8.92609 10.7182 9.1244C10.5198 9.32272 10.2805 9.42187 10 9.42188C9.71954 9.42187 9.48016 9.32272 9.28184 9.1244C9.08353 8.92609 8.98437 8.68671 8.98438 8.40625C8.98438 8.12579 9.08353 7.88641 9.28184 7.68809C9.48016 7.48978 9.71954 7.39062 10 7.39062ZM11.875 16.2187H8.4375C8.26491 16.2187 8.1176 16.1577 7.99556 16.0357C7.87352 15.9137 7.8125 15.7663 7.8125 15.5937C7.8125 15.4212 7.87352 15.2738 7.99556 15.1518C8.1176 15.0298 8.26491 14.9687 8.4375 14.9687H9.53125V11.5312H8.90625C8.73366 11.5312 8.58635 11.4702 8.46431 11.3482C8.34227 11.2262 8.28125 11.0788 8.28125 10.9062C8.28125 10.7337 8.34227 10.5863 8.46431 10.4643C8.58635 10.3423 8.73366 10.2812 8.90625 10.2812H10.1562C10.3288 10.2812 10.4762 10.3423 10.5982 10.4643C10.7202 10.5863 10.7812 10.7337 10.7812 10.9062V14.9687H11.875C12.0476 14.9687 12.1949 15.0298 12.3169 15.1518C12.439 15.2738 12.5 15.4212 12.5 15.5937C12.5 15.7663 12.439 15.9137 12.3169 16.0357C12.1949 16.1577 12.0476 16.2187 11.875 16.2187Z"
+                    fill="#FF903F" />
+                </g>
+              </g>
+            </svg>
+            <div>
+              <h5 class="ct_fs_18 ct_fw_700 mb-0">Pending</h5>
+            </div>
+          </div>
+        </div>
+        }
+
+        @if(properyData?.status == 'APPROVED'){
+        <!-- Approved Review Alert S -->
+        <div class="ct_light_green_alert justify-content-between mb-3">
+          <div class="d-flex gap-2 align-items-center">
+            <svg width="26" height="27" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path opacity="0.3" fill-rule="evenodd" clip-rule="evenodd"
+                d="M11.4679 2.94024C11.8514 2.55726 12.3645 2.3319 12.906 2.30864C13.4474 2.28538 13.978 2.46589 14.3929 2.81458L14.5316 2.94133L16.5899 4.99858H19.4997C20.0462 4.99868 20.5724 5.20525 20.973 5.5769C21.3735 5.94856 21.6189 6.45785 21.6599 7.00274L21.6664 7.16524V10.0751L23.7247 12.1334C24.108 12.517 24.3336 13.0303 24.3568 13.572C24.3801 14.1137 24.1994 14.6445 23.8504 15.0595L23.7236 15.1971L21.6653 17.2554V20.1652C21.6655 20.7119 21.459 21.2384 21.0874 21.6392C20.7157 22.04 20.2062 22.2855 19.6611 22.3265L19.4997 22.3319H16.591L14.5326 24.3902C14.1491 24.7735 13.6358 24.9991 13.094 25.0223C12.5523 25.0456 12.0215 24.8649 11.6066 24.5159L11.469 24.3902L9.41064 22.3319H6.49972C5.9531 22.3321 5.42661 22.1256 5.0258 21.754C4.62498 21.3823 4.37947 20.8728 4.33847 20.3277L4.33306 20.1652V17.2554L2.27472 15.1971C1.89143 14.8135 1.66589 14.3002 1.64262 13.7585C1.61936 13.2168 1.80006 12.686 2.14906 12.271L2.27472 12.1334L4.33306 10.0751V7.16524C4.33316 6.61881 4.53973 6.09259 4.91138 5.692C5.28303 5.29142 5.79233 5.04606 6.33722 5.00508L6.49972 4.99858H9.40956L11.4679 2.94024Z"
+                fill="#22C55E" />
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M16.3351 10.3979L11.7375 14.9955L9.82213 13.0802C9.61885 12.8771 9.3432 12.763 9.05583 12.7631C8.76845 12.7632 8.49288 12.8775 8.28975 13.0807C8.08662 13.284 7.97255 13.5597 7.97266 13.847C7.97276 14.1344 8.08701 14.41 8.29029 14.6131L10.8946 17.2174C11.0053 17.3282 11.1367 17.416 11.2813 17.4759C11.4259 17.5358 11.5809 17.5667 11.7375 17.5667C11.894 17.5667 12.049 17.5358 12.1936 17.4759C12.3382 17.416 12.4696 17.3282 12.5803 17.2174L17.867 11.9297C18.0643 11.7254 18.1735 11.4517 18.171 11.1677C18.1686 10.8836 18.0546 10.6119 17.8538 10.4111C17.6529 10.2102 17.3812 10.0963 17.0971 10.0938C16.8131 10.0913 16.5394 10.2005 16.3351 10.3979Z"
+                fill="#22C55E" />
+            </svg>
+            <div>
+              <h5 class="ct_fs_18 ct_fw_700 mb-0">Approved</h5>
+            </div>
+          </div>
+          <div>
+            <p class="mb-0">Approved On:</p>
+            <p class="mb-0">{{properyData?.approved_at | date:'dd-MM-yyyy'}}</p>
+          </div>
+        </div>
+        }
+
+        @if(properyData?.status == 'REJECTED'){
+        <!-- Rejected Review Alert S -->
+        <div class="ct_light_red_alert justify-content-between mb-3">
+          <div class="d-flex gap-2 align-items-center">
+            <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect y="0.5" width="21" height="21" rx="10.5" fill="#FF0000" fill-opacity="0.2" />
+              <path
+                d="M10.5 9.61125L13.2362 6.875L13.3058 6.94454L13.3655 7.03411C13.656 7.46991 14.0298 7.84389 14.4655 8.1345L14.5559 8.19461L14.625 8.26414L11.8891 11L14.625 13.7362L14.5555 13.8054L14.4659 13.8655C14.0301 14.156 13.6561 14.5298 13.3655 14.9655L13.3054 15.0559L13.2362 15.125L10.5 12.3891L7.76414 15.125L7.69461 15.0555L7.6345 14.9659C7.34405 14.5301 6.97019 14.1561 6.5345 13.8655L6.44414 13.8054L6.375 13.7362L9.11125 11L6.375 8.26414L6.44454 8.19461L6.5345 8.1345C6.97016 7.84401 7.34401 7.47016 7.6345 7.0345L7.69461 6.94414L7.76414 6.875L10.5 9.61125Z"
+                stroke="#DB0006" />
+            </svg>
+            <div>
+              <h5 class="ct_fs_18 ct_fw_700 mb-0">Rejected</h5>
+            </div>
+          </div>
+          <div>
+            <p class="mb-0">Rejected On:</p>
+            <p class="mb-0">{{properyData?.approved_at | date:'dd-MM-yyyy'}}</p>
+          </div>
+        </div>
+        }
+
+      </div>
+    </div>
+    <div class="ct_white_bg">
+      <div class="row align-items-center">
+        <div class="col-lg-7 mb-4 mb-lg-0">
+          <div class="ct_gallery p-0">
+            <div class="ct_gallery_left">
+              <img src="img/apartment_detail_big_ing.jpg" alt="Main" />
+            </div>
+            <div class="ct_gallery_right">
+              <img src="img/apartment_detail_small_1.jpg" alt="Bathroom" />
+              <img src="img/apartment_detail_small_2.jpg" alt="Kitchen" />
+              <img src="img/apartment_detail_small_3.jpg" alt="Bed" />
+              <img src="img/apartment_detail_small_4.jpg" alt="Couch" />
+              <button class="ct_show_all_images_btn" data-bs-toggle="modal" data-bs-target="#ct_show_all_photos">
+                <i class="fa-regular fa-image me-1"></i>
+                Show all Photos
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 mb-4 mb-lg-0">
+          <span class="ct_light_green_badge mb-4">For Sale</span>
+          <h4 class="ct_fs_20 ct_fw_600 mb-3">{{properyData?.property_title}}</h4>
+          <ul>
+            <li>
+              <img src="img/lsicon_building-outline.svg" alt="" class="me-1" />
+              {{properyData?.property_category.title}}
+            </li>
+            <li class="mt-3">
+              <img src="img/ep_location.svg" alt="" class="me-1" />
+              {{properyData?.address}}, {{properyData?.state}}, {{properyData?.city}}
+            </li>
+            <li class="mt-3">
+              <img src="img/lets-icons_calendar-light.svg" alt="" class="me-1" />
+              {{properyData?.created_at | date:'dd-MM-yyyy'}}
+            </li>
+          </ul>
+          @if(properyData?.type == 'RENT'){
+          <div class="mt-3">
+            <h4 class="ct_fs_20 ct_fw_600 mb-3">
+              Pricing Details: <span class="ct_fw_700">${{properyData?.rent_price}}</span>
+            </h4>
+          </div>
+          }
+          @if(properyData?.type == 'BUY'){
+          <div class="mt-3">
+            <h4 class="ct_fs_20 ct_fw_600 mb-3">
+              Pricing Details: <span class="ct_fw_700">${{properyData?.selling_price}}</span>
+            </h4>
+          </div>
+          }
+
+          <!-- when published then show this icon otherwise it will be hide -->
+          <div class="mt-4 d-none">
+            <a href="../user/apartments.html" class="ct_orange_btn">View on Site</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="pt-4">
+            <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">About</h4>
+            <p class="ct_para_scroll ct_pe_40 ct_custom_scroll">
+              {{properyData?.about_property}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="ct_white_bg h-auto mt-4 pe-0">
+          <div class="row">
+            <div class="col-xl-12 mb-xl-0">
+              <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">
+                Top Ameneties
+              </h4>
+              <ul class="ct_para_scroll ct_custom_scroll ct_amenties_list mt-4 ct_pe_40">
+                <li *ngFor="let amenity of properyData?.property_amenities">
+                  {{ amenity.amenity.title }}
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="ct_white_bg h-auto mt-4 pe-0">
+          <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">
+            Nearby Landmarks
+          </h4>
+          <ul class="ct_para_scroll ct_custom_scroll ct_pe_40 ct_list_style_disc">
+            <li>
+              <span class="ct_ul_dot"></span>
+              Greenview Park – 1.2 km
+            </li>
+            <li class="mt-1">
+              <span class="ct_ul_dot"></span>
+              Oakwood Central Market – 900 m
+            </li>
+            <li class="mt-1">
+              <span class="ct_ul_dot"></span>
+              Kids Play School - 1.5 Km
+            </li>
+            <li class="mt-1">
+              <span class="ct_ul_dot"></span>
+              Get Well Hospital - 2.5 Km
+            </li>
+          </ul>
+        </div> -->
+
+        <!-- <div class="ct_white_bg h-auto mt-4 pe-0">
+          <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">
+            Listing Performance
+          </h4>
+          <div class="row">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <p class="mb-1 ct_fw_600">
+                <i class="fa-regular fa-eye me-2"></i>6776
+              </p>
+              <p>Total Views</p>
+            </div>
+            <div class="col-md-6 mb-3 mb-md-0">
+              <p class="mb-1 ct_fw_600">
+                <i class="fa-regular fa-calendar me-2"></i>655
+              </p>
+              <p>Scheduled Visits</p>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="ct_white_bg h-auto mt-4">
+          <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">Listed By</h4>
+          <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_col_575">
+            <div>
+              <div class="d-flex align-items-center gap-2">
+                <img src="img/user_2.jpg" alt="" class="ct_img_60" data-bs-toggle="modal"
+                  data-bs-target="#full_view_img" />
+                <div>
+                  <p class="mb-0 ct_fs_18 ct_fw_600 ct_text_clr_4B5563">
+                    {{properyData?.agent.full_name}}
+                  </p>
+                  <p class="ct_fs_16 mb-0 ct_text_clr_4B5563">
+                    {{properyData?.agent.email}}
+                  </p>
+                  <p class="ct_fs_16 mb-0 ct_text_clr_4B5563">
+                    {{properyData?.agent.phone_number}}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <!-- add class  ct_completed_badge for compated -->
+              <!-- add class  ct_cancle_badge for compated -->
+              <p class="mb-0 ct_light_orange_badge ct_border_radius_10 ct_white_nowrap">
+                Agent
+              </p>
+              <div class="mt-3">
+                <p class="ct_text_clr_4B5563 ct_fs_14 mb-0 ct_white_nowrap">
+                  Joined on:
+                </p>
+                <p class="ct_text_clr_4B5563 ct_fs_14 mb-0 ct_white_nowrap">
+                  {{properyData?.created_at | date:'dd-MM-yyyy'}}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="text-end mt-4">
+            <a [routerLink]="['/home/view-agent']" [queryParams]="{ agent_id: properyData?.agent_id }"
+              class="ct_green_clr ct_fw_600">View Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="ct_reject" tabindex="-1" aria-labelledby="ct_delete_postLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body pt-5 pb-4">
+        <div class="ct_delete_post_modal">
+          <figure>
+            <div class="ct_delete_post_icon text-center">
+              <svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_107_2124)">
+                  <path
+                    d="M24 0.166992C10.7452 0.166992 0 10.9122 0 24.167V24.203C0 37.4578 10.7092 48.167 23.964 48.167H24C37.2548 48.167 48 37.4578 48 24.203V24.167C48 10.9122 37.2908 0.166992 24.036 0.166992H24Z"
+                    fill="#81101E" fill-opacity="0.1" />
+                  <mask id="mask0_107_2124" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="12" y="12"
+                    width="24" height="25">
+                    <path d="M12 12.167H36V36.167H12V12.167Z" fill="white" />
+                  </mask>
+                  <g mask="url(#mask0_107_2124)">
+                    <mask id="mask1_107_2124" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="12" y="12"
+                      width="24" height="25">
+                      <path d="M12 12.167H36V36.167H12V12.167Z" fill="white" />
+                    </mask>
+                    <g mask="url(#mask1_107_2124)">
+                      <path
+                        d="M16.0109 32.3349H31.9887C32.1404 32.3349 32.2661 32.3066 32.3659 32.2499C32.4658 32.1933 32.5546 32.0998 32.6324 31.9695C32.7102 31.8393 32.7504 31.7167 32.7529 31.6019C32.7554 31.4872 32.7207 31.363 32.6488 31.2294L24.6604 16.3935C24.591 16.2647 24.4963 16.1659 24.3763 16.0973C24.2617 16.0318 24.1362 15.999 23.9998 15.999C23.8635 15.999 23.738 16.0318 23.6233 16.0973C23.5033 16.1659 23.4086 16.2647 23.3391 16.3937L15.3508 31.2294C15.2789 31.363 15.2442 31.4872 15.2467 31.6019C15.2493 31.7167 15.2895 31.8393 15.3673 31.9695C15.4451 32.0998 15.5339 32.1933 15.6337 32.2499C15.7335 32.3066 15.8592 32.3349 16.0109 32.3349ZM16.0108 33.8349C15.5951 33.8349 15.2225 33.7414 14.8932 33.5544C14.5638 33.3674 14.2926 33.0955 14.0794 32.7386C13.8663 32.3817 13.7555 32.0139 13.7471 31.6353C13.7387 31.2567 13.833 30.8843 14.0301 30.5183L22.0186 15.6822C22.2238 15.3014 22.5105 15.0057 22.8788 14.7952C23.2241 14.5977 23.5978 14.499 23.9998 14.499C24.4019 14.499 24.7755 14.5977 25.1208 14.7952C25.4891 15.0057 25.7759 15.3015 25.9811 15.6824L33.9696 30.5183C34.1667 30.8843 34.261 31.2567 34.2525 31.6353C34.2441 32.0139 34.1333 32.3817 33.9202 32.7386C33.7071 33.0955 33.4358 33.3674 33.1064 33.5544C32.7771 33.7414 32.4045 33.8349 31.9887 33.8349H16.0108Z"
+                        fill="#81101E" />
+                      <path
+                        d="M24.4799 21.2908L24.749 27.0095L23.9998 27.0448L23.2506 27.0096L23.5192 21.2932C23.5129 21.4319 23.5577 21.5508 23.6536 21.6502C23.7494 21.7495 23.8663 21.7984 24.0043 21.7971C24.1397 21.7958 24.2541 21.7462 24.3475 21.6483C24.441 21.5504 24.4852 21.4338 24.4803 21.2986L24.4799 21.2908ZM22.9813 21.3535C22.9708 21.0669 23.0645 20.82 23.2625 20.6125C23.4605 20.4051 23.7029 20.3 23.9897 20.2972C24.2821 20.2943 24.5299 20.3981 24.7329 20.6086C24.936 20.819 25.0309 21.0707 25.0176 21.3636L24.749 27.08C24.7468 27.1262 24.7404 27.1719 24.7298 27.2169C24.7192 27.262 24.7045 27.3057 24.6858 27.348C24.6671 27.3903 24.6447 27.4306 24.6185 27.4688C24.5923 27.5069 24.5629 27.5424 24.5302 27.5751C24.4974 27.6078 24.462 27.6373 24.4238 27.6634C24.3856 27.6896 24.3454 27.7121 24.3031 27.7308C24.2607 27.7495 24.217 27.7641 24.172 27.7748C24.1269 27.7854 24.0813 27.7918 24.0351 27.794C23.9859 27.7963 23.9369 27.7938 23.8882 27.7864C23.8395 27.7791 23.792 27.7671 23.7457 27.7504C23.6994 27.7337 23.6551 27.7127 23.6129 27.6873C23.5707 27.6619 23.5314 27.6326 23.495 27.5995C23.4586 27.5663 23.4257 27.5299 23.3965 27.4903C23.3672 27.4507 23.3421 27.4086 23.3212 27.3641C23.3002 27.3195 23.2838 27.2733 23.2719 27.2255C23.2601 27.1777 23.253 27.1292 23.2507 27.08L22.9816 21.3613L22.9813 21.3535Z"
+                        fill="#81101E" />
+                      <path
+                        d="M24 30.7881C23.7411 30.7881 23.5201 30.6966 23.3371 30.5135C23.154 30.3304 23.0625 30.1095 23.0625 29.8506C23.0625 29.5917 23.154 29.3707 23.3371 29.1877C23.5201 29.0046 23.7411 28.9131 24 28.9131C24.2589 28.9131 24.4798 29.0046 24.6629 29.1877C24.846 29.3707 24.9375 29.5917 24.9375 29.8506C24.9375 30.1095 24.846 30.3304 24.6629 30.5135C24.4798 30.6966 24.2589 30.7881 24 30.7881Z"
+                        fill="#81101E" />
+                    </g>
+                  </g>
+                </g>
+                <defs>
+                  <clipPath id="clip0_107_2124">
+                    <rect width="48" height="48" fill="white" transform="translate(0 0.166992)" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <figcaption class="mt-4 text-center">
+              <h4 class="ct_fs_18 ct_fw_600">Reject Request</h4>
+              <p class="mb-0">Are you sure you want to reject this request?</p>
+            </figcaption>
+          </figure>
+          <div class="modal-footer justify-content-center border-0 ct_modal_footer">
+            <button type="button" class="ct_outline_btn w-100 ct_fw_600" data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <a (click)="reject()" class="ct_border_radius_10 ct_dark_green_btn w-100 ct_fw_600 text-center">
+              Yes
+            </a>
+            <button hidden type="button" class="btn btn-secondary" #closeModalRej data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="ct_accept" tabindex="-1" aria-labelledby="ct_delete_postLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body pt-5 pb-4">
+        <div class="ct_delete_post_modal">
+          <figure>
+            <div class="ct_delete_post_icon text-center">
+              <img src="img/right.png" alt="" class="ct_img_34">
+            </div>
+            <figcaption class="mt-4 text-center">
+              <h4 class="ct_fs_18 ct_fw_600">Accept Request</h4>
+              <p class="mb-0">Are you sure you want to accept this request?</p>
+            </figcaption>
+          </figure>
+          <div class="modal-footer justify-content-center border-0 ct_modal_footer">
+            <button type="button" class="ct_outline_btn w-100 ct_fw_600" data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <a (click)="accept()" class="ct_border_radius_10 ct_dark_green_btn w-100 ct_fw_600 text-center">
+              Yes
+            </a>
+            <button hidden type="button" class="btn btn-secondary" #closeModalAcc data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ct_loader_main" *ngIf="isLoading">
+    <span class="loader"></span>
+</div>

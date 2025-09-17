@@ -1,0 +1,338 @@
+<div class="ct_px_30 ct_mt_30 pb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex align-items-center gap-3 justify-content-between ct_flex_col_575">
+                    <h4 class="d-flex align-items-center gap-2 ct_fw_600 mb-0 ct_text_061F61 ct_ff_Saira">
+                        <a (click)="backClicked()" class="ct_black_text"><i class="fa-solid fa-angle-left"></i></a>Agent
+                        Details
+                    </h4>
+                </div>
+
+                <div class="ct_pb_30">
+                    <div class="ct_grey_bg p-0" style="overflow: hidden">
+                        <div class="d-flex align-items-center ct_flex_col_767">
+                            <img [src]="agentData?.profile_image ? agentData?.profile_image : 'img/np_pro.png'" alt=""
+                                class="ct_img_h_268 ct_cursor_pointer" data-bs-toggle="modal"
+                                data-bs-target="#full_view_img" />
+                            <div class="ct_flex_1 p-4 w-100">
+                                <div class="d-flex justify-content-between gap-3 ct_flex_col_1999">
+                                    <div>
+                                        <h5 class="ct_fs_20 ct_fw_600 mb-1 ct_text_020617">
+                                            {{agentData?.full_name}}
+                                        </h5>
+                                        <p class="mb-0">{{agentData?.email}}</p>
+                                    </div>
+                                    <div>
+                                        <p class="ct_fW_500 mb-1">
+                                            Date Joined: {{agentData?.created_at | date:'dd-MMM-yyyy'}}
+                                        </p>
+                                        <!-- <p class="ct_fW_500 mb-0">
+                                            125 <img src="img/coin.png" alt="" />
+                                        </p> -->
+                                    </div>
+                                </div>
+                                <div class="row mt-4">
+                                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="mb-4">
+                                            <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                                Date of Birth
+                                            </h5>
+                                            <p class="mb-0 ct_text_666">{{agentData?.dob | date:'dd-MMM-yyyy'}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="mb-4">
+                                            <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                                Country
+                                            </h5>
+                                            <p class="mb-0 ct_text_666">{{agentData?.country}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="mb-4">
+                                            <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                                Nationality
+                                            </h5>
+                                            <p class="mb-0 ct_text_666"> {{agentData?.nationality}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="mb-4">
+                                            <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                                Phone Number
+                                            </h5>
+                                            <p class="mb-0 ct_text_666">+{{agentData?.phone_code}}
+                                                {{agentData?.phone_number}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-end mt-4">
+                                    <a [routerLink]="['/home/view-listed-properties']"
+                                        [queryParams]="{ agent_id: agentData?.agent_id }"
+                                        class="ct_green_clr ct_fw_600">View Listed
+                                        Properties</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ct_white_bg p-4 mt-4">
+                        <h4 class="ct_fs_20 ct_fw_600 mb-2 ct_text_061F61">
+                            Personal Details
+                        </h4>
+                        <p>
+                            Brooklyn Simmons is a licensed real estate agent with 8+
+                            years of experience helping sellers close high-value
+                            residential and commercial deals in Mumbai. He is known
+                            for fast turnaround and strong buyer network.
+                        </p>
+                        <div class="row mt-4">
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        Specialization
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">Sales Associate</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        RERA Reg. No
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">MAH/A1234/2021</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        Languages Spoken
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">English, French</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        Experience Since :
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">2025</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        Closed Deals on Sells
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">455</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        Closed Deals on Rents
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">145</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        Address
+                                    </h5>
+                                    <p class="mb-0 ct_text_666 ct_para_scroll ct_custom_scroll">
+                                        London, UK
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ct_white_bg p-4 mt-4">
+                        <h4 class="ct_fs_20 ct_fw_600 mb-2 ct_text_061F61">
+                            Bank Details
+                        </h4>
+
+                        <div class="row mt-4">
+                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        Account Holder Name
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">{{agentData?.holder_name}}</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        Bank Name
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">{{agentData?.bank_name}}</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        IBAN
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">{{agentData?.iban}}</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        Swift
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">{{agentData?.swift}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mt-4">
+                            <div class="ct_white_bg p-4">
+                                <h4 class="ct_fs_20 ct_fw_600 mb-3 ct_text_061F61">
+                                    Proof of Residence
+                                </h4>
+
+                                <div class="ct_outline_bg d-flex align-items-center gap-3 p-3">
+                                    <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0" />
+                                    <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
+                                        <h5 class="ct_fs_16 ct_fw_600 mb-0 ct_text_061F61">
+                                            Utility Bill
+                                        </h5>
+                                        <a href="#"><i class="fa-regular fa-eye"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-4">
+                            <div class="ct_white_bg p-4">
+                                <h4 class="ct_fs_20 ct_fw_600 mb-3 ct_text_061F61">
+                                    Identity Verification
+                                </h4>
+
+                                <div class="ct_outline_bg d-flex align-items-center gap-3 p-3">
+                                    <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0" />
+                                    <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
+                                        <h5 class="ct_fs_16 ct_fw_600 mb-0 ct_text_061F61">
+                                            Passport
+                                        </h5>
+                                        <a href="#"><i class="fa-regular fa-eye"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-4">
+                            <div class="ct_white_bg p-4">
+                                <h4 class="ct_fs_20 ct_fw_600 mb-3 ct_text_061F61">
+                                    Cancelled Cheque
+                                </h4>
+
+                                <div class="ct_outline_bg d-flex align-items-center gap-3 p-3">
+                                    <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0" />
+                                    <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
+                                        <h5 class="ct_fs_16 ct_fw_600 mb-0 ct_text_061F61">
+                                            Cancelled Cheque
+                                        </h5>
+                                        <a href="#"><i class="fa-regular fa-eye"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-4">
+                            <div class="ct_white_bg p-4">
+                                <h4 class="ct_fs_20 ct_fw_600 mb-3 ct_text_061F61">
+                                    Identity Verification Selfie
+                                </h4>
+
+                                <div class="ct_outline_bg d-flex align-items-center gap-3 p-3">
+                                    <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0" />
+                                    <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
+                                        <h5 class="ct_fs_16 ct_fw_600 mb-0 ct_text_061F61">
+                                            Photo
+                                        </h5>
+                                        <a href="#"><i class="fa-regular fa-eye"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @if (agentData?.status == 'PENDING') {
+                <div class="d-flex align-items-center gap-3 mt-4">
+                    <button class="ct_green_btn px-4 px-sm-5" data-bs-toggle="modal"
+                        data-bs-target="#ct_accept_modal_post">Accept</button>
+                    <button class="ct_red_btn px-4 px-sm-5" data-bs-toggle="modal"
+                        data-bs-target="#ct_reject_modal_post">Reject</button>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ct_accept_modal_post" tabindex="-1" aria-labelledby="ct_delete_postLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body pt-5 pb-4">
+                <div class="ct_delete_post_modal">
+                    <figure>
+                        <figcaption>
+                            <h4 class="ct_fs_20 ct_fw_600 text-center">
+                                Are you sure you want to accept this seller ?
+                            </h4>
+                        </figcaption>
+                    </figure>
+                    <div class="modal-footer justify-content-center border-0 ct_modal_footer">
+                        <button type="button" class="ct_outline_btn w-100 ct_fw_600" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <a (click)="accept()" class="ct_border_radius_10 ct_dark_green_btn w-100 ct_fw_600 text-center">
+                            Yes
+                        </a>
+                        <button hidden type="button" class="btn btn-secondary" #closeModalAcc
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ct_reject_modal_post" tabindex="-1" aria-labelledby="ct_delete_postLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body pt-5 pb-4">
+                <div class="ct_delete_post_modal">
+                    <figure>
+                        <figcaption>
+                            <h4 class="ct_fs_20 ct_fw_600 text-center">
+                                Are you sure you want to reject this seller ?
+                            </h4>
+                        </figcaption>
+                    </figure>
+                    <div class="modal-footer justify-content-center border-0 ct_modal_footer">
+                        <button type="button" class="ct_outline_btn w-100 ct_fw_600" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <a (click)="reject()" class="ct_border_radius_10 ct_dark_green_btn w-100 ct_fw_600 text-center">
+                            Yes
+                        </a>
+                        <button hidden type="button" class="btn btn-secondary" #closeModalRej
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ct_loader_main" *ngIf="isLoading">
+    <img src="img/loader.gif" alt="">
+</div>

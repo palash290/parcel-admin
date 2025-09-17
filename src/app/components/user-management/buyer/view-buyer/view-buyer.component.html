@@ -1,0 +1,35 @@
+<div class="ct_px_30 ct_mt_30 pb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex align-items-center gap-3 justify-content-between ct_flex_col_575">
+                    <h4 class="d-flex align-items-center gap-2 ct_fw_600  mb-0 ct_text_061F61 ct_ff_Saira"><a
+                            routerLink="/home/buyer" class="ct_black_text"><i class="fa-solid fa-angle-left"></i></a>Buyer
+                        Details</h4>
+                </div>
+
+                <div class="  ct_pb_30">
+                    <div class="ct_grey_bg p-0" style="overflow: hidden;">
+                        <div class="d-flex align-items-center ct_flex_col_767">
+                            <img [src]="buyerData?.profile_image ? buyerData?.profile_image : 'img/np_pro.png'" alt=""
+                                class="ct_img_h_268 ct_cursor_pointer" data-bs-toggle="modal"
+                                data-bs-target="#full_view_img">
+                            <div class="ct_flex_1 d-flex  justify-content-between gap-3 p-4 ct_flex_col_1999">
+                                <div>
+                                    <h5 class="ct_fs_20 ct_fw_600 mb-1 ct_text_020617">{{buyerData?.full_name}}</h5>
+                                    <p class="mb-0">{{buyerData?.email}}</p>
+                                    <p class="mb-0">{{buyerData?.city ? buyerData?.city : '-'}}, {{buyerData?.country ? buyerData?.country : '-'}}</p>
+                                </div>
+                                <div>
+                                    <p class="ct_fW_500 mb-1">Date Joined: {{buyerData?.created_at |
+                                        date:'dd-MMM-yyyy'}}</p>
+                                    <!-- <p class="ct_fW_500 mb-0">125 <img src="img/coin.png" alt=""></p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
