@@ -1,0 +1,57 @@
+.mySwiperMain,
+.mySwiperThumbs {
+    width: 100%;
+    height: auto;
+}
+
+.mySwiperMain .swiper-slide img,
+.mySwiperThumbs .swiper-slide img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.swiper-slide-thumb-active {
+    /* border: 3px solid #ff4c4c; */
+    /* your highlight color */
+    border-radius: 8px;
+    opacity: 1;
+}
+
+.swiper-slide-thumb-active img {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+}
+
+.ct_img_30 {
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+}
+
+.ct_view_more_cmnts {
+    position: relative;
+    z-index: 1;
+
+}
+
+.ct_view_more_cmnts:before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    background-color: #e6e6e6;
+    height: 1px;
+    width: 100%;
+    top: 50%;
+    z-index: -1;
+    margin-inline: auto;
+}
+
+.ct_view_more_cmnts p {
+    text-align: center;
+    font-weight: 600;
+    width: fit-content;
+    margin-inline: auto;
+    background: #f7f7f7;
+    padding-inline: 15px;
+}

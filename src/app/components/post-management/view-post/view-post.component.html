@@ -21,7 +21,37 @@
                         </div>
                     </div>
                     <div class="ct_post_slider_img mb-3">
-                        <img src="img/post_img.png" alt="">
+
+                        <!-- Show VIDEO -->
+                        <!-- <video *ngIf="userData.media_type == 'VIDEO'" [src]="userData.video"
+                            [poster]="userData.thumbnail" controls width="100%">
+                        </video> -->
+
+                        <!-- 🖼️ MULTIPLE IMAGES -->
+                        <!-- <div *ngIf="userData.media_type === 'IMAGE' && userData.images?.length > 0"> -->
+                        <div class="swiper mySwiperMain ct_product_slider_12">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" *ngFor="let img of images">
+                                    <img [src]="img.img" />
+                                </div>
+                            </div>
+                            @if(images.length > 1){
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                            }
+
+                            @if(images.length > 1){
+                            <div class="swiper mySwiperThumbs ct_card_small_thumb mt-3">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide" *ngFor="let img of images">
+                                        <img [src]="img.img" />
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                        </div>
+                        <!-- </div> -->
+
                     </div>
 
                     <p class="ct_fs_18 mb-0">"This moment is simply overflowing with cuteness, making everything a
@@ -61,7 +91,8 @@
                                             class="ct_fs_14 mb-0 ct_para_scroll ct_custom_scroll   ct_commented_text mt-2">
                                             <span>Design Shot is an invitation to ponder cn design as a living entity.
                                                 capture of embodying and
-                                                influencing the flow of thoughts and sensations in</span> </p>
+                                                influencing the flow of thoughts and sensations in</span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +112,8 @@
                                             class="ct_fs_14 mb-0 ct_para_scroll ct_custom_scroll   ct_commented_text mt-2">
                                             <span>Design Shot is an invitation to ponder cn design as a living entity.
                                                 capture of embodying and
-                                                influencing the flow of thoughts and sensations in</span> </p>
+                                                influencing the flow of thoughts and sensations in</span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +133,8 @@
                                             class="ct_fs_14 mb-0 ct_para_scroll ct_custom_scroll   ct_commented_text mt-2">
                                             <span>Design Shot is an invitation to ponder cn design as a living entity.
                                                 capture of embodying and
-                                                influencing the flow of thoughts and sensations in</span> </p>
+                                                influencing the flow of thoughts and sensations in</span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>

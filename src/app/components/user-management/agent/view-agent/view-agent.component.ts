@@ -5,6 +5,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { CommonService } from '../../../../services/common.service';
 import { Location } from '@angular/common';
 
+
 @Component({
   selector: 'app-view-agent',
   imports: [RouterLink, CommonModule],
@@ -14,8 +15,6 @@ import { Location } from '@angular/common';
 export class ViewAgentComponent {
 
   agent_id: any;
-  carFeaturesList: string[] = [];
-  clientsList: any;
   agentData: any;
   userImg1: any;
   isLoading: boolean = false;
@@ -29,9 +28,9 @@ export class ViewAgentComponent {
     this.getSingleSeller(this.agent_id);
   }
 
-  getSingleSeller(seller_id?: any) {
+  getSingleSeller(agent_id: any) {
     this.isLoading = true;
-    this.service.get(`admin/get-agent/${seller_id}`).subscribe({
+    this.service.get(`admin/get-agent/${agent_id}`).subscribe({
       next: (resp: any) => {
         this.isLoading = false;
         this.agentData = resp.data;
@@ -46,17 +45,17 @@ export class ViewAgentComponent {
   reject() {
     this.isLoading = true;
     const formURlData = new URLSearchParams()
-    formURlData.set('seller_status', 'REJECTED')
+    formURlData.set('status', 'REJECTED')
     formURlData.set('agent_id', this.agent_id)
     this.service
-      .post('admin/approve-reject-seller', formURlData.toString())
+      .post('admin/update-agent-status', formURlData.toString())
       .subscribe({
         next: (resp: any) => {
           if (resp.success == true) {
             this.isLoading = false;
             this.toastr.success(resp.message);
             this.closeModalRej.nativeElement.click();
-            this.getSingleSeller();
+            this.getSingleSeller(this.agent_id);
           } else {
             this.isLoading = false;
             this.toastr.warning(resp.message);
@@ -72,28 +71,23 @@ export class ViewAgentComponent {
   accept() {
     this.isLoading = true;
     const formURlData = new URLSearchParams()
-    formURlData.set('seller_status', 'APPROVED')
+    formURlData.set('status', 'APPROVED')
     formURlData.set('agent_id', this.agent_id)
     this.service
-      .post('admin/approve-reject-seller', formURlData.toString())
+      .post('admin/update-agent-status', formURlData.toString())
       .subscribe({
         next: (resp: any) => {
           if (resp.success == true) {
             this.isLoading = false;
             this.toastr.success(resp.message);
             this.closeModalAcc.nativeElement.click();
-            this.getSingleSeller();
+            this.getSingleSeller(this.agent_id);
           } else {
             this.isLoading = false;
             this.toastr.warning(resp.message);
           }
         },
         error: (error: any) => {
-          // if (error.error.message) {
-          //   this.toastr.error(error.error.message);
-          // } else {
-          //   this.toastr.error('Something went wrong!');
-          // }
           this.isLoading = false;
           this.toastr.warning(error || 'Something went wrong!');
         }
@@ -102,6 +96,12 @@ export class ViewAgentComponent {
 
   backClicked() {
     this.location.back();
+  }
+
+  previewImg: any = null;
+
+  getImg(img: any) {
+    this.previewImg = img;
   }
 
 

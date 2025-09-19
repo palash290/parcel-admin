@@ -9,12 +9,91 @@
                     </h4>
                 </div>
 
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        @if(agentData?.status == 'PENDING'){
+                        <!-- Pending Alert S -->
+                        <div class="ct_light_orange_alert mb-3 justify-content-between">
+                            <div class="d-flex gap-2 align-items-center">
+                                <svg width="20" height="22" viewBox="0 0 20 22" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <mask id="mask0_164_21791" style="mask-type:luminance" maskUnits="userSpaceOnUse"
+                                        x="0" y="2" width="20" height="20">
+                                        <path d="M0 2H20V22H0V2Z" fill="white" />
+                                    </mask>
+                                    <g mask="url(#mask0_164_21791)">
+                                        <mask id="mask1_164_21791" style="mask-type:luminance"
+                                            maskUnits="userSpaceOnUse" x="0" y="2" width="20" height="20">
+                                            <path d="M0 2H20V22H0V2Z" fill="white" />
+                                        </mask>
+                                        <g mask="url(#mask1_164_21791)">
+                                            <path
+                                                d="M10 4.1875C5.69219 4.1875 2.1875 7.69219 2.1875 12C2.1875 16.3078 5.69219 19.8125 10 19.8125C14.3078 19.8125 17.8125 16.3078 17.8125 12C17.8125 7.69219 14.3078 4.1875 10 4.1875ZM10 7.39062C10.2805 7.39062 10.5198 7.48978 10.7182 7.68809C10.9165 7.88641 11.0156 8.12579 11.0156 8.40625C11.0156 8.68671 10.9165 8.92609 10.7182 9.1244C10.5198 9.32272 10.2805 9.42187 10 9.42188C9.71954 9.42187 9.48016 9.32272 9.28184 9.1244C9.08353 8.92609 8.98437 8.68671 8.98438 8.40625C8.98438 8.12579 9.08353 7.88641 9.28184 7.68809C9.48016 7.48978 9.71954 7.39062 10 7.39062ZM11.875 16.2187H8.4375C8.26491 16.2187 8.1176 16.1577 7.99556 16.0357C7.87352 15.9137 7.8125 15.7663 7.8125 15.5937C7.8125 15.4212 7.87352 15.2738 7.99556 15.1518C8.1176 15.0298 8.26491 14.9687 8.4375 14.9687H9.53125V11.5312H8.90625C8.73366 11.5312 8.58635 11.4702 8.46431 11.3482C8.34227 11.2262 8.28125 11.0788 8.28125 10.9062C8.28125 10.7337 8.34227 10.5863 8.46431 10.4643C8.58635 10.3423 8.73366 10.2812 8.90625 10.2812H10.1562C10.3288 10.2812 10.4762 10.3423 10.5982 10.4643C10.7202 10.5863 10.7812 10.7337 10.7812 10.9062V14.9687H11.875C12.0476 14.9687 12.1949 15.0298 12.3169 15.1518C12.439 15.2738 12.5 15.4212 12.5 15.5937C12.5 15.7663 12.439 15.9137 12.3169 16.0357C12.1949 16.1577 12.0476 16.2187 11.875 16.2187Z"
+                                                fill="#FF903F" />
+                                        </g>
+                                    </g>
+                                </svg>
+                                <div>
+                                    <h5 class="ct_fs_18 ct_fw_700 mb-0">Pending</h5>
+                                </div>
+                            </div>
+                        </div>
+                        }
+
+                        @if(agentData?.status == 'APPROVED'){
+                        <!-- Approved Review Alert S -->
+                        <div class="ct_light_green_alert justify-content-between mb-3">
+                            <div class="d-flex gap-2 align-items-center">
+                                <svg width="26" height="27" viewBox="0 0 26 27" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.3" fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M11.4679 2.94024C11.8514 2.55726 12.3645 2.3319 12.906 2.30864C13.4474 2.28538 13.978 2.46589 14.3929 2.81458L14.5316 2.94133L16.5899 4.99858H19.4997C20.0462 4.99868 20.5724 5.20525 20.973 5.5769C21.3735 5.94856 21.6189 6.45785 21.6599 7.00274L21.6664 7.16524V10.0751L23.7247 12.1334C24.108 12.517 24.3336 13.0303 24.3568 13.572C24.3801 14.1137 24.1994 14.6445 23.8504 15.0595L23.7236 15.1971L21.6653 17.2554V20.1652C21.6655 20.7119 21.459 21.2384 21.0874 21.6392C20.7157 22.04 20.2062 22.2855 19.6611 22.3265L19.4997 22.3319H16.591L14.5326 24.3902C14.1491 24.7735 13.6358 24.9991 13.094 25.0223C12.5523 25.0456 12.0215 24.8649 11.6066 24.5159L11.469 24.3902L9.41064 22.3319H6.49972C5.9531 22.3321 5.42661 22.1256 5.0258 21.754C4.62498 21.3823 4.37947 20.8728 4.33847 20.3277L4.33306 20.1652V17.2554L2.27472 15.1971C1.89143 14.8135 1.66589 14.3002 1.64262 13.7585C1.61936 13.2168 1.80006 12.686 2.14906 12.271L2.27472 12.1334L4.33306 10.0751V7.16524C4.33316 6.61881 4.53973 6.09259 4.91138 5.692C5.28303 5.29142 5.79233 5.04606 6.33722 5.00508L6.49972 4.99858H9.40956L11.4679 2.94024Z"
+                                        fill="#22C55E" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M16.3351 10.3979L11.7375 14.9955L9.82213 13.0802C9.61885 12.8771 9.3432 12.763 9.05583 12.7631C8.76845 12.7632 8.49288 12.8775 8.28975 13.0807C8.08662 13.284 7.97255 13.5597 7.97266 13.847C7.97276 14.1344 8.08701 14.41 8.29029 14.6131L10.8946 17.2174C11.0053 17.3282 11.1367 17.416 11.2813 17.4759C11.4259 17.5358 11.5809 17.5667 11.7375 17.5667C11.894 17.5667 12.049 17.5358 12.1936 17.4759C12.3382 17.416 12.4696 17.3282 12.5803 17.2174L17.867 11.9297C18.0643 11.7254 18.1735 11.4517 18.171 11.1677C18.1686 10.8836 18.0546 10.6119 17.8538 10.4111C17.6529 10.2102 17.3812 10.0963 17.0971 10.0938C16.8131 10.0913 16.5394 10.2005 16.3351 10.3979Z"
+                                        fill="#22C55E" />
+                                </svg>
+                                <div>
+                                    <h5 class="ct_fs_18 ct_fw_700 mb-0">Approved</h5>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="mb-0">Approved On:</p>
+                                <p class="mb-0">{{agentData?.approved_at | date:'dd-MM-yyyy'}}</p>
+                            </div>
+                        </div>
+                        }
+
+                        @if(agentData?.status == 'REJECTED'){
+                        <!-- Rejected Review Alert S -->
+                        <div class="ct_light_red_alert justify-content-between mb-3">
+                            <div class="d-flex gap-2 align-items-center">
+                                <svg width="21" height="22" viewBox="0 0 21 22" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect y="0.5" width="21" height="21" rx="10.5" fill="#FF0000" fill-opacity="0.2" />
+                                    <path
+                                        d="M10.5 9.61125L13.2362 6.875L13.3058 6.94454L13.3655 7.03411C13.656 7.46991 14.0298 7.84389 14.4655 8.1345L14.5559 8.19461L14.625 8.26414L11.8891 11L14.625 13.7362L14.5555 13.8054L14.4659 13.8655C14.0301 14.156 13.6561 14.5298 13.3655 14.9655L13.3054 15.0559L13.2362 15.125L10.5 12.3891L7.76414 15.125L7.69461 15.0555L7.6345 14.9659C7.34405 14.5301 6.97019 14.1561 6.5345 13.8655L6.44414 13.8054L6.375 13.7362L9.11125 11L6.375 8.26414L6.44454 8.19461L6.5345 8.1345C6.97016 7.84401 7.34401 7.47016 7.6345 7.0345L7.69461 6.94414L7.76414 6.875L10.5 9.61125Z"
+                                        stroke="#DB0006" />
+                                </svg>
+                                <div>
+                                    <h5 class="ct_fs_18 ct_fw_700 mb-0">Rejected</h5>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="mb-0">Rejected On:</p>
+                                <p class="mb-0">{{agentData?.rejected_at | date:'dd-MM-yyyy'}}</p>
+                            </div>
+                        </div>
+                        }
+
+                    </div>
+                </div>
+
                 <div class="ct_pb_30">
                     <div class="ct_grey_bg p-0" style="overflow: hidden">
                         <div class="d-flex align-items-center ct_flex_col_767">
                             <img [src]="agentData?.profile_image ? agentData?.profile_image : 'img/np_pro.png'" alt=""
-                                class="ct_img_h_268 ct_cursor_pointer" data-bs-toggle="modal"
-                                data-bs-target="#full_view_img" />
+                                class="ct_img_h_268 ct_cursor_pointer" />
                             <div class="ct_flex_1 p-4 w-100">
                                 <div class="d-flex justify-content-between gap-3 ct_flex_col_1999">
                                     <div>
@@ -46,7 +125,8 @@
                                             <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
                                                 Country
                                             </h5>
-                                            <p class="mb-0 ct_text_666">{{agentData?.country}}</p>
+                                            <p class="mb-0 ct_text_666">{{agentData?.country ? agentData?.country :
+                                                '-'}}</p>
                                         </div>
                                     </div>
                                     <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -54,7 +134,8 @@
                                             <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
                                                 Nationality
                                             </h5>
-                                            <p class="mb-0 ct_text_666"> {{agentData?.nationality}}</p>
+                                            <p class="mb-0 ct_text_666"> {{agentData?.nationality ?
+                                                agentData?.nationality : '-'}}</p>
                                         </div>
                                     </div>
                                     <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -62,8 +143,8 @@
                                             <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
                                                 Phone Number
                                             </h5>
-                                            <p class="mb-0 ct_text_666">+{{agentData?.phone_code}}
-                                                {{agentData?.phone_number}}</p>
+                                            <p class="mb-0 ct_text_666">{{agentData?.phone_code}}
+                                                {{agentData?.phone_number ? agentData?.phone_number : '-'}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -78,7 +159,7 @@
                         </div>
                     </div>
 
-                    <div class="ct_white_bg p-4 mt-4">
+                    <!-- <div class="ct_white_bg p-4 mt-4">
                         <h4 class="ct_fs_20 ct_fw_600 mb-2 ct_text_061F61">
                             Personal Details
                         </h4>
@@ -148,9 +229,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="ct_white_bg p-4 mt-4">
+                    <!-- <div class="ct_white_bg p-4 mt-4">
                         <h4 class="ct_fs_20 ct_fw_600 mb-2 ct_text_061F61">
                             Bank Details
                         </h4>
@@ -189,22 +270,23 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="row">
                         <div class="col-md-6 mt-4">
                             <div class="ct_white_bg p-4">
                                 <h4 class="ct_fs_20 ct_fw_600 mb-3 ct_text_061F61">
-                                    Proof of Residence
+                                    Identity Front
                                 </h4>
-
                                 <div class="ct_outline_bg d-flex align-items-center gap-3 p-3">
                                     <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0" />
                                     <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
                                         <h5 class="ct_fs_16 ct_fw_600 mb-0 ct_text_061F61">
-                                            Utility Bill
+                                            Front
                                         </h5>
-                                        <a href="#"><i class="fa-regular fa-eye"></i></a>
+                                        <a (click)="getImg(agentData?.identity_ver_front_file)"><i
+                                                class="fa-regular fa-eye" data-bs-toggle="modal"
+                                                data-bs-target="#full_view_img"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -212,33 +294,17 @@
                         <div class="col-md-6 mt-4">
                             <div class="ct_white_bg p-4">
                                 <h4 class="ct_fs_20 ct_fw_600 mb-3 ct_text_061F61">
-                                    Identity Verification
+                                    Identity Back
                                 </h4>
-
                                 <div class="ct_outline_bg d-flex align-items-center gap-3 p-3">
                                     <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0" />
                                     <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
                                         <h5 class="ct_fs_16 ct_fw_600 mb-0 ct_text_061F61">
-                                            Passport
+                                            Back
                                         </h5>
-                                        <a href="#"><i class="fa-regular fa-eye"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mt-4">
-                            <div class="ct_white_bg p-4">
-                                <h4 class="ct_fs_20 ct_fw_600 mb-3 ct_text_061F61">
-                                    Cancelled Cheque
-                                </h4>
-
-                                <div class="ct_outline_bg d-flex align-items-center gap-3 p-3">
-                                    <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0" />
-                                    <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
-                                        <h5 class="ct_fs_16 ct_fw_600 mb-0 ct_text_061F61">
-                                            Cancelled Cheque
-                                        </h5>
-                                        <a href="#"><i class="fa-regular fa-eye"></i></a>
+                                        <a (click)="getImg(agentData?.identity_ver_back_file)"><i
+                                                class="fa-regular fa-eye" data-bs-toggle="modal"
+                                                data-bs-target="#full_view_img"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -248,18 +314,36 @@
                                 <h4 class="ct_fs_20 ct_fw_600 mb-3 ct_text_061F61">
                                     Identity Verification Selfie
                                 </h4>
-
                                 <div class="ct_outline_bg d-flex align-items-center gap-3 p-3">
                                     <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0" />
                                     <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
                                         <h5 class="ct_fs_16 ct_fw_600 mb-0 ct_text_061F61">
                                             Photo
                                         </h5>
-                                        <a href="#"><i class="fa-regular fa-eye"></i></a>
+                                        <a (click)="getImg(agentData?.selfie_file)"><i class="fa-regular fa-eye"
+                                                data-bs-toggle="modal" data-bs-target="#full_view_img"></i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- <div class="col-md-6 mt-4">
+                            <div class="ct_white_bg p-4">
+                                <h4 class="ct_fs_20 ct_fw_600 mb-3 ct_text_061F61">
+                                    Identity Verification Selfie
+                                </h4>
+                                <div class="ct_outline_bg d-flex align-items-center gap-3 p-3">
+                                    <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0" />
+                                    <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
+                                        <h5 class="ct_fs_16 ct_fw_600 mb-0 ct_text_061F61">
+                                            Photo
+                                        </h5>
+                                        <a><i class="fa-regular fa-eye"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
                     </div>
                 </div>
                 @if (agentData?.status == 'PENDING') {
@@ -333,6 +417,27 @@
     </div>
 </div>
 
+<!-- Image preview Modal S -->
+<div class="modal fade modal-md" id="full_view_img" tabindex="-1" aria-labelledby="full_view_imgLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title ct_fs_24 ct_ff_QuattrocentoSans ct_fw_700 mb-0" id="full_view_imgLabel">
+                    Image Preview
+                </h5>
+                <button type="button" class="btn-close ct_custom_close_img" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="ct_full_view_img">
+                    <img [src]="previewImg ? previewImg : 'img/np_pro.png'" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="ct_loader_main" *ngIf="isLoading">
-    <img src="img/loader.gif" alt="">
+    <span class="loader"></span>
 </div>

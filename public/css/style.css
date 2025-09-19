@@ -2036,11 +2036,17 @@ ul.ct_seeling_products_list {
 
 
 .ct_post_slider_img img {
-  height: 400px;
+  /* height: 400px;
   width: 100%;
   object-fit: cover;
   border-radius: 20px;
-  object-position: 5% 14%;
+  object-position: 5% 14%; */
+  height: 288px;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 20px;
+  margin-inline: auto;
+  background-color: #e6e6e6;
 }
 
 .ct_comment_area_scroll {

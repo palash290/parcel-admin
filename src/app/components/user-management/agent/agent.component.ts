@@ -31,7 +31,7 @@ export class AgentComponent {
     this.commonService.get('admin/get-all-agents').subscribe({
       next: (resp: any) => {
         this.isLoading = false;
-        this.data = resp.data;
+        this.data = resp.data.reverse();
         this.filterTable();
       },
       error: (error) => {
@@ -39,6 +39,23 @@ export class AgentComponent {
         console.log(error || 'Something went wrong!');
       }
     });
+  }
+
+  searchText: string = '';
+  filteredData: any[] = [];
+
+  filterTable() {
+    this.p = 1;
+    let filtered = this.data;
+    // Filter by customer name
+    if (this.searchText.trim()) {
+      const keyword = this.searchText.trim().toLowerCase();
+      filtered = filtered.filter((item: any) =>
+      (item.full_name?.toLowerCase().includes(keyword) ||
+        item.email?.toLowerCase().includes(keyword))
+      );
+    }
+    this.filteredData = filtered;
   }
 
   handleCheckboxChange(row: any) {
@@ -91,23 +108,6 @@ export class AgentComponent {
         }
       });
     }
-  }
-
-  searchText: string = '';
-  filteredData: any[] = [];
-
-  filterTable() {
-    this.p = 1;
-    let filtered = this.data;
-    // Filter by customer name
-    if (this.searchText.trim()) {
-      const keyword = this.searchText.trim().toLowerCase();
-      filtered = filtered.filter((item: any) =>
-      (item.full_name?.toLowerCase().includes(keyword) ||
-        item.email?.toLowerCase().includes(keyword))
-      );
-    }
-    this.filteredData = filtered;
   }
 
 

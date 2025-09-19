@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "only_golf": {
+    "parcel-admin": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/only_golf",
+            "outputPath": "dist/parcel-admin",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -31,7 +31,8 @@
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "node_modules/quill/dist/quill.core.css",
               "node_modules/quill/dist/quill.bubble.css",
-              "node_modules/quill/dist/quill.snow.css"
+              "node_modules/quill/dist/quill.snow.css",
+              "node_modules/swiper/swiper-bundle.min.css"
             ],
             "scripts": []
           },
@@ -41,12 +42,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumError": "5MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+                  "maximumWarning": "5MB",
+                  "maximumError": "5MB"
                 }
               ],
               "outputHashing": "all"
@@ -69,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "only_golf:build:production"
+              "buildTarget": "parcel-admin:build:production"
             },
             "development": {
-              "buildTarget": "only_golf:build:development"
+              "buildTarget": "parcel-admin:build:development"
             }
           },
           "defaultConfiguration": "development"

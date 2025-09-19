@@ -28,7 +28,7 @@ export class PropertiesComponent {
     this.commonService.get('admin/get-all-properties').subscribe({
       next: (resp: any) => {
         this.isLoading = false;
-        this.data = resp.data;
+        this.data = resp.data.reverse();
         this.filterTable();
       },
       error: (error) => {
