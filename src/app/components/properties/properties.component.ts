@@ -57,7 +57,6 @@ export class PropertiesComponent {
         item.agent.full_name?.toLowerCase().includes(keyword))
       );
     }
-
     this.filteredData = filtered;
   }
 

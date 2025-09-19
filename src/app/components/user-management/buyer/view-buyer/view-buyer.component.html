@@ -4,35 +4,102 @@
             <div class="col-md-12">
                 <div class="d-flex align-items-center gap-3 justify-content-between ct_flex_col_575">
                     <h4 class="d-flex align-items-center gap-2 ct_fw_600  mb-0 ct_text_061F61 ct_ff_Saira"><a
-                            routerLink="/home/buyer" class="ct_black_text"><i class="fa-solid fa-angle-left"></i></a>Buyer
+                            routerLink="/home/buyer" class="ct_black_text"><i
+                                class="fa-solid fa-angle-left"></i></a>Buyer
                         Details</h4>
                 </div>
 
-                <div class="  ct_pb_30">
+                <div class="ct_pb_30 pt-4">
+                    <div class="ct_buyer_cover_photo_bg">
+                        <img [src]="buyerData?.cover_image ? buyerData?.cover_image : 'img/no_event.png'" alt=""
+                            class="ct_img_h_268 ct_cursor_pointer" data-bs-toggle="modal"
+                            data-bs-target="#full_view_img">
+                    </div>
                     <div class="ct_grey_bg p-0" style="overflow: hidden;">
                         <div class="d-flex align-items-center ct_flex_col_767">
                             <img [src]="buyerData?.profile_image ? buyerData?.profile_image : 'img/np_pro.png'" alt=""
                                 class="ct_img_h_268 ct_cursor_pointer" data-bs-toggle="modal"
                                 data-bs-target="#full_view_img">
-                            <div class="ct_flex_1 d-flex  justify-content-between gap-3 p-4 ct_flex_col_1999">
-                                <div>
-                                    <h5 class="ct_fs_20 ct_fw_600 mb-1 ct_text_020617">{{buyerData?.full_name}}</h5>
-                                    <p class="mb-0">{{buyerData?.email}}</p>
-                                    <p class="mb-0">{{buyerData?.city ? buyerData?.city : '-'}}, {{buyerData?.country ? buyerData?.country : '-'}}</p>
+                            <div>
+                                <div class="ct_flex_1 d-flex  justify-content-between gap-3 p-4 ct_flex_col_1999">
+                                    <div>
+                                        <h5 class="ct_fs_20 ct_fw_600 mb-1 ct_text_020617">{{buyerData?.full_name}}</h5>
+                                        <p class="mb-0">{{buyerData?.email}}</p>
+                                        <p class="mb-0">{{buyerData?.landmark ? buyerData?.landmark : '-'}}</p>
+                                    </div>
+                                    <div>
+                                        <p class="ct_fW_500 mb-1">Date Joined: {{buyerData?.created_at |
+                                            date:'dd-MMM-yyyy'}}</p>
+                                        <!-- <p class="ct_fW_500 mb-0">125 <img src="img/coin.png" alt=""></p> -->
+                                    </div>
+
                                 </div>
-                                <div>
-                                    <p class="ct_fW_500 mb-1">Date Joined: {{buyerData?.created_at |
-                                        date:'dd-MMM-yyyy'}}</p>
-                                    <!-- <p class="ct_fW_500 mb-0">125 <img src="img/coin.png" alt=""></p> -->
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="px-3 py-4">
+                        <div>
+                            <h5 class="ct_fs_18 ct_fw_600 mb-3 ct_text_020617">Preference</h5>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="ct_grey_card_small">
+                                    <p class="mb-0 ct_fw_600">Min</p>
+                                    <p class="mb-0"> {{buyerData?.min_budget}}</p>
+                                </div>
+                                <div class="ct_grey_card_small">
+                                    <p class="mb-0 ct_fw_600">Max</p>
+                                    <p class="mb-0">{{buyerData?.max_budget}}</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="ct_fs_18 ct_fw_600 mb-3 ct_text_020617">No. of Bedrooms</h5>
+                            <div class="d-flex align-items-center gap-3 flex-wrap ct_custom_scroll ct_para_scroll">
+                                <div class="ct_grey_card_small"
+                                    *ngFor="let bedroom of getBedrooms(buyerData?.no_of_bedrooms)">
+                                    <p class="mb-0">{{ bedroom }} BHK</p>
                                 </div>
                             </div>
                         </div>
+                        <div class="mt-4">
+                            <h5 class="ct_fs_18 ct_fw_600 mb-3 ct_text_020617">Property Type</h5>
+                            <div class="d-flex align-items-center gap-3 flex-wrap ct_custom_scroll ct_para_scroll">
+                                <div class="ct_grey_card_small"
+                                    *ngFor="let type of getPropertyTypes(buyerData?.property_type)">
+                                    <p class="mb-0">{{ type }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <h5 class="ct_fs_18 ct_fw_600 mb-3 ct_text_020617">Property For</h5>
+                            <div class="d-flex align-items-center gap-3 flex-wrap ct_custom_scroll ct_para_scroll">
+                                <div class="ct_grey_card_small"
+                                    *ngFor="let pf of getPropertyFor(buyerData?.property_for)">
+                                    <p class="mb-0">{{ pf }}</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+
+                    <!-- <p class="mb-0">Min - {{buyerData?.min_budget}}</p>
+                    <p class="mb-0">Max - {{buyerData?.max_budget}}</p> -->
+                    <!-- <p class="mb-0">No. of Bedrooms - {{buyerData?.no_of_bedrooms}}</p> -->
+                    <!-- <p class="mb-0">Property Type {{buyerData?.property_type}}</p>
+                    <p class="mb-0">Property For - {{buyerData?.property_for}}</p> -->
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 
 <div class="ct_loader_main" *ngIf="isLoading">
     <span class="loader"></span>

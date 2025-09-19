@@ -1,54 +1,57 @@
-.ct_img_34 {
-  height: 44px;
-  width: 44px;
-  border-radius: 5px;
-  object-fit: cover;
+.mySwiperMain,
+.mySwiperThumbs {
+    width: 100%;
+    height: auto;
 }
 
-.ct_product_gallary_slider .owl-nav {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  margin-top: 10px;
-  gap: 10px;
+.mySwiperMain .swiper-slide img,
+.mySwiperThumbs .swiper-slide img {
+    width: 100%;
+    border-radius: 8px;
 }
 
-.ct_product_gallary_slider .owl-dots {
-  display: none;
+.swiper-slide-thumb-active {
+    /* border: 3px solid #ff4c4c; */
+    /* your highlight color */
+    border-radius: 8px;
+    opacity: 1;
 }
 
-.ct_product_gallary_slider .owl-nav button {
-  width: 40px;
-  height: 40px;
-  border-radius: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f2f2f2 !important;
-  position: relative;
+.swiper-slide-thumb-active img {
+    transform: scale(1.05);
+    transition: transform 0.2s;
 }
 
-.ct_product_gallary_slider .owl-nav button span {
-  display: none;
+.ct_img_30 {
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
 }
 
-.ct_product_gallary_slider .owl-nav button.owl-prev:before,
-.ct_product_gallary_slider .owl-nav button.owl-next:before {
-  content: "";
-  position: absolute;
-  background-position: center;
-  top: 50%;
-  width: 20px;
-  height: 20px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-repeat: no-repeat;
+.ct_view_more_cmnts {
+    position: relative;
+    z-index: 1;
+
 }
 
-/* .ct_product_gallary_slider .owl-nav button.owl-prev:before {
-  background-image: url(../img/left_icon.png);
+.ct_view_more_cmnts:before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    background-color: #e6e6e6;
+    height: 1px;
+    width: 100%;
+    top: 50%;
+    z-index: -1;
+    margin-inline: auto;
 }
 
-.ct_product_gallary_slider .owl-nav button.owl-next:before {
-  background-image: url(../img/right_icon.png);
-} */
+.ct_view_more_cmnts p {
+    text-align: center;
+    font-weight: 600;
+    width: fit-content;
+    margin-inline: auto;
+    background: #f7f7f7;
+    padding-inline: 15px;
+}

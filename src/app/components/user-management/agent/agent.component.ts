@@ -43,14 +43,19 @@ export class AgentComponent {
 
   searchText: string = '';
   filteredData: any[] = [];
+  selectedStatus: string = 'ALL';
 
   filterTable() {
     this.p = 1;
     let filtered = this.data;
-    // Filter by customer name
+
+    if (this.selectedStatus != 'ALL') {
+      filtered = filtered.filter((item: { status: string; }) => item.status == this.selectedStatus);
+    }
+
     if (this.searchText.trim()) {
       const keyword = this.searchText.trim().toLowerCase();
-      filtered = filtered.filter((item: any) =>
+      filtered = filtered.filter((item: { full_name: any; email: any; }) =>
       (item.full_name?.toLowerCase().includes(keyword) ||
         item.email?.toLowerCase().includes(keyword))
       );

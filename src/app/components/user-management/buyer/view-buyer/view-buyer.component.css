@@ -1,0 +1,23 @@
+.ct_buyer_cover_photo_bg img {
+    width: 100%;
+    height: 300px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.ct_buyer_cover_photo_bg {
+    background-color: #fff;
+}
+
+.ct_buyer_cover_photo_bg {
+    background-color: #fff;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.09);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.ct_grey_card_small {
+    background-color: #f5f5f5;
+    padding: 10px 30px;
+    border-radius: 10px;
+}

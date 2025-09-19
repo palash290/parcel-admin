@@ -3,6 +3,10 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonService } from '../../../services/common.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import Swiper from 'swiper';
+import { Navigation, Thumbs } from 'swiper/modules';
+
+Swiper.use([Navigation, Thumbs]);
 
 @Component({
   selector: 'app-view-propertie',
@@ -24,6 +28,38 @@ export class ViewPropertieComponent {
   ngOnInit() {
     this.property_id = this.route.snapshot.queryParamMap.get('property_id');
     this.getSingleProperty(this.property_id);
+  }
+
+    thumbsSwiper: any;
+
+  images = [
+    { img: 'https://trophy-talk-bucket.s3.us-east-2.amazonaws.com/images/1758107753471-af89bb3d-artyom-kabajev-ZcCv6qUye8c-unsplash.jpg' },
+    { img: 'https://trophy-talk-bucket.s3.us-east-2.amazonaws.com/images/1758107753471-af89bb3d-artyom-kabajev-ZcCv6qUye8c-unsplash.jpg' },
+    { img: 'https://trophy-talk-bucket.s3.us-east-2.amazonaws.com/images/1758107753471-af89bb3d-artyom-kabajev-ZcCv6qUye8c-unsplash.jpg' }
+  ];
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.thumbsSwiper = new Swiper('.mySwiperThumbs', {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        watchSlidesProgress: true,
+        slideToClickedSlide: true,
+        loop: false
+      });
+
+      new Swiper('.mySwiperMain', {
+        spaceBetween: 10,
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        thumbs: {
+          swiper: this.thumbsSwiper,
+        },
+      });
+    }, 100);
   }
 
   getSingleProperty(property_id: any) {

@@ -37,5 +37,33 @@ export class ViewBuyerComponent {
     });
   }
 
+  getBedrooms(no_of_bedrooms: string | null | undefined): string[] {
+    if (!no_of_bedrooms) return [];
+
+    return no_of_bedrooms.split(',')
+      .map(b => {
+        const num = parseInt(b.trim(), 10);
+        return num >= 5 ? '4+' : num.toString();
+      });
+  }
+
+  getPropertyTypes(property_type: string | null | undefined): string[] {
+    if (!property_type) return [];
+
+    return property_type
+      .split(',')
+      .map(type => type.trim())
+      .filter(type => type.length > 0);
+  }
+
+  getPropertyFor(property_for: string | null | undefined): string[] {
+    if (!property_for) return [];
+
+    return property_for
+      .split(',')
+      .map(p => p.trim())
+      .filter(p => p.length > 0);
+  }
+
 
 }
