@@ -65,5 +65,11 @@ export class ViewBuyerComponent {
       .filter(p => p.length > 0);
   }
 
+  previewImg: any = null;
+
+  getImg(img: any) {
+    this.previewImg = img;
+  }
+
 
 }

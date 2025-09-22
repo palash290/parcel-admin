@@ -33,9 +33,10 @@ export class ViewPropertieComponent {
     thumbsSwiper: any;
 
   images = [
-    { img: 'https://trophy-talk-bucket.s3.us-east-2.amazonaws.com/images/1758107753471-af89bb3d-artyom-kabajev-ZcCv6qUye8c-unsplash.jpg' },
-    { img: 'https://trophy-talk-bucket.s3.us-east-2.amazonaws.com/images/1758107753471-af89bb3d-artyom-kabajev-ZcCv6qUye8c-unsplash.jpg' },
-    { img: 'https://trophy-talk-bucket.s3.us-east-2.amazonaws.com/images/1758107753471-af89bb3d-artyom-kabajev-ZcCv6qUye8c-unsplash.jpg' }
+    { img: 'img/apartment_detail_small_1.jpg' },
+    { img: 'img/apartment_detail_small_2.jpg' },
+    { img: 'img/apartment_detail_small_3.jpg' },
+    { img: 'img/apartment_detail_small_4.jpg' }
   ];
 
   ngAfterViewInit() {

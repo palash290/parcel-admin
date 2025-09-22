@@ -85,20 +85,20 @@
                             </div>
                         </div>
                         }
-
                     </div>
                 </div>
 
                 <div class="ct_pb_30 pt-4">
                     <div class="ct_buyer_cover_photo_bg">
                         <img [src]="agentData?.cover_image ? agentData?.cover_image : 'img/no_event.png'" alt=""
-                            class="ct_img_h_268 ct_cursor_pointer" data-bs-toggle="modal"
-                            data-bs-target="#full_view_img">
+                            class="ct_img_h_268 ct_cursor_pointer" (click)="getImg(agentData?.cover_image)"
+                            data-bs-toggle="modal" data-bs-target="#full_view_bg">
                     </div>
                     <div class="ct_grey_bg p-0" style="overflow: hidden">
                         <div class="d-flex align-items-center ct_flex_col_767">
                             <img [src]="agentData?.profile_image ? agentData?.profile_image : 'img/np_pro.png'" alt=""
-                                class="ct_img_h_268 ct_cursor_pointer" />
+                                class="ct_img_h_268 ct_cursor_pointer" (click)="getImg(agentData?.profile_image)"
+                                data-bs-toggle="modal" data-bs-target="#full_view_img" />
                             <div class="ct_flex_1 p-4 w-100">
                                 <div class="d-flex justify-content-between gap-3 ct_flex_col_1999">
                                     <div>
@@ -154,10 +154,14 @@
                                     </div>
                                 </div>
 
-                                <div class="text-end mt-4">
+                                <!-- <div class="text-end mt-4">
                                     <a [routerLink]="['/home/view-listed-properties']"
                                         [queryParams]="{ agent_id: agentData?.agent_id }"
                                         class="ct_green_clr ct_fw_600">View Listed
+                                        Properties</a>
+                                </div> -->
+                                <div class="text-end mt-4">
+                                    <a class="ct_green_clr ct_fw_600">View Listed
                                         Properties</a>
                                 </div>
                             </div>
@@ -354,7 +358,7 @@
                 @if (agentData?.status == 'PENDING') {
                 <div class="d-flex align-items-center gap-3 mt-4">
                     <button class="ct_green_btn px-4 px-sm-5" data-bs-toggle="modal"
-                        data-bs-target="#ct_accept_modal_post">Accept</button>
+                        data-bs-target="#ct_accept_modal_post">Approve</button>
                     <button class="ct_red_btn px-4 px-sm-5" data-bs-toggle="modal"
                         data-bs-target="#ct_reject_modal_post">Reject</button>
                 </div>
@@ -373,7 +377,7 @@
                     <figure>
                         <figcaption>
                             <h4 class="ct_fs_20 ct_fw_600 text-center">
-                                Are you sure you want to accept this seller ?
+                                Are you sure you want to approve this agent ?
                             </h4>
                         </figcaption>
                     </figure>
@@ -402,7 +406,7 @@
                     <figure>
                         <figcaption>
                             <h4 class="ct_fs_20 ct_fw_600 text-center">
-                                Are you sure you want to reject this seller ?
+                                Are you sure you want to reject this agent ?
                             </h4>
                         </figcaption>
                     </figure>
@@ -437,6 +441,27 @@
             <div class="modal-body">
                 <div class="ct_full_view_img">
                     <img [src]="previewImg ? previewImg : 'img/np_pro.png'" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Image preview Modal S -->
+<div class="modal fade modal-xl" id="full_view_bg" tabindex="-1" aria-labelledby="full_view_imgLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title ct_fs_24 ct_ff_QuattrocentoSans ct_fw_700 mb-0" id="full_view_imgLabel">
+                    Image Preview
+                </h5>
+                <button type="button" class="btn-close ct_custom_close_img" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="ct_full_view_img">
+                    <img [src]="previewImg ? previewImg : 'img/no_event.png'" alt="" />
                 </div>
             </div>
         </div>
