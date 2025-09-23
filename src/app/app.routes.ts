@@ -152,6 +152,16 @@ export const routes: Routes = [
                         loadComponent: () => import('./components/referrals/referral-settings/referral-settings.component').then(m => m.ReferralSettingsComponent)
                         // canActivate: [authGuard]
                   },
+                  {
+                        path: 'investor-management',
+                        loadComponent: () => import('./components/investor-management/investor-management.component').then(m => m.InvestorManagementComponent)
+                        // canActivate: [authGuard]
+                  },
+                  {
+                        path: 'view-investor',
+                        loadComponent: () => import('./components/investor-management/view-investor/view-investor.component').then(m => m.ViewInvestorComponent)
+                        // canActivate: [authGuard]
+                  },
             ]
       }
 ];

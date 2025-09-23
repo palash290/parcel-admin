@@ -12,7 +12,7 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class MainComponent {
 
-    isMenuActive = false;
+  isMenuActive = false;
 
   openMenu(isMenuActive: any) {
     this.isMenuActive = isMenuActive; // Update menu active state

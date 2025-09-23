@@ -1,0 +1,153 @@
+<div class="ct_px_30 ct_mt_30 pb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex align-items-center gap-3 justify-content-between ct_flex_col_575">
+                    <h4 class="d-flex align-items-center gap-2 ct_fw_600 mb-0 ct_text_061F61 ct_ff_Saira">
+                        <a routerLink="/home/investor-management" class="ct_black_text"><i
+                                class="fa-solid fa-angle-left"></i></a>Investor
+                        Details
+                    </h4>
+                </div>
+                <div class="ct_pb_30">
+                    <div class="ct_white_bg p-4 mt-4">
+                        <div class="row mt-4">
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        Name
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">Justin Donahoo</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        Email
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">justinfourcaratvodka.com</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        DOB
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">14-01-1990</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        Phone Number
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">+19703244668</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        Government ID Number
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">999373720</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        Type
+                                    </h5>
+                                    <p class="mb-0 ct_text_666">Driver License</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="mb-4">
+                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                        Status
+                                    </h5>
+                                    <p class="mb-0 ct_text_666 ct_para_scroll ct_custom_scroll">
+                                        Pending
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="mb-4">
+                                <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
+                                    Government ID
+                                </h5>
+                                <div class="ct_gallery_left">
+                                    <img src="img/apartment_detail_small_4.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-3 mt-4">
+                    <button class="ct_green_btn px-4 px-sm-5" data-bs-toggle="modal"
+                        data-bs-target="#ct_accept_modal_post">Approve</button>
+                    <button class="ct_red_btn px-4 px-sm-5" data-bs-toggle="modal"
+                        data-bs-target="#ct_reject_modal_post">Reject</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ct_accept_modal_post" tabindex="-1" aria-labelledby="ct_delete_postLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body pt-5 pb-4">
+                <div class="ct_delete_post_modal">
+                    <figure>
+                        <figcaption>
+                            <h4 class="ct_fs_20 ct_fw_600 text-center">
+                                Are you sure you want to approve this request ?
+                            </h4>
+                        </figcaption>
+                    </figure>
+                    <div class="modal-footer justify-content-center border-0 ct_modal_footer">
+                        <button type="button" class="ct_outline_btn w-100 ct_fw_600" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <a class="ct_border_radius_10 ct_dark_green_btn w-100 ct_fw_600 text-center">
+                            Yes
+                        </a>
+                        <button hidden type="button" class="btn btn-secondary" #closeModalAcc
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ct_reject_modal_post" tabindex="-1" aria-labelledby="ct_delete_postLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body pt-5 pb-4">
+                <div class="ct_delete_post_modal">
+                    <figure>
+                        <figcaption>
+                            <h4 class="ct_fs_20 ct_fw_600 text-center">
+                                Are you sure you want to reject this request ?
+                            </h4>
+                        </figcaption>
+                    </figure>
+                    <div class="modal-footer justify-content-center border-0 ct_modal_footer">
+                        <button type="button" class="ct_outline_btn w-100 ct_fw_600" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <a class="ct_border_radius_10 ct_dark_green_btn w-100 ct_fw_600 text-center">
+                            Yes
+                        </a>
+                        <button hidden type="button" class="btn btn-secondary" #closeModalRej
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

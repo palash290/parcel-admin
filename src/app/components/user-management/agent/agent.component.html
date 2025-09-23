@@ -62,7 +62,8 @@
                                         </div>
                                     </label>
                                 </td>
-                                <td>
+
+                                <!-- <td>
                                     <select [(ngModel)]="item.status" class="form-select w-auto"
                                         (change)="onEmfStatusChange(item.agent_id, item.status)"
                                         [disabled]="item.status === 'REJECTED' || item.status === 'APPROVED'">
@@ -71,7 +72,32 @@
                                         <option value="REJECTED">Reject</option>
                                         <option value="PENDING">Pending</option>
                                     </select>
+                                </td> -->
+
+                                <td>
+                                    <select [(ngModel)]="item.status" class="form-select w-auto"
+                                        (change)="onEmfStatusChange(item.agent_id, item.status)"
+                                        [disabled]="item.status === 'REJECTED' || item.status === 'APPROVED'">
+
+                                        <!-- Default option -->
+                                        <option [ngValue]="null" disabled>Select</option>
+
+                                        <!-- If APPROVED -->
+                                        <option *ngIf="item.status == 'APPROVED'" value="APPROVED">Approved</option>
+
+                                        <!-- If REJECTED -->
+                                        <option *ngIf="item.status == 'REJECTED'" value="REJECTED">Rejected</option>
+
+                                        <!-- If neither APPROVED nor REJECTED -->
+                                        <ng-container *ngIf="item.status !== 'APPROVED' && item.status !== 'REJECTED'">
+                                            <option value="APPROVED">Approve</option>
+                                            <option value="REJECTED">Reject</option>
+                                            <option value="PENDING">Pending</option>
+                                        </ng-container>
+                                    </select>
                                 </td>
+
+
                                 <!-- <td>
                                     @if(item.status == 'APPROVED'){
                                     <span class="ct_green_clr ct_fw_600">Approved</span>

@@ -5,7 +5,6 @@
     <div class="ct_admin_logo text-center">
         <img src="img/logo.svg" alt="">
     </div>
-
     <ul>
         <li (click)="toggleMenu()">
             <a routerLink="/home/dashboard" [ngClass]="{ 'active': isActive('/home/dashboard')}">
@@ -31,7 +30,6 @@
                 </li>
             </ul>
         </li>
-
         <li (click)="toggleMenu()">
             <a routerLink="/home/properties" [ngClass]="{ 'active': isActive('/home/properties')}">
                 <img src="img/property_icon.svg" alt="" />
@@ -68,7 +66,12 @@
                 Revenue
             </a>
         </li>
-
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/investor-management" [ngClass]="{ 'active': isActive('/home/investor-management')}">
+                <img src="img/Investor.svg" alt="" />
+                Investor-Management
+            </a>
+        </li>
         <li (click)="toggleMenu()">
             <a routerLink="/home/listing&boost" [ngClass]="{ 'active': isActive('/home/listing&boost')}">
                 <img src="img/listing_icon.svg" alt="" />
