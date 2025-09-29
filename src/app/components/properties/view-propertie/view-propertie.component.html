@@ -94,7 +94,6 @@
           </div>
         </div>
         }
-
       </div>
     </div>
     <div class="ct_white_bg">
@@ -102,13 +101,17 @@
         <div class="col-lg-7 mb-4 mb-lg-0">
           <div class="ct_gallery p-0">
             <div class="ct_gallery_left">
-              <img src="img/apartment_detail_big_ing.jpg" alt="Main" />
+              <img [src]="properyData?.cover_image ? properyData?.cover_image : 'img/apartment_detail_big_ing.jpg'"
+                alt="Cover" />
             </div>
             <div class="ct_gallery_right">
-              <img src="img/apartment_detail_small_1.jpg" alt="Bathroom" />
-              <img src="img/apartment_detail_small_2.jpg" alt="Kitchen" />
-              <img src="img/apartment_detail_small_3.jpg" alt="Bed" />
-              <img src="img/apartment_detail_small_4.jpg" alt="Couch" />
+              <!-- <img src="img/apartment_detail_small_1.jpg" alt="" />
+              <img src="img/apartment_detail_small_2.jpg" alt="" />
+              <img src="img/apartment_detail_small_3.jpg" alt="" />
+              <img src="img/apartment_detail_small_4.jpg" alt="" /> -->
+              <ng-container *ngFor="let img of getDisplayImages(properyData?.property_images)">
+                <img [src]="img" alt="property image" />
+              </ng-container>
               <button class="ct_show_all_images_btn" data-bs-toggle="modal" data-bs-target="#ct_show_all_photos">
                 <i class="fa-regular fa-image me-1"></i>
                 Show all Photos
@@ -178,10 +181,50 @@
                   {{ amenity.amenity.title }}
                 </li>
               </ul>
-
             </div>
           </div>
         </div>
+
+        <div class="ct_white_bg h-auto mt-4 pe-0">
+          <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">
+            Videos
+          </h4>
+          <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4" *ngFor="let video of property_videos">
+              <div class="">
+                <ng-container *ngIf="property_videos?.length; else noVideos">
+                  <div class="mb-3">
+                    <video [src]="video.file" controls width="100%"></video>
+                  </div>
+                </ng-container>
+                <ng-template #noVideos>
+                  <p class="text-muted">No videos available</p>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ct_white_bg h-auto mt-4 pe-0">
+          <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">
+            Reels
+          </h4>
+          <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4" *ngFor="let video of property_reels">
+              <div class="">
+                <ng-container *ngIf="property_reels?.length; else noVideos">
+                  <div class="mb-3">
+                    <video [src]="video.file" controls width="100%"></video>
+                  </div>
+                </ng-container>
+                <ng-template #noVideos>
+                  <p class="text-muted">No reels available</p>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
         <!-- <div class="ct_white_bg h-auto mt-4 pe-0">
           <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">
@@ -367,10 +410,6 @@
   </div>
 </div>
 
-<div class="ct_loader_main" *ngIf="isLoading">
-  <span class="loader"></span>
-</div>
-
 <!-- Show all Photos Modal S -->
 <div class="modal fade modal-lg" id="ct_show_all_photos" tabindex="-1" aria-labelledby="ct_show_all_photosLabel"
   aria-hidden="true">
@@ -403,27 +442,27 @@
 
           <!-- Show VIDEO -->
           <!-- <video *ngIf="userData.media_type == 'VIDEO'" [src]="userData.video"
-                            [poster]="userData.thumbnail" controls width="100%">
-                        </video> -->
+                [poster]="userData.thumbnail" controls width="100%">
+          </video> -->
 
           <!-- 🖼️ MULTIPLE IMAGES -->
           <!-- <div *ngIf="userData.media_type === 'IMAGE' && userData.images?.length > 0"> -->
           <div class="swiper mySwiperMain ct_product_slider_12">
             <div class="swiper-wrapper">
               <div class="swiper-slide" *ngFor="let img of images">
-                <img [src]="img.img" />
+                <img [src]="img.file" />
               </div>
             </div>
-            @if(images.length > 1){
+            @if(images?.length > 1){
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             }
 
-            @if(images.length > 1){
+            @if(images?.length > 1){
             <div class="swiper mySwiperThumbs ct_card_small_thumb mt-3">
               <div class="swiper-wrapper">
                 <div class="swiper-slide" *ngFor="let img of images">
-                  <img [src]="img.img" />
+                  <img [src]="img.file" />
                 </div>
               </div>
             </div>
@@ -438,3 +477,7 @@
   </div>
 </div>
 <!-- Show all Photos Modal E -->
+
+<div class="ct_loader_main" *ngIf="isLoading">
+  <span class="loader"></span>
+</div>

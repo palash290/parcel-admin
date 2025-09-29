@@ -22,6 +22,7 @@ export class ViewPropertieComponent {
   isLoading: boolean = false;
   @ViewChild('closeModalAcc') closeModalAcc!: ElementRef;
   @ViewChild('closeModalRej') closeModalRej!: ElementRef;
+  placeholderImage = 'img/empty_doc.png';
 
   constructor(private service: CommonService, private route: ActivatedRoute, private toastr: NzMessageService) { }
 
@@ -30,14 +31,11 @@ export class ViewPropertieComponent {
     this.getSingleProperty(this.property_id);
   }
 
-    thumbsSwiper: any;
+  thumbsSwiper: any;
 
-  images = [
-    { img: 'img/apartment_detail_small_1.jpg' },
-    { img: 'img/apartment_detail_small_2.jpg' },
-    { img: 'img/apartment_detail_small_3.jpg' },
-    { img: 'img/apartment_detail_small_4.jpg' }
-  ];
+  images: any;
+  property_videos: any;
+  property_reels: any;
 
   ngAfterViewInit() {
     setTimeout(() => {
@@ -69,12 +67,18 @@ export class ViewPropertieComponent {
       next: (resp: any) => {
         this.isLoading = false;
         this.properyData = resp.data;
+        this.images = resp.data.property_images;
+        this.property_reels = resp.data.property_reels;
+        this.property_videos = resp.data.property_videos;
       },
       error: error => {
         this.isLoading = false;
       }
     });
   }
+
+
+
 
   reject() {
     this.isLoading = true;
@@ -124,6 +128,18 @@ export class ViewPropertieComponent {
           this.toastr.warning(error || 'Something went wrong!');
         }
       })
+  }
+
+  getDisplayImages(images: any[]): string[] {
+    const files = images?.map(i => i.file) || [];
+
+    if (files.length >= 4) {
+      return files.slice(0, 4);
+    } else {
+      // fill remaining with placeholder
+      const needed = 4 - files.length;
+      return [...files, ...Array(needed).fill(this.placeholderImage)];
+    }
   }
 
 
