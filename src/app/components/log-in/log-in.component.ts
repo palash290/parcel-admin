@@ -16,6 +16,7 @@ import { CommonService } from '../../services/common.service';
   styleUrl: './log-in.component.css'
 })
 export class LogInComponent {
+  
   Form: FormGroup;
   atValues: any;
   htmlText: string = '';

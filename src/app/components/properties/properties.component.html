@@ -86,7 +86,6 @@
                   </select>
                 </td>
                 <td>
-                  <!--  -->
                   <a [routerLink]="['/home/view-propertie']" [queryParams]="{ property_id: item.property_id }"
                     class="ct_text_39A1FF">
                     <i class="fa-solid fa-eye"></i>
@@ -96,6 +95,9 @@
             </tbody>
           </table>
         </div>
+        <!-- (pageChange)="onPageChange($event)" -->
+        <pagination-controls class="ct_pagination_div" *ngIf="!(data?.length == 0)"
+          (pageChange)="p = $event"></pagination-controls>
       </div>
     </div>
   </div>

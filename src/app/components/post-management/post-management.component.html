@@ -27,9 +27,9 @@
                             <tr *ngIf="filteredData.length == 0">
                                 <td colspan="8" class="text-center">No posts found</td>
                             </tr>
-                            <tr
-                                *ngFor="let item of filteredData | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
-                                <td>{{(p - 1) * 10 + i + 1}}</td>
+                            <!--  -->
+                            <tr>
+                                <td>1</td>
                                 <td>
                                     Alton Rodriguez
                                 </td>
@@ -49,8 +49,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr
-                                *ngFor="let item of filteredData | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                            <tr>
                                 <td>2</td>
                                 <td>
                                     Alton Rodriguez
@@ -71,8 +70,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr
-                                *ngFor="let item of filteredData | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                            <tr>
                                 <td>3</td>
                                 <td>
                                     Alton Rodriguez

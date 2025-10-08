@@ -48,6 +48,20 @@
                 Post Management
             </a>
         </li>
+
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/category-management" [ngClass]="{ 'active': isActive('/home/category-management')}">
+                <img src="img/category_management_icon.svg" alt="" />
+                Category Management
+            </a>
+        </li>
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/amenity-management" [ngClass]="{ 'active': isActive('/home/amenity-management')}">
+                <img src="img/amenity_management_icon.svg" alt="" />
+                Amenity Management
+            </a>
+        </li>
+
         <li (click)="toggleMenu()">
             <a routerLink="/home/rating-reviews" [ngClass]="{ 'active': isActive('/home/rating-reviews')}">
                 <img src="img/Ratings_ Reviews_icons.svg" alt="" />

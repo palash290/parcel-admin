@@ -1,0 +1,134 @@
+<div class="ct_px_30 ct_mt_30 pb-4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex align-items-center justify-content-between mb-3 ct_flex_col_575 gap-3">
+                    <h4 class="ct_fs_24 ct_fw_600 mb-0 ct_text_061F61 ct_ff_Saira">Amenity Management</h4>
+                    <div class="d-flex align-items-center gap-2 ct_w_100_575">
+                        <div class="ct_search ct_w_100_575">
+                            <input type="text" class="form-control" placeholder="Search " [(ngModel)]="searchText"
+                                (input)="filterTable()" />
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <div class="d-flex align-items-center gap-3 ct_w_100_767">
+                            <button class="ct_blue_btn ct_dark_green_btn" data-bs-toggle="modal"
+                                data-bs-target="#ct_add_modal" (click)="openAdd()">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <h4 class="ct_fs_18 ct_fw_700 mb-3">Buyer</h4> -->
+                <div class="table-responsive ct_custom_table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Image</th>
+                                <th>Amenity Name</th>
+                                <th>Created At</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngIf="filteredData.length == 0">
+                                <td colspan="8" class="text-center">No amenity found</td>
+                            </tr>
+                            <tr
+                                *ngFor="let item of filteredData | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+                                <td>{{(p - 1) * 10 + i + 1}}</td>
+                                <td>
+                                    <img [src]="item.image ? item.image: 'img/np_pro.png'"
+                                        class="ct_img_40 ct_cursor_pointer" />
+                                </td>
+                                <td>{{item.title}}</td>
+                                <td>{{item.created_at | date:'dd-MMM-yyyy'}}</td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <!-- <a [routerLink]="['/home/view-buyer']"
+                                            [queryParams]="{ buyer_id: item.buyer_id }" class="ct_text_39A1FF">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a> -->
+
+                                        <a data-bs-toggle="modal" data-bs-target="#ct_add_modal" class="ct_text_39A1FF"
+                                            (click)="openEdit(item)">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+
+                                        <!-- <a href="javascript:void(0)" class="text-danger"
+                                            (click)="deleteCategory(item.category_id)">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a> -->
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- (pageChange)="onPageChange($event)" -->
+                <pagination-controls class="ct_pagination_div" *ngIf="!(data?.length == 0)"
+                    (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Add Modal S -->
+<div class="modal fade modal-md" id="ct_add_modal" tabindex="-1" aria-labelledby="ct_unlink_modalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+                <button type="button" class="btn-close ct_custom_close_img" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body ">
+                <form [formGroup]="Form" class="ct_mt_30">
+                    <div class="d-flex align-items-center justify-content-center gap-3 mb-3 ct_flex_col_767">
+                        <div class="d-flex align-items-center gap-4 ">
+                            <div class="ct_upload_user_profile_img">
+                                <img [src]="profile_image ? profile_image : 'img/empty_doc.png'" alt=""
+                                    class="ct_border_radius_10" />
+                                <label for="ct_upload_user_profile2" class="position-relative d-block">
+                                    <input type="file" class="d-none" id="ct_upload_user_profile2"
+                                        (change)="onLogoChange($event)" accept="image/*" />
+                                    <div class="ct_authore_banner_upload_icon_12">
+                                        <i class="fa-solid fa-pencil"></i>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="" class="ct_fw_400 mb-2 ct_text_clr_151540 ct_fw_600 ">Amenity Name
+                        </label>
+                        <input type="text" class="form-control ct_input ct_border_grey" placeholder="Amenity Name"
+                            formControlName="name">
+                        <span class="ct_text_red mt-2">{{validationErrorService.getErrorMessage('Amenity name',
+                            Form.get('name'))}}</span>
+                    </div>
+
+
+
+                    <div class="mt-4">
+                        <button type="button" class="ct_blue_btn text-center w-100" (click)="onSubmit()">
+                            {{ isEditMode ? 'Update' : 'Add' }}
+                        </button>
+                    </div>
+
+                    <button hidden type="button" class="btn btn-secondary" #closeModal
+                        data-bs-dismiss="modal">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add Modal E -->
+
+<div class="ct_loader_main" *ngIf="isLoading">
+    <span class="loader"></span>
+</div>

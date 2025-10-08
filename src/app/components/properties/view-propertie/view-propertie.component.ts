@@ -58,7 +58,7 @@ export class ViewPropertieComponent {
           swiper: this.thumbsSwiper,
         },
       });
-    }, 100);
+    }, 1000);
   }
 
   getSingleProperty(property_id: any) {
