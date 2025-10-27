@@ -18,6 +18,9 @@ export class PropertiesComponent {
   data: any;
   p: any = 1;
   isLoading: boolean = false;
+  searchText: string = '';
+  filteredData: any[] = [];
+  selectedStatus: string = 'ALL';
 
   constructor(private commonService: CommonService, private toastr: NzMessageService) { }
 
@@ -40,10 +43,6 @@ export class PropertiesComponent {
     });
   }
 
-  searchText: string = '';
-  filteredData: any[] = [];
-  selectedStatus: string = 'ALL';
-
   filterTable() {
     this.p = 1;
     let filtered = this.data;
@@ -62,49 +61,49 @@ export class PropertiesComponent {
     this.filteredData = filtered;
   }
 
-    onEmfStatusChange(id: any, overrideStatus: any): void {
-      const statusToUse = overrideStatus;
-  
-      if (!statusToUse) {
-        this.toastr.warning('Please select a valid status');
-        return;
-      }
-  
-      const statusLabels: any = {
-        APPROVED: 'Approve',
-        REJECTED: 'Reject',
-      };
-  
-      Swal.fire({
-        title: 'Are you sure?',
-        text: `You want to change Status to "${statusLabels[statusToUse]}"?`,
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes!',
-        cancelButtonText: 'No'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          const formURlData = new URLSearchParams();
-          formURlData.set('status', statusToUse);
-  
-          this.commonService.patch(`admin/update-property-status/${id}`, formURlData.toString()).subscribe({
-            next: (resp: any) => {
-              this.toastr.success(resp.message || 'Status updated successfully!');
-              this.getDetails();
-            },
-            error: (err) => {
-              this.toastr.warning('Failed to update Status');
-              this.getDetails();
-            }
-          });
-        } else {
-          this.toastr.warning('Action cancelled');
-          this.getDetails();
-        }
-      });
+  onEmfStatusChange(id: any, overrideStatus: any): void {
+    const statusToUse = overrideStatus;
+
+    if (!statusToUse) {
+      this.toastr.warning('Please select a valid status');
+      return;
     }
+
+    const statusLabels: any = {
+      APPROVED: 'Approve',
+      REJECTED: 'Reject',
+    };
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: `You want to change Status to "${statusLabels[statusToUse]}"?`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes!',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const formURlData = new URLSearchParams();
+        formURlData.set('status', statusToUse);
+
+        this.commonService.patch(`admin/update-property-status/${id}`, formURlData.toString()).subscribe({
+          next: (resp: any) => {
+            this.toastr.success(resp.message || 'Status updated successfully!');
+            this.getDetails();
+          },
+          error: (err) => {
+            this.toastr.warning('Failed to update Status');
+            this.getDetails();
+          }
+        });
+      } else {
+        this.toastr.warning('Action cancelled');
+        this.getDetails();
+      }
+    });
+  }
 
 
 }

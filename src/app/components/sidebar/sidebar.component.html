@@ -98,6 +98,14 @@
                 Sweepstakes
             </a>
         </li>
+
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/reel-audio" [ngClass]="{ 'active': isActive('/home/reel-audio')}">
+                <img src="img/reel_audio.svg" alt="" />
+                Reel-Audio
+            </a>
+        </li>
+
         <li (click)="toggleMenu()">
             <a routerLink="/home/referrals" [ngClass]="{ 'active': isActive('/home/referrals')}">
                 <img src="img/Referrals_icon.svg" alt="" />

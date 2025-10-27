@@ -141,6 +141,10 @@ export const routes: Routes = [
                         path: 'amenity-management',
                         loadComponent: () => import('./components/amenity-management/amenity-management.component').then(m => m.AmenityManagementComponent)
                   },
+                  {
+                        path: 'reel-audio',
+                        loadComponent: () => import('./components/reel-audio/reel-audio.component').then(m => m.ReelAudioComponent)
+                  },
             ]
       }
 ];

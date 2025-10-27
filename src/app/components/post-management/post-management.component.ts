@@ -55,8 +55,7 @@ export class PostManagementComponent {
     if (this.searchText.trim()) {
       const keyword = this.searchText.trim().toLowerCase();
       filtered = filtered.filter((item: any) =>
-      (item.full_name?.toLowerCase().includes(keyword) ||
-        item.business_name?.toLowerCase().includes(keyword))
+      (item.title?.toLowerCase().includes(keyword))
       );
     }
     this.filteredData = filtered;

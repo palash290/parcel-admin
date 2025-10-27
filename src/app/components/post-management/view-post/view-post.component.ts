@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import Swiper from 'swiper';
 import { Navigation, Thumbs } from 'swiper/modules';
+import { CommonService } from '../../../services/common.service';
 
 Swiper.use([Navigation, Thumbs]);
 
@@ -15,12 +16,24 @@ Swiper.use([Navigation, Thumbs]);
 export class ViewPostComponent {
 
   thumbsSwiper: any;
+  postId: any;
+  isLoading: boolean = false;
+  showCmt: boolean = false;
+  postData: any;
+  cmtData: any;
 
   images = [
     { img: 'https://trophy-talk-bucket.s3.us-east-2.amazonaws.com/images/1758107753471-af89bb3d-artyom-kabajev-ZcCv6qUye8c-unsplash.jpg' },
     { img: 'https://trophy-talk-bucket.s3.us-east-2.amazonaws.com/images/1758107753471-af89bb3d-artyom-kabajev-ZcCv6qUye8c-unsplash.jpg' },
     { img: 'https://trophy-talk-bucket.s3.us-east-2.amazonaws.com/images/1758107753471-af89bb3d-artyom-kabajev-ZcCv6qUye8c-unsplash.jpg' }
   ];
+
+  constructor(private service: CommonService, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.postId = this.route.snapshot.queryParamMap.get('property_reel_id');
+    this.getSinglePost(this.postId);
+  }
 
   ngAfterViewInit() {
     setTimeout(() => {
@@ -43,7 +56,64 @@ export class ViewPostComponent {
           swiper: this.thumbsSwiper,
         },
       });
-    }, 100);
+    }, 1000);
+  }
+
+  getSinglePost(post_id?: any) {
+    this.isLoading = true;
+    this.service.get(`admin/get-reel/${post_id}`).subscribe({
+      next: (resp: any) => {
+        this.isLoading = false;
+        this.postData = resp.data;
+      },
+      error: error => {
+        this.isLoading = false;
+        console.log(error);
+      }
+    });
+  }
+
+  toggleCmt(postId: any, cmtId: any) {
+    this.showCmt = !this.showCmt;
+    this.getComments(postId, cmtId)
+  }
+
+  getComments(postId: any, cmtId: any) {
+    this.isLoading = true;
+    this.service.get(`admin/get-comments/${postId}?parent_comment_id=${cmtId}`).subscribe({
+      next: (resp: any) => {
+        this.isLoading = false;
+        this.cmtData = resp.data;
+      },
+      error: error => {
+        this.isLoading = false;
+        console.log(error);
+      }
+    });
+  }
+
+  comments: any[] = []; // main comments
+  expandedComments: { [key: number]: boolean } = {}; // track which comments are expanded
+  replies: { [key: number]: any[] } = {}; // store replies for each comment
+  isLoadingReplies: { [key: number]: boolean } = {}; // track loading state
+
+  toggleReplies(commentId: number, postId: number) {
+    this.expandedComments[commentId] = !this.expandedComments[commentId];
+
+    // Fetch only if replies not loaded yet
+    if (this.expandedComments[commentId] && !this.replies[commentId]) {
+      this.isLoadingReplies[commentId] = true;
+      this.service.get(`admin/get-comments/${postId}?parent_comment_id=${commentId}`).subscribe({
+        next: (resp: any) => {
+          this.isLoadingReplies[commentId] = false;
+          this.replies[commentId] = resp.data || [];
+        },
+        error: (error) => {
+          this.isLoadingReplies[commentId] = false;
+          console.error('Error fetching replies:', error);
+        }
+      });
+    }
   }
 
 

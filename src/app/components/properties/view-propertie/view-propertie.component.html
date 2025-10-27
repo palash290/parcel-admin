@@ -120,7 +120,7 @@
           </div>
         </div>
         <div class="col-lg-5 mb-4 mb-lg-0">
-          <span class="ct_light_green_badge mb-4">For Sale</span>
+          <span class="ct_light_green_badge mb-3">For Sale</span>
           <h4 class="ct_fs_20 ct_fw_600 mb-3">{{properyData?.property_title}}</h4>
           <ul>
             <li>
@@ -135,6 +135,22 @@
               <img src="img/lets-icons_calendar-light.svg" alt="" class="me-1" />
               {{properyData?.created_at | date:'dd-MM-yyyy'}}
             </li>
+            <li class="mt-3">
+              <img src="img/amenties_icon_8.svg" alt="" />
+              {{properyData?.built_up_area}}sqft
+            </li>
+            <li class="mt-3">
+              <img src="img/amenties_icon_11.svg" alt="" />
+              {{properyData?.bedrooms}} Bathroom
+            </li>
+            <li class="mt-3">
+              <img src="img/amenties_icon_12.svg" alt="" />
+              {{properyData?.bathrooms}} Bedrooms
+            </li>
+            <!-- <li class="mt-3">
+              <img src="img/lets-icons_calendar-light.svg" alt="" class="me-1" />
+              {{properyData?.age_of_property}}
+            </li> -->
           </ul>
           @if(properyData?.type == 'RENT'){
           <div class="mt-3">
@@ -170,6 +186,64 @@
     </div>
     <div class="row">
       <div class="col-md-12">
+
+        <!-- <div class="ct_white_bg h-auto mt-4 pe-0">
+          <div class="row">
+            <div class="col-xl-12 mb-xl-0">
+              <ul class="ct_para_scroll ct_custom_scroll ct_amenties_list mt-4 ct_pe_40">
+                <li>
+                  <img src="img/amenties_icon_1.svg" alt="" />
+                  Free parking on premises
+                </li>
+                <li>
+                  <img src="img/amenties_icon_2.svg" alt="" />
+                  TV
+                </li>
+                <li>
+                  <img src="img/amenties_icon_3.svg" alt="" />
+                  Fridge
+                </li>
+                <li>
+                  <img src="img/amenties_icon_4.svg" alt="" />
+                  Smoking allowed
+                </li>
+                <li>
+                  <img src="img/amenties_icon_5.svg" alt="" />
+                  Kitchen
+                </li>
+                <li>
+                  <img src="img/amenties_icon_6.svg" alt="" />
+                  Wifi
+                </li>
+                <li>
+                  <img src="img/amenties_icon_7.svg" alt="" />
+                  TV
+                </li>
+                <li>
+                  <img src="img/amenties_icon_8.svg" alt="" />
+                  2000sqft
+                </li>
+                <li>
+                  <img src="img/amenties_icon_9.svg" alt="" />
+                  Air conditioning
+                </li>
+                <li>
+                  <img src="img/amenties_icon_10.svg" alt="" />
+                  Private back garden
+                </li>
+                <li>
+                  <img src="img/amenties_icon_11.svg" alt="" />
+                  3 Bathroom
+                </li>
+                <li>
+                  <img src="img/amenties_icon_12.svg" alt="" />
+                  {{properyData?.bathrooms}} Bedrooms
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+
         <div class="ct_white_bg h-auto mt-4 pe-0">
           <div class="row">
             <div class="col-xl-12 mb-xl-0">
@@ -184,6 +258,22 @@
             </div>
           </div>
         </div>
+
+        <div class="ct_white_bg h-auto mt-4 pe-0">
+          <div class="row">
+            <div class="col-xl-12 mb-xl-0">
+              <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">
+                Property Around
+              </h4>
+              <ul class="ct_para_scroll ct_custom_scroll ct_amenties_list mt-4 ct_pe_40">
+                <li *ngFor="let item of property_around">
+                  {{ item }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
 
         <div class="ct_white_bg h-auto mt-4 pe-0">
           <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">
@@ -361,8 +451,8 @@
               </svg>
             </div>
             <figcaption class="mt-4 text-center">
-              <h4 class="ct_fs_18 ct_fw_600">Reject Request</h4>
-              <p class="mb-0">Are you sure you want to reject this request?</p>
+              <h4 class="ct_fs_18 ct_fw_600">Reject Property</h4>
+              <p class="mb-0">Are you sure you want to reject this property?</p>
             </figcaption>
           </figure>
           <div class="modal-footer justify-content-center border-0 ct_modal_footer">
@@ -391,8 +481,8 @@
               <img src="img/right.png" alt="" class="ct_img_34">
             </div>
             <figcaption class="mt-4 text-center">
-              <h4 class="ct_fs_18 ct_fw_600">Accept Request</h4>
-              <p class="mb-0">Are you sure you want to accept this request?</p>
+              <h4 class="ct_fs_18 ct_fw_600">Approve Property</h4>
+              <p class="mb-0">Are you sure you want to approve this property?</p>
             </figcaption>
           </figure>
           <div class="modal-footer justify-content-center border-0 ct_modal_footer">

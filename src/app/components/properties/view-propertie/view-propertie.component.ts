@@ -20,9 +20,14 @@ export class ViewPropertieComponent {
   properyData: any;
   userImg1: any;
   isLoading: boolean = false;
+  images: any;
+  property_videos: any;
+  property_reels: any;
+  thumbsSwiper: any;
   @ViewChild('closeModalAcc') closeModalAcc!: ElementRef;
   @ViewChild('closeModalRej') closeModalRej!: ElementRef;
   placeholderImage = 'img/empty_doc.png';
+  property_around: any;
 
   constructor(private service: CommonService, private route: ActivatedRoute, private toastr: NzMessageService) { }
 
@@ -30,12 +35,6 @@ export class ViewPropertieComponent {
     this.property_id = this.route.snapshot.queryParamMap.get('property_id');
     this.getSingleProperty(this.property_id);
   }
-
-  thumbsSwiper: any;
-
-  images: any;
-  property_videos: any;
-  property_reels: any;
 
   ngAfterViewInit() {
     setTimeout(() => {
@@ -70,6 +69,29 @@ export class ViewPropertieComponent {
         this.images = resp.data.property_images;
         this.property_reels = resp.data.property_reels;
         this.property_videos = resp.data.property_videos;
+        // debugger
+        // this.property_around = JSON.parse(resp.data.property_around);
+
+        const raw = resp.data.property_around;
+
+        if (raw) {
+          try {
+            // Try parsing directly
+            this.property_around = JSON.parse(raw);
+          } catch {
+            try {
+              // If it fails, fix single quotes and retry
+              const fixed = raw.replace(/'/g, '"');
+              this.property_around = JSON.parse(fixed);
+            } catch {
+              console.error("Invalid property_around format:", raw);
+              this.property_around = [];
+            }
+          }
+        } else {
+          this.property_around = [];
+        }
+
       },
       error: error => {
         this.isLoading = false;

@@ -20,38 +20,38 @@
                             <p class="mb-0 ct_text_666 ct_fw_600 ct_fs_14">Augusta National</p>
                         </div>
                     </div>
-                    
+
                     <div class="ct_post_slider_img mb-3">
 
                         <!-- Show VIDEO -->
-                        <!-- <video *ngIf="userData.media_type == 'VIDEO'" [src]="userData.video"
-                            [poster]="userData.thumbnail" controls width="100%">
-                        </video> -->
+                        <video *ngIf="postData?.media_type == 'VIDEO'" [src]="postData?.files"
+                            [poster]="postData?.thumbnail" controls width="100%" height="400px">
+                        </video>
 
                         <!-- 🖼️ MULTIPLE IMAGES -->
-                        <!-- <div *ngIf="userData.media_type === 'IMAGE' && userData.images?.length > 0"> -->
-                        <div class="swiper mySwiperMain ct_product_slider_12">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide" *ngFor="let img of images">
-                                    <img [src]="img.img" />
-                                </div>
-                            </div>
-                            @if(images.length > 1){
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
-                            }
-
-                            @if(images.length > 1){
-                            <div class="swiper mySwiperThumbs ct_card_small_thumb mt-3">
+                        <div *ngIf="postData?.media_type === 'IMAGE' && postData?.files?.length > 0">
+                            <div class="swiper mySwiperMain ct_product_slider_12">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide" *ngFor="let img of images">
-                                        <img [src]="img.img" />
+                                    <div class="swiper-slide" *ngFor="let img of postData?.files">
+                                        <img [src]="img" />
                                     </div>
                                 </div>
+                                @if(images.length > 1){
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                }
+
+                                @if(images.length > 1){
+                                <div class="swiper mySwiperThumbs ct_card_small_thumb mt-3">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide" *ngFor="let img of postData.images">
+                                            <img [src]="img" />
+                                        </div>
+                                    </div>
+                                </div>
+                                }
                             </div>
-                            }
                         </div>
-                        <!-- </div> -->
 
                     </div>
 
@@ -61,86 +61,76 @@
                     <ul class="d-flex align-items-center gap-3 flex-wrap mt-3">
                         <li class="d-flex align-items-center gap-2">
                             <i class="fa-regular fa-heart"></i>
-                            54
+                            {{postData?.total_likes}}
                         </li>
-                        <li class="d-flex align-items-center gap-2">
+                        <li (click)="toggleCmt(postData?.property_reel_id, '')" style="cursor: pointer;"
+                            class="d-flex align-items-center gap-2">
                             <i class="fa-regular fa-comment"></i>
-                            12
+                            {{postData?.total_comments}}
                         </li>
                         <li class="d-flex align-items-center gap-2">
                             <i class="fa-regular fa-eye"></i>
-                            96
+                            {{postData?.total_views}}
                         </li>
                     </ul>
                     <!-- show this div when click on chat icon -->
-                    <div class="ct_comment_area_main mt-4 d-none ">
+                    <div class="ct_comment_area_main mt-4" *ngIf="showCmt">
                         <h4 class="ct_fs_20 ct_fw_600 mb-3">Comments</h4>
+
                         <div class="ct_comment_area_scroll">
-                            <div class="d-flex justify-content-between gap-2 mt-3 pb-3 ct_border_btm_1">
-                                <div class="d-flex gap-3 ">
-                                    <img src="img/np_pro.png" alt="" class="ct_img_40  ct_white_border_1">
-                                    <div style="flex: 1;">
-                                        <div class="d-flex align-items-center gap-2 flex-wrap">
-                                            <h5 class="ct_fs_16 ct_fw_600 mb-0">Bradford Bogisich</h5>
-                                            <div class="d-flex align-items-center gap-3">
-
-                                                <p class="mb-0  ct_fs_12  ct_text_op_5">2 days ago</p>
+                            <div class="ct_border_btm_1 mt-3 pb-3" *ngFor="let cmt of cmtData">
+                                <div class="d-flex justify-content-between gap-2">
+                                    <div class="d-flex gap-3">
+                                        <img [src]="cmt.user?.profile_image || 'assets/img/default.png'" alt=""
+                                            class="ct_img_40 ct_white_border_1" />
+                                        <div style="flex: 1;">
+                                            <div class="d-flex align-items-center gap-2 flex-wrap">
+                                                <h5 class="ct_fs_16 ct_fw_600 mb-0">{{ cmt.user?.full_name }}</h5>
+                                                <p class="mb-0 ct_fs_12 ct_text_op_5">{{ cmt.created_at | date:'short'
+                                                    }}</p>
                                             </div>
 
+                                            <p class="ct_fs_14 mb-0 mt-2">
+                                                {{ cmt.body }}
+                                            </p>
                                         </div>
-                                        <p
-                                            class="ct_fs_14 mb-0 ct_para_scroll ct_custom_scroll   ct_commented_text mt-2">
-                                            <span>Design Shot is an invitation to ponder cn design as a living entity.
-                                                capture of embodying and
-                                                influencing the flow of thoughts and sensations in</span>
-                                        </p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="d-flex justify-content-between gap-2 mt-3 pb-3 ct_border_btm_1">
-                                <div class="d-flex  gap-3 ">
-                                    <img src="img/np_pro.png" alt="" class="ct_img_40  ct_white_border_1">
-                                    <div style="flex: 1;">
-                                        <div class="d-flex align-items-center gap-2 flex-wrap">
-                                            <h5 class="ct_fs_16 ct_fw_600 mb-0">Bradford Bogisich</h5>
-                                            <div class="d-flex align-items-center gap-3">
 
-                                                <p class="mb-0  ct_fs_12  ct_text_op_5">2 days ago</p>
-                                            </div>
-
-                                        </div>
-                                        <p
-                                            class="ct_fs_14 mb-0 ct_para_scroll ct_custom_scroll   ct_commented_text mt-2">
-                                            <span>Design Shot is an invitation to ponder cn design as a living entity.
-                                                capture of embodying and
-                                                influencing the flow of thoughts and sensations in</span>
-                                        </p>
-                                    </div>
+                                <!-- View Replies Toggle -->
+                                <div class="ct_or_overlay_text" style="cursor: pointer;" *ngIf="cmt.itsHaveChildReplies"
+                                    (click)="toggleReplies(cmt.comment_id, postId)">
+                                    <p class="mb-0 text-center">
+                                        {{ expandedComments[cmt.comment_id] ? 'Hide Replies' : 'View More Replies (' +
+                                        cmt.replyCount + ')' }}
+                                    </p>
                                 </div>
-                            </div>
-                            <div class="d-flex justify-content-between gap-2 mt-3 pb-3 ct_border_btm_1">
-                                <div class="d-flex  gap-3 ">
-                                    <img src="img/np_pro.png" alt="" class="ct_img_40  ct_white_border_1">
-                                    <div style="flex: 1;">
-                                        <div class="d-flex align-items-center gap-2 flex-wrap">
-                                            <h5 class="ct_fs_16 ct_fw_600 mb-0">Bradford Bogisich</h5>
-                                            <div class="d-flex align-items-center gap-3">
 
-                                                <p class="mb-0  ct_fs_12  ct_text_op_5">2 days ago</p>
+                                <!-- Replies Section -->
+                                <div class="ps-3" *ngIf="expandedComments[cmt.comment_id]">
+                                    <ng-container *ngIf="replies[cmt.comment_id]?.length; else loadingReplies">
+                                        <div class="d-flex gap-3 mt-3" *ngFor="let reply of replies[cmt.comment_id]">
+                                            <img [src]="reply.user?.profile_image || 'assets/img/default.png'"
+                                                class="ct_img_30 ct_white_border_1" />
+                                            <div style="flex: 1;">
+                                                <div class="d-flex align-items-center gap-2 flex-wrap">
+                                                    <h5 class="ct_fs_14 ct_fw_600 mb-0">{{ reply.user?.full_name }}</h5>
+                                                    <p class="mb-0 ct_fs_12 ct_text_op_5">{{ reply.created_at |
+                                                        date:'short' }}</p>
+                                                </div>
+                                                <p class="ct_fs_12 mb-0 mt-2">{{ reply.body }}</p>
                                             </div>
-
                                         </div>
-                                        <p
-                                            class="ct_fs_14 mb-0 ct_para_scroll ct_custom_scroll   ct_commented_text mt-2">
-                                            <span>Design Shot is an invitation to ponder cn design as a living entity.
-                                                capture of embodying and
-                                                influencing the flow of thoughts and sensations in</span>
-                                        </p>
-                                    </div>
+                                    </ng-container>
+
+                                    <ng-template #loadingReplies>
+                                        <p class="ct_fs_12 text-center text-muted mt-2">Loading replies...</p>
+                                    </ng-template>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
