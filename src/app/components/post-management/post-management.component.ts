@@ -68,7 +68,7 @@ export class PostManagementComponent {
   deletePost() {
     this.isLoading = true;
     this.commonService
-      .delete(`admin/delete-post/${this.postId}`)
+      .delete(`admin/delete-reel/${this.postId}`)
       .subscribe({
         next: (resp: any) => {
           if (resp.success == true) {

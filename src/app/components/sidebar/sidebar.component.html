@@ -36,16 +36,25 @@
                 Property Listing
             </a>
         </li>
-        <li (click)="toggleMenu()">
-            <a routerLink="/home/schedule-visit" [ngClass]="{ 'active': isActive('/home/schedule-visit')}">
-                <img src="img/mynaui_calendar-up.svg" alt="" />
-                Scheduled Visits
-            </a>
-        </li>
+
         <li (click)="toggleMenu()">
             <a routerLink="/home/post-namagement" [ngClass]="{ 'active': isActive('/home/post-namagement')}">
                 <img src="img/post_management_icon.svg" alt="" />
                 Post Management
+            </a>
+        </li>
+
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/reel-audio" [ngClass]="{ 'active': isActive('/home/reel-audio')}">
+                <img src="img/reel_audio.svg" alt="" />
+                Reel-Audio
+            </a>
+        </li>
+
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/schedule-visit" [ngClass]="{ 'active': isActive('/home/schedule-visit')}">
+                <img src="img/mynaui_calendar-up.svg" alt="" />
+                Scheduled Visits
             </a>
         </li>
 
@@ -96,13 +105,6 @@
             <a routerLink="/home/sweepstacks" [ngClass]="{ 'active': isActive('/home/sweepstacks')}">
                 <img src="img/seepstackes_icon.svg" alt="" />
                 Sweepstakes
-            </a>
-        </li>
-
-        <li (click)="toggleMenu()">
-            <a routerLink="/home/reel-audio" [ngClass]="{ 'active': isActive('/home/reel-audio')}">
-                <img src="img/reel_audio.svg" alt="" />
-                Reel-Audio
             </a>
         </li>
 

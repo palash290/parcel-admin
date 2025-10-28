@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import Swiper from 'swiper';
 import { Navigation, Thumbs } from 'swiper/modules';
 import { CommonService } from '../../../services/common.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 Swiper.use([Navigation, Thumbs]);
 
@@ -21,6 +22,7 @@ export class ViewPostComponent {
   showCmt: boolean = false;
   postData: any;
   cmtData: any;
+  @ViewChild('closeModalDelete') closeModalDelete!: ElementRef;
 
   images = [
     { img: 'https://trophy-talk-bucket.s3.us-east-2.amazonaws.com/images/1758107753471-af89bb3d-artyom-kabajev-ZcCv6qUye8c-unsplash.jpg' },
@@ -28,7 +30,7 @@ export class ViewPostComponent {
     { img: 'https://trophy-talk-bucket.s3.us-east-2.amazonaws.com/images/1758107753471-af89bb3d-artyom-kabajev-ZcCv6qUye8c-unsplash.jpg' }
   ];
 
-  constructor(private service: CommonService, private route: ActivatedRoute) { }
+  constructor(private service: CommonService, private route: ActivatedRoute, private toastr: NzMessageService, private router: Router) { }
 
   ngOnInit() {
     this.postId = this.route.snapshot.queryParamMap.get('property_reel_id');
@@ -114,6 +116,29 @@ export class ViewPostComponent {
         }
       });
     }
+  }
+
+  deletePost() {
+    this.isLoading = true;
+    this.service
+      .delete(`admin/delete-reel/${this.postId}`)
+      .subscribe({
+        next: (resp: any) => {
+          if (resp.success == true) {
+            this.isLoading = false;
+            this.toastr.success(resp.message);
+            this.closeModalDelete.nativeElement.click();
+            this.router.navigateByUrl('/home/post-namagement');
+          } else {
+            this.isLoading = false;
+            this.toastr.warning(resp.message);
+          }
+        },
+        error: (error: any) => {
+          this.isLoading = false;
+          this.toastr.warning(error || 'Something went wrong!');
+        }
+      })
   }
 
 
