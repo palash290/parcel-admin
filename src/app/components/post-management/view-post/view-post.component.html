@@ -37,15 +37,15 @@
                                         <img [src]="img" />
                                     </div>
                                 </div>
-                                @if(images.length > 1){
+                                @if(postData?.files?.length > 1){
                                 <div class="swiper-button-next"></div>
                                 <div class="swiper-button-prev"></div>
                                 }
 
-                                @if(images.length > 1){
+                                @if(postData?.files?.length > 1){
                                 <div class="swiper mySwiperThumbs ct_card_small_thumb mt-3">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide" *ngFor="let img of postData.images">
+                                        <div class="swiper-slide" *ngFor="let img of postData.files">
                                             <img [src]="img" />
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@
                             <div class="ct_border_btm_1 mt-3 pb-3" *ngFor="let cmt of cmtData">
                                 <div class="d-flex justify-content-between gap-2">
                                     <div class="d-flex gap-3">
-                                        <img [src]="cmt.user?.profile_image || 'assets/img/default.png'" alt=""
+                                        <img [src]="cmt.user?.profile_image || 'img/np_pro.png'" alt=""
                                             class="ct_img_40 ct_white_border_1" />
                                         <div style="flex: 1;">
                                             <div class="d-flex align-items-center gap-2 flex-wrap">
@@ -109,7 +109,7 @@
                                 <div class="ps-3" *ngIf="expandedComments[cmt.comment_id]">
                                     <ng-container *ngIf="replies[cmt.comment_id]?.length; else loadingReplies">
                                         <div class="d-flex gap-3 mt-3" *ngFor="let reply of replies[cmt.comment_id]">
-                                            <img [src]="reply.user?.profile_image || 'assets/img/default.png'"
+                                            <img [src]="reply.user?.profile_image || 'img/np_pro.png'"
                                                 class="ct_img_30 ct_white_border_1" />
                                             <div style="flex: 1;">
                                                 <div class="d-flex align-items-center gap-2 flex-wrap">
