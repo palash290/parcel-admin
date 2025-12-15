@@ -28,10 +28,10 @@ export class AgentComponent {
 
   getDetails() {
     this.isLoading = true;
-    this.commonService.get('admin/get-all-agents').subscribe({
+    this.commonService.get('admin/get-sellers').subscribe({
       next: (resp: any) => {
         this.isLoading = false;
-        this.data = resp.data.reverse();
+        this.data = resp.data.data;
         this.filterTable();
       },
       error: (error) => {
@@ -50,7 +50,7 @@ export class AgentComponent {
     let filtered = this.data;
 
     if (this.selectedStatus != 'ALL') {
-      filtered = filtered.filter((item: { status: string; }) => item.status == this.selectedStatus);
+      filtered = filtered.filter((item: { application_status: string; }) => item.application_status == this.selectedStatus);
     }
 
     if (this.searchText.trim()) {
@@ -64,7 +64,7 @@ export class AgentComponent {
   }
 
   handleCheckboxChange(row: any) {
-    if (row.is_active == false) {
+    if (row.isBlocked) {
       Swal.fire({
         title: "Are you sure?",
         text: "You want to unblock this agent!",
@@ -77,8 +77,9 @@ export class AgentComponent {
       }).then((result) => {
         if (result.isConfirmed) {
           const formURlData = new URLSearchParams();
-          formURlData.set('agent_id', '');
-          this.commonService.post(`admin/agent-block-unblock/${row.agent_id}`, formURlData.toString()).subscribe({
+          formURlData.set('userType', 'seller');
+          formURlData.set('status', '0');
+          this.commonService.put(`admin/user-block-unblock/${row.id}`, formURlData.toString()).subscribe({
             next: (resp: any) => {
               this.toastr.success(resp.message);
               this.getDetails();
@@ -101,8 +102,9 @@ export class AgentComponent {
       }).then((result) => {
         if (result.isConfirmed) {
           const formURlData = new URLSearchParams();
-          formURlData.set('agent_id', '');
-          this.commonService.post(`admin/agent-block-unblock/${row.agent_id}`, formURlData.toString()).subscribe({
+          formURlData.set('userType', 'seller');
+          formURlData.set('status', '1');
+          this.commonService.put(`admin/user-block-unblock/${row.id}`, formURlData.toString()).subscribe({
             next: (resp: any) => {
               this.toastr.success(resp.message);
               this.getDetails();
@@ -115,7 +117,8 @@ export class AgentComponent {
     }
   }
 
-  onEmfStatusChange(id: any, overrideStatus: any): void {
+  statusChange(id: any, overrideStatus: any): void {
+    // this.isLoading = true;
     const statusToUse = overrideStatus;
 
     if (!statusToUse) {
@@ -140,16 +143,26 @@ export class AgentComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         const formURlData = new URLSearchParams()
-        formURlData.set('agent_id', id)
-        formURlData.set('status', statusToUse)
+        formURlData.set('type', 'seller');
 
-        this.commonService.post('admin/update-agent-status', formURlData.toString()).subscribe({
+        if (statusToUse == 'APPROVED') {
+          formURlData.set('status', '1');
+        }
+        if (statusToUse == 'REJECTED') {
+          formURlData.set('rejection_reason ', 'document mismatched');
+          formURlData.set('status', '2');
+        }
+
+
+        this.commonService.post(`admin/update-application-status/${id}`, formURlData.toString()).subscribe({
           next: (resp: any) => {
+            // this.isLoading = false;
             this.toastr.success(resp.message || 'Status updated successfully!');
             this.getDetails();
           },
           error: (err) => {
-            this.toastr.warning('Failed to update MFK Car Status');
+            // this.isLoading = false;
+            this.toastr.warning('Failed to update status');
             this.getDetails();
           }
         });

@@ -43,7 +43,7 @@
                                 }
 
                                 @if(postData?.files?.length > 1){
-                                <div class="swiper mySwiperThumbs ct_card_small_thumb mt-3">
+                                <div class="swiper mySwiperThumbs1 ct_card_small_thumb mt-3">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide" *ngFor="let img of postData.files">
                                             <img [src]="img" />
@@ -54,6 +54,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <h4>{{postData?.title}}</h4>
 
                     <p class="ct_fs_18 mb-0">{{postData?.description}}</p>
 

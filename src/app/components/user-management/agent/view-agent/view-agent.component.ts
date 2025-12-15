@@ -30,7 +30,7 @@ export class ViewAgentComponent {
 
   getSingleSeller(agent_id: any) {
     this.isLoading = true;
-    this.service.get(`admin/get-agent/${agent_id}`).subscribe({
+    this.service.get(`admin/get-sellers/${agent_id}`).subscribe({
       next: (resp: any) => {
         this.isLoading = false;
         this.agentData = resp.data;
@@ -44,11 +44,12 @@ export class ViewAgentComponent {
 
   reject() {
     this.isLoading = true;
-    const formURlData = new URLSearchParams()
-    formURlData.set('status', 'REJECTED')
-    formURlData.set('agent_id', this.agent_id)
+    const formURlData = new URLSearchParams();
+    formURlData.set('type', 'seller')
+    formURlData.set('rejection_reason ', 'document mismatched');
+    formURlData.set('status', '2')
     this.service
-      .post('admin/update-agent-status', formURlData.toString())
+      .post(`admin/update-application-status/${this.agent_id}`, formURlData.toString())
       .subscribe({
         next: (resp: any) => {
           if (resp.success == true) {
@@ -70,11 +71,11 @@ export class ViewAgentComponent {
 
   accept() {
     this.isLoading = true;
-    const formURlData = new URLSearchParams()
-    formURlData.set('status', 'APPROVED')
-    formURlData.set('agent_id', this.agent_id)
+    const formURlData = new URLSearchParams();
+    formURlData.set('type', 'seller')
+    formURlData.set('status', '1')
     this.service
-      .post('admin/update-agent-status', formURlData.toString())
+      .post(`admin/update-application-status/${this.agent_id}`, formURlData.toString())
       .subscribe({
         next: (resp: any) => {
           if (resp.success == true) {

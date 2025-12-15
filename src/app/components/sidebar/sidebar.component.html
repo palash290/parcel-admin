@@ -20,12 +20,12 @@
             <ul class="dropdown-menu ct_custom_dropdown" aria-labelledby="dropdownMenuButton1">
                 <li (click)="toggleMenu()">
                     <a class="dropdown-item" routerLink="/home/buyer" [ngClass]="{ 'active': isActive('/home/buyer')}">
-                        <img src="img/buyer_icon.svg" alt=""> Buyer
+                        <img src="img/buyer_icon.svg" alt=""> Investor
                     </a>
                 </li>
                 <li (click)="toggleMenu()">
                     <a class="dropdown-item" routerLink="/home/agent" [ngClass]="{ 'active': isActive('/home/agent')}">
-                        <img src="img/agent_icon.svg" alt=""> Agent
+                        <img src="img/agent_icon.svg" alt=""> Seller
                     </a>
                 </li>
             </ul>
@@ -52,13 +52,6 @@
         </li>
 
         <li (click)="toggleMenu()">
-            <a routerLink="/home/schedule-visit" [ngClass]="{ 'active': isActive('/home/schedule-visit')}">
-                <img src="img/mynaui_calendar-up.svg" alt="" />
-                Scheduled Visits
-            </a>
-        </li>
-
-        <li (click)="toggleMenu()">
             <a routerLink="/home/category-management" [ngClass]="{ 'active': isActive('/home/category-management')}">
                 <img src="img/category_management_icon.svg" alt="" />
                 Category Management
@@ -72,17 +65,33 @@
         </li>
 
         <li (click)="toggleMenu()">
-            <a routerLink="/home/rating-reviews" [ngClass]="{ 'active': isActive('/home/rating-reviews')}">
-                <img src="img/Ratings_ Reviews_icons.svg" alt="" />
-                Ratings & Reviews
+            <a routerLink="/home/ranch-management" [ngClass]="{ 'active': isActive('/home/ranch-management')}">
+                <img src="img/amenity_management_icon.svg" alt="" />
+                Ranch Management
             </a>
         </li>
+
         <li (click)="toggleMenu()">
             <a routerLink="/home/live-ama" [ngClass]="{ 'active': isActive('/home/live-ama')}">
                 <img src="img/live_ama_icon.svg" alt="" />
                 Live AMA
             </a>
         </li>
+
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/schedule-visit" [ngClass]="{ 'active': isActive('/home/schedule-visit')}">
+                <img src="img/mynaui_calendar-up.svg" alt="" />
+                Scheduled Visits
+            </a>
+        </li>
+
+        <li (click)="toggleMenu()">
+            <a routerLink="/home/rating-reviews" [ngClass]="{ 'active': isActive('/home/rating-reviews')}">
+                <img src="img/Ratings_ Reviews_icons.svg" alt="" />
+                Ratings & Reviews
+            </a>
+        </li>
+
         <li (click)="toggleMenu()">
             <a routerLink="/home/revenue" [ngClass]="{ 'active': isActive('/home/revenue')}">
                 <img src="img/revenue_icon.svg" alt="" />

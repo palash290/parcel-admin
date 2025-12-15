@@ -20,6 +20,10 @@ export class CommonService {
     return this.http.post<T>(this.baseUrl + url, data)
   };
 
+  put<T, U>(url: string, data: U): Observable<T> {
+    return this.http.put<T>(this.baseUrl + url, data)
+  };
+
   patch<T, U>(url: string, data: U): Observable<T> {
     return this.http.patch<T>(this.baseUrl + url, data)
   };

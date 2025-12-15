@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonService } from '../../../../services/common.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-view-buyer',
@@ -15,8 +18,10 @@ export class ViewBuyerComponent {
   buyer_id: any;
   buyerData: any;
   isLoading: boolean = false;
+  @ViewChild('closeModalAcc') closeModalAcc!: ElementRef;
+  @ViewChild('closeModalRej') closeModalRej!: ElementRef;
 
-  constructor(private service: CommonService, private route: ActivatedRoute, private toastr: NzMessageService) { }
+  constructor(private service: CommonService, private route: ActivatedRoute, private toastr: NzMessageService, private sanitizer: DomSanitizer, private location: Location) { }
 
   ngOnInit() {
     this.buyer_id = this.route.snapshot.queryParamMap.get('buyer_id');
@@ -25,7 +30,7 @@ export class ViewBuyerComponent {
 
   getSingleSeller(seller_id?: any) {
     this.isLoading = true;
-    this.service.get(`admin/get-buyer/${seller_id}`).subscribe({
+    this.service.get(`admin/get-investors/${seller_id}`).subscribe({
       next: (resp: any) => {
         this.isLoading = false;
         this.buyerData = resp.data;
@@ -69,6 +74,78 @@ export class ViewBuyerComponent {
 
   getImg(img: any) {
     this.previewImg = img;
+  }
+
+
+  selectedFile: string = '';
+  safeFileUrl!: SafeResourceUrl;
+  isPdf: boolean = false;
+
+  openPreview(url: string) {
+    if (!url) return;
+
+    this.selectedFile = url;
+    this.isPdf = url.toLowerCase().includes('.pdf');
+
+    // ✅ Sanitize the URL
+    this.safeFileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  reject() {
+    this.isLoading = true;
+    const formURlData = new URLSearchParams();
+    formURlData.set('type', 'investor')
+    formURlData.set('rejection_reason ', 'document mismatched');
+    formURlData.set('status', '2')
+    this.service
+      .post(`admin/update-application-status/${this.buyer_id}`, formURlData.toString())
+      .subscribe({
+        next: (resp: any) => {
+          if (resp.success == true) {
+            this.isLoading = false;
+            this.toastr.success(resp.message);
+            this.closeModalRej.nativeElement.click();
+            this.getSingleSeller(this.buyer_id);
+          } else {
+            this.isLoading = false;
+            this.toastr.warning(resp.message);
+          }
+        },
+        error: (error: any) => {
+          this.isLoading = false;
+          this.toastr.warning(error || 'Something went wrong!');
+        }
+      })
+  }
+
+  accept() {
+    this.isLoading = true;
+    const formURlData = new URLSearchParams();
+    formURlData.set('type', 'investor')
+    formURlData.set('status', '1')
+    this.service
+      .post(`admin/update-application-status/${this.buyer_id}`, formURlData.toString())
+      .subscribe({
+        next: (resp: any) => {
+          if (resp.success == true) {
+            this.isLoading = false;
+            this.toastr.success(resp.message);
+            this.closeModalAcc.nativeElement.click();
+            this.getSingleSeller(this.buyer_id);
+          } else {
+            this.isLoading = false;
+            this.toastr.warning(resp.message);
+          }
+        },
+        error: (error: any) => {
+          this.isLoading = false;
+          this.toastr.warning(error || 'Something went wrong!');
+        }
+      })
+  }
+
+  backClicked() {
+    this.location.back();
   }
 
 

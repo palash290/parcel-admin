@@ -27,10 +27,10 @@ export class BuyerComponent {
 
   getDetails() {
     this.isLoading = true;
-    this.commonService.get('admin/get-all-buyers').subscribe({
+    this.commonService.get('admin/get-investors').subscribe({
       next: (resp: any) => {
         this.isLoading = false;
-        this.data = resp.data.reverse();
+        this.data = resp.data.data;
         this.filterTable();
       },
       error: (error) => {
@@ -42,14 +42,19 @@ export class BuyerComponent {
 
   searchText: string = '';
   filteredData: any[] = [];
+  selectedStatus: string = 'ALL';
 
   filterTable() {
     this.p = 1;
     let filtered = this.data;
-    // Filter by customer name
+
+    if (this.selectedStatus != 'ALL') {
+      filtered = filtered.filter((item: { application_status: string; }) => item.application_status == this.selectedStatus);
+    }
+
     if (this.searchText.trim()) {
       const keyword = this.searchText.trim().toLowerCase();
-      filtered = filtered.filter((item: any) =>
+      filtered = filtered.filter((item: { full_name: any; email: any; }) =>
       (item.full_name?.toLowerCase().includes(keyword) ||
         item.email?.toLowerCase().includes(keyword))
       );
@@ -58,7 +63,7 @@ export class BuyerComponent {
   }
 
   handleCheckboxChange(row: any) {
-    if (row.is_active == false) {
+    if (row.isBlocked) {
       Swal.fire({
         title: "Are you sure?",
         text: "You want to unblock this buyer!",
@@ -71,8 +76,9 @@ export class BuyerComponent {
       }).then((result) => {
         if (result.isConfirmed) {
           const formURlData = new URLSearchParams();
-          formURlData.set('buyer_id', '');
-          this.commonService.post(`admin/buyer-block-unblock/${row.buyer_id}`, formURlData.toString()).subscribe({
+          formURlData.set('userType', 'investor');
+          formURlData.set('status', '0');
+          this.commonService.put(`admin/user-block-unblock/${row.id}`, formURlData.toString()).subscribe({
             next: (resp: any) => {
               this.toastr.success(resp.message);
               this.getDetails();
@@ -95,8 +101,9 @@ export class BuyerComponent {
       }).then((result) => {
         if (result.isConfirmed) {
           const formURlData = new URLSearchParams();
-          formURlData.set('buyer_id', '');
-          this.commonService.post(`admin/buyer-block-unblock/${row.buyer_id}`, formURlData.toString()).subscribe({
+          formURlData.set('userType', 'investor');
+          formURlData.set('status', '1');
+          this.commonService.put(`admin/user-block-unblock/${row.id}`, formURlData.toString()).subscribe({
             next: (resp: any) => {
               this.toastr.success(resp.message);
               this.getDetails();
@@ -107,6 +114,62 @@ export class BuyerComponent {
         }
       });
     }
+  }
+
+  statusChange(id: any, overrideStatus: any): void {
+    // this.isLoading = true;
+    const statusToUse = overrideStatus;
+
+    if (!statusToUse) {
+      this.toastr.warning('Please select a valid status');
+      return;
+    }
+
+    const statusLabels: any = {
+      APPROVED: 'Approve',
+      REJECTED: 'Reject',
+    };
+    // this.isLoading = true;
+    Swal.fire({
+      title: 'Are you sure?',
+      text: `You want to change Status to "${statusLabels[statusToUse]}"?`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes!',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const formURlData = new URLSearchParams()
+        formURlData.set('type', 'investor');
+
+        if (statusToUse == 'APPROVED') {
+          formURlData.set('status', '1');
+        }
+        if (statusToUse == 'REJECTED') {
+          formURlData.set('rejection_reason ', 'document mismatched');
+          formURlData.set('status', '2');
+        }
+
+
+        this.commonService.post(`admin/update-application-status/${id}`, formURlData.toString()).subscribe({
+          next: (resp: any) => {
+            this.isLoading = false;
+            this.toastr.success(resp.message || 'Status updated successfully!');
+            this.getDetails();
+          },
+          error: (err) => {
+            this.isLoading = false;
+            this.toastr.warning('Failed to update status');
+            this.getDetails();
+          }
+        });
+      } else {
+        this.toastr.warning('Action cancelled');
+        this.getDetails();
+      }
+    });
   }
 
 

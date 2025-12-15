@@ -4,14 +4,15 @@
             <div class="col-md-12">
                 <div class="d-flex align-items-center gap-3 justify-content-between ct_flex_col_575">
                     <h4 class="d-flex align-items-center gap-2 ct_fw_600 mb-0 ct_text_061F61 ct_ff_Saira">
-                        <a (click)="backClicked()" class="ct_black_text"><i class="fa-solid fa-angle-left"></i></a>Agent
+                        <a (click)="backClicked()" class="ct_black_text"><i
+                                class="fa-solid fa-angle-left"></i></a>Seller
                         Details
                     </h4>
                 </div>
 
                 <div class="row mt-4">
                     <div class="col-md-12">
-                        @if(agentData?.status == 'PENDING'){
+                        @if(agentData?.application_status == 'PENDING'){
                         <!-- Pending Alert S -->
                         <div class="ct_light_orange_alert mb-3 justify-content-between">
                             <div class="d-flex gap-2 align-items-center">
@@ -40,7 +41,7 @@
                         </div>
                         }
 
-                        @if(agentData?.status == 'APPROVED'){
+                        @if(agentData?.application_status == 'APPROVED'){
                         <!-- Approved Review Alert S -->
                         <div class="ct_light_green_alert justify-content-between mb-3">
                             <div class="d-flex gap-2 align-items-center">
@@ -59,12 +60,12 @@
                             </div>
                             <div>
                                 <p class="mb-0">Approved On:</p>
-                                <p class="mb-0">{{agentData?.approved_at | date:'dd-MM-yyyy'}}</p>
+                                <p class="mb-0">{{agentData?.updated_at | date:'dd-MM-yyyy'}}</p>
                             </div>
                         </div>
                         }
 
-                        @if(agentData?.status == 'REJECTED'){
+                        @if(agentData?.application_status == 'REJECTED'){
                         <!-- Rejected Review Alert S -->
                         <div class="ct_light_red_alert justify-content-between mb-3">
                             <div class="d-flex gap-2 align-items-center">
@@ -81,7 +82,7 @@
                             </div>
                             <div>
                                 <p class="mb-0">Rejected On:</p>
-                                <p class="mb-0">{{agentData?.rejected_at | date:'dd-MM-yyyy'}}</p>
+                                <p class="mb-0">{{agentData?.updated_at | date:'dd-MM-yyyy'}}</p>
                             </div>
                         </div>
                         }
@@ -90,14 +91,14 @@
 
                 <div class="ct_pb_30 pt-4">
                     <div class="ct_buyer_cover_photo_bg">
-                        <img [src]="agentData?.cover_image ? agentData?.cover_image : 'img/no_event.png'" alt=""
-                            class="ct_img_h_268 ct_cursor_pointer" (click)="getImg(agentData?.cover_image)"
+                        <img [src]="agentData?.backgroundImage ? agentData?.backgroundImage : 'img/no_event.png'" alt=""
+                            class="ct_img_h_268 ct_cursor_pointer" (click)="getImg(agentData?.backgroundImage)"
                             data-bs-toggle="modal" data-bs-target="#full_view_bg">
                     </div>
                     <div class="ct_grey_bg p-0" style="overflow: hidden">
                         <div class="d-flex align-items-center ct_flex_col_767">
-                            <img [src]="agentData?.profile_image ? agentData?.profile_image : 'img/np_pro.png'" alt=""
-                                class="ct_img_h_268 ct_cursor_pointer" (click)="getImg(agentData?.profile_image)"
+                            <img [src]="agentData?.profileImg ? agentData?.profileImg : 'img/np_pro.png'" alt=""
+                                class="ct_img_h_268 ct_cursor_pointer" (click)="getImg(agentData?.profileImg)"
                                 data-bs-toggle="modal" data-bs-target="#full_view_img" />
                             <div class="ct_flex_1 p-4 w-100">
                                 <div class="d-flex justify-content-between gap-3 ct_flex_col_1999">
@@ -109,7 +110,8 @@
                                     </div>
                                     <div>
                                         <p class="ct_fW_500 mb-1">
-                                            Date Joined: {{agentData?.created_at | date:'dd-MMM-yyyy'}}
+                                            Date Joined: {{agentData?.personal_details?.created_at |
+                                            date:'dd-MMM-yyyy'}}
                                         </p>
                                         <!-- <p class="ct_fW_500 mb-0">
                                             125 <img src="img/coin.png" alt="" />
@@ -122,7 +124,8 @@
                                             <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
                                                 Date of Birth
                                             </h5>
-                                            <p class="mb-0 ct_text_666">{{agentData?.dob | date:'dd-MMM-yyyy'}}</p>
+                                            <p class="mb-0 ct_text_666">{{agentData?.personal_details?.date_of_birth |
+                                                date:'dd-MMM-yyyy'}}</p>
                                         </div>
                                     </div>
                                     <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -130,10 +133,11 @@
                                             <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
                                                 Country
                                             </h5>
-                                            <p class="mb-0 ct_text_666">{{agentData?.country ? agentData?.country :
-                                                '-'}}</p>
+                                            <p class="mb-0 ct_text_666">{{agentData?.personal_details?.country ?
+                                                agentData?.personal_details?.country : '-'}}</p>
                                         </div>
                                     </div>
+
                                     <!-- <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="mb-4">
                                             <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
@@ -143,13 +147,15 @@
                                                 agentData?.nationality : '-'}}</p>
                                         </div>
                                     </div> -->
+                                    
                                     <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="mb-4">
                                             <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
                                                 Phone Number
                                             </h5>
-                                            <p class="mb-0 ct_text_666">+{{agentData?.phone_code}}
-                                                {{agentData?.phone_number ? agentData?.phone_number : '-'}}</p>
+                                            <p class="mb-0 ct_text_666">+{{agentData?.personal_details?.phone_code}}
+                                                {{agentData?.personal_details?.phone_number ?
+                                                agentData?.personal_details?.phone_number : '-'}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -160,128 +166,19 @@
                                         class="ct_green_clr ct_fw_600">View Listed
                                         Properties</a>
                                 </div> -->
-                                <div class="text-end mt-4">
+                                <!-- <div class="text-end mt-4">
                                     <a class="ct_green_clr ct_fw_600">View Listed
                                         Properties</a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
 
-                    <!-- <div class="ct_white_bg p-4 mt-4">
-                        <h4 class="ct_fs_20 ct_fw_600 mb-2 ct_text_061F61">
-                            Personal Details
-                        </h4>
-                        <p>
-                            Brooklyn Simmons is a licensed real estate agent with 8+
-                            years of experience helping sellers close high-value
-                            residential and commercial deals in Mumbai. He is known
-                            for fast turnaround and strong buyer network.
-                        </p>
-                        <div class="row mt-4">
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="mb-4">
-                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
-                                        Specialization
-                                    </h5>
-                                    <p class="mb-0 ct_text_666">Sales Associate</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="mb-4">
-                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
-                                        RERA Reg. No
-                                    </h5>
-                                    <p class="mb-0 ct_text_666">MAH/A1234/2021</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="mb-4">
-                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
-                                        Languages Spoken
-                                    </h5>
-                                    <p class="mb-0 ct_text_666">English, French</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="mb-4">
-                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
-                                        Experience Since :
-                                    </h5>
-                                    <p class="mb-0 ct_text_666">2025</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="mb-4">
-                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
-                                        Closed Deals on Sells
-                                    </h5>
-                                    <p class="mb-0 ct_text_666">455</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="mb-4">
-                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
-                                        Closed Deals on Rents
-                                    </h5>
-                                    <p class="mb-0 ct_text_666">145</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="mb-4">
-                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
-                                        Address
-                                    </h5>
-                                    <p class="mb-0 ct_text_666 ct_para_scroll ct_custom_scroll">
-                                        London, UK
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
 
-                    <!-- <div class="ct_white_bg p-4 mt-4">
-                        <h4 class="ct_fs_20 ct_fw_600 mb-2 ct_text_061F61">
-                            Bank Details
-                        </h4>
 
-                        <div class="row mt-4">
-                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
-                                <div class="mb-4">
-                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
-                                        Account Holder Name
-                                    </h5>
-                                    <p class="mb-0 ct_text_666">{{agentData?.holder_name}}</p>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
-                                <div class="mb-4">
-                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
-                                        Bank Name
-                                    </h5>
-                                    <p class="mb-0 ct_text_666">{{agentData?.bank_name}}</p>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
-                                <div class="mb-4">
-                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
-                                        IBAN
-                                    </h5>
-                                    <p class="mb-0 ct_text_666">{{agentData?.iban}}</p>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
-                                <div class="mb-4">
-                                    <h5 class="ct_fs_16 ct_fw_600 mb-2 ct_text_061F61">
-                                        Swift
-                                    </h5>
-                                    <p class="mb-0 ct_text_666">{{agentData?.swift}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
 
                     <div class="row">
+                        @if(agentData?.personal_details?.document_front_image){
                         <div class="col-md-6 mt-4">
                             <div class="ct_white_bg p-4">
                                 <h4 class="ct_fs_20 ct_fw_600 mb-3 ct_text_061F61">
@@ -293,14 +190,17 @@
                                         <h5 class="ct_fs_16 ct_fw_600 mb-0 ct_text_061F61">
                                             Front
                                         </h5>
-                                        <a (click)="getImg(agentData?.identity_ver_front_file)"><i
+                                        <a (click)="getImg(agentData?.personal_details.document_front_image)"><i
                                                 class="fa-regular fa-eye" data-bs-toggle="modal"
                                                 data-bs-target="#full_view_img"></i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        }
+
                         <div class="col-md-6 mt-4">
+                            @if(agentData?.personal_details?.document_back_image){
                             <div class="ct_white_bg p-4">
                                 <h4 class="ct_fs_20 ct_fw_600 mb-3 ct_text_061F61">
                                     Identity Back
@@ -311,14 +211,17 @@
                                         <h5 class="ct_fs_16 ct_fw_600 mb-0 ct_text_061F61">
                                             Back
                                         </h5>
-                                        <a (click)="getImg(agentData?.identity_ver_back_file)"><i
+                                        <a (click)="getImg(agentData?.personal_details.document_back_image)"><i
                                                 class="fa-regular fa-eye" data-bs-toggle="modal"
                                                 data-bs-target="#full_view_img"></i></a>
                                     </div>
                                 </div>
                             </div>
+                            }
+
                         </div>
                         <div class="col-md-6 mt-4">
+                            @if(agentData?.personal_details?.selfie_with_id){
                             <div class="ct_white_bg p-4">
                                 <h4 class="ct_fs_20 ct_fw_600 mb-3 ct_text_061F61">
                                     Identity Verification Selfie
@@ -329,33 +232,18 @@
                                         <h5 class="ct_fs_16 ct_fw_600 mb-0 ct_text_061F61">
                                             Photo
                                         </h5>
-                                        <a (click)="getImg(agentData?.selfie_file)"><i class="fa-regular fa-eye"
-                                                data-bs-toggle="modal" data-bs-target="#full_view_img"></i></a>
+                                        <a (click)="getImg(agentData?.personal_details.selfie_with_id)"><i
+                                                class="fa-regular fa-eye" data-bs-toggle="modal"
+                                                data-bs-target="#full_view_img"></i></a>
                                     </div>
                                 </div>
                             </div>
+                            }
+
                         </div>
-
-                        <!-- <div class="col-md-6 mt-4">
-                            <div class="ct_white_bg p-4">
-                                <h4 class="ct_fs_20 ct_fw_600 mb-3 ct_text_061F61">
-                                    Identity Verification Selfie
-                                </h4>
-                                <div class="ct_outline_bg d-flex align-items-center gap-3 p-3">
-                                    <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0" />
-                                    <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
-                                        <h5 class="ct_fs_16 ct_fw_600 mb-0 ct_text_061F61">
-                                            Photo
-                                        </h5>
-                                        <a><i class="fa-regular fa-eye"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-
                     </div>
                 </div>
-                @if (agentData?.status == 'PENDING') {
+                @if (agentData?.application_status == 'PENDING') {
                 <div class="d-flex align-items-center gap-3 mt-4">
                     <button class="ct_green_btn px-4 px-sm-5" data-bs-toggle="modal"
                         data-bs-target="#ct_accept_modal_post">Approve</button>
@@ -377,7 +265,7 @@
                     <figure>
                         <figcaption>
                             <h4 class="ct_fs_20 ct_fw_600 text-center">
-                                Are you sure you want to approve this agent ?
+                                Are you sure you want to approve this seller ?
                             </h4>
                         </figcaption>
                     </figure>
@@ -406,7 +294,7 @@
                     <figure>
                         <figcaption>
                             <h4 class="ct_fs_20 ct_fw_600 text-center">
-                                Are you sure you want to reject this agent ?
+                                Are you sure you want to reject this seller ?
                             </h4>
                         </figcaption>
                     </figure>

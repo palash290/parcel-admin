@@ -6,7 +6,8 @@
                     <h4 class="ct_fs_24 ct_fw_600 mb-0 ct_text_061F61 ct_ff_Saira">Live AMA</h4>
                     <div class="d-flex align-items-center gap-2 ct_w_100_767 ct_flex_col_767">
                         <div class="ct_search ct_w_100_767">
-                            <input type="text" class="form-control" placeholder="Search " />
+                            <input type="text" class="form-control" placeholder="Search " [(ngModel)]="searchText"
+                                (input)="filterTable()" />
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
                     </div>
@@ -23,12 +24,12 @@
                                 <th>Duration</th>
                                 <th>Description</th>
                                 <th>Date</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-
                                 <td>
                                     Emily Parker
                                 </td>
@@ -45,6 +46,14 @@
                                 </td>
                                 <td>
                                     Feb 23, 2024
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <a class="ct_text_39A1FF" data-bs-toggle="modal"
+                                            data-bs-target="#ct_view_modal">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
@@ -66,6 +75,14 @@
                                 <td>
                                     Feb 23, 2024
                                 </td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <a class="ct_text_39A1FF" data-bs-toggle="modal"
+                                            data-bs-target="#ct_view_modal">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>3</td>
@@ -85,6 +102,14 @@
                                 </td>
                                 <td>
                                     Feb 23, 2024
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <a class="ct_text_39A1FF" data-bs-toggle="modal"
+                                            data-bs-target="#ct_view_modal">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
 

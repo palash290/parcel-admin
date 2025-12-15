@@ -84,10 +84,10 @@ export class MyProfileComponent {
 
     // Append image file if selected
     if (this.selectedLogoFile) {
-      formData.append('profile_image', this.selectedLogoFile);
+      formData.append('profileImage', this.selectedLogoFile);
     }
 
-    this.service.post('admin/profile', formData).subscribe({
+    this.service.post('admin/profile-update', formData).subscribe({
       next: (resp: any) => {
         if (resp.success) {
           this.isLoading = false;

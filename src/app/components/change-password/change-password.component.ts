@@ -54,8 +54,8 @@ export class ChangePasswordComponent {
     if (this.form.valid && !this.passwordMismatch) {
       this.loading = true;
       const formURlData = new URLSearchParams();
-      formURlData.set('old_password', this.form.value.current_password);
-      formURlData.set('new_password', this.form.value.new_password);
+      formURlData.set('currentPassword', this.form.value.current_password);
+      formURlData.set('newPassword', this.form.value.new_password);
       this.service.post('admin/change-password', formURlData.toString()).subscribe({
         next: (resp: any) => {
           if (resp.success) {

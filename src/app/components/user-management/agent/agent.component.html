@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="d-flex align-items-center justify-content-between mb-3 ct_flex_col_575 gap-3">
-                    <h4 class="ct_fs_24 ct_fw_600 mb-0 ct_text_061F61 ct_ff_Saira">Agent Management</h4>
+                    <h4 class="ct_fs_24 ct_fw_600 mb-0 ct_text_061F61 ct_ff_Saira">Seller Management</h4>
                     <div class="d-flex align-items-center gap-2 ct_w_100_575">
                         <div class="ct_search ct_w_100_575">
                             <input type="text" class="form-control" placeholder="Search " [(ngModel)]="searchText"
@@ -30,7 +30,7 @@
                         <thead>
                             <tr>
                                 <th>S.No</th>
-                                <th>Agent Name</th>
+                                <th>Seller Name</th>
                                 <th>Email Id </th>
                                 <th>Date Joined</th>
                                 <th>Block</th>
@@ -41,7 +41,7 @@
                         </thead>
                         <tbody>
                             <tr *ngIf="filteredData.length == 0">
-                                <td colspan="8" class="text-center">No agent found</td>
+                                <td colspan="8" class="text-center">No seller found</td>
                             </tr>
                             <tr
                                 *ngFor="let item of filteredData | paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
@@ -54,62 +54,51 @@
 
                                 <td>
                                     <label class="toggle-switch">
-                                        <input type="checkbox" [(ngModel)]="item.is_user_banned"
-                                            [ngModel]="item.is_active == false" (click)="handleCheckboxChange(item)"
-                                            [disabled]="item.status === 'REJECTED' || item.status === 'PENDING'">
+                                        <input type="checkbox" [(ngModel)]="item.isBlocked"
+                                            (click)="handleCheckboxChange(item)"
+                                            [disabled]="item.application_status === 'REJECTED' || item.application_status === 'PENDING'">
                                         <div class="toggle-switch-background">
                                             <div class="toggle-switch-handle"></div>
                                         </div>
                                     </label>
                                 </td>
 
-                                <!-- <td>
-                                    <select [(ngModel)]="item.status" class="form-select w-auto"
-                                        (change)="onEmfStatusChange(item.agent_id, item.status)"
-                                        [disabled]="item.status === 'REJECTED' || item.status === 'APPROVED'">
-                                        <option [ngValue]="null" selected disabled>Select</option>
-                                        <option value="APPROVED">Approve</option>
-                                        <option value="REJECTED">Reject</option>
-                                        <option value="PENDING">Pending</option>
-                                    </select>
-                                </td> -->
-
                                 <td>
-                                    <select [(ngModel)]="item.status" class="form-select w-auto"
-                                        (change)="onEmfStatusChange(item.agent_id, item.status)"
-                                        [disabled]="item.status === 'REJECTED' || item.status === 'APPROVED'">
+                                    <select [(ngModel)]="item.application_status" class="form-select w-auto"
+                                        (change)="statusChange(item.id, item.application_status)"
+                                        [disabled]="item.application_status === 'REJECTED' || item.application_status === 'APPROVED'">
 
-                                        <!-- Default option -->
                                         <option [ngValue]="null" disabled>Select</option>
 
-                                        <!-- If APPROVED -->
-                                        <option *ngIf="item.status == 'APPROVED'" value="APPROVED">Approved</option>
+                                        <option *ngIf="item.application_status == 'APPROVED'" value="APPROVED">Approved
+                                        </option>
 
-                                        <!-- If REJECTED -->
-                                        <option *ngIf="item.status == 'REJECTED'" value="REJECTED">Rejected</option>
+                                        <option *ngIf="item.application_status == 'REJECTED'" value="REJECTED">Rejected
+                                        </option>
 
-                                        <!-- If neither APPROVED nor REJECTED -->
-                                        <ng-container *ngIf="item.status !== 'APPROVED' && item.status !== 'REJECTED'">
+                                        <ng-container
+                                            *ngIf="item.application_status !== 'APPROVED' && item.application_status !== 'REJECTED'">
                                             <option value="APPROVED">Approve</option>
                                             <option value="REJECTED">Reject</option>
                                             <option value="PENDING">Pending</option>
                                         </ng-container>
                                     </select>
                                 </td>
-                                
+
                                 <!-- <td>
-                                    @if(item.status == 'APPROVED'){
+                                    @if(item.application_status == 'APPROVED'){
                                     <span class="ct_green_clr ct_fw_600">Approved</span>
                                     }
-                                    @if(item.status == 'REJECTED'){
+                                    @if(item.application_status == 'REJECTED'){
                                     <span class="ct_red_clr ct_fw_600">Rejected</span>
                                     }
-                                    @if(item.status == 'PENDING'){
+                                    @if(item.application_status == 'PENDING'){
                                     <span class="ct_orange_clr ct_fw_600">Pending</span>
                                     }
                                 </td> -->
+
                                 <td>
-                                    <a [routerLink]="['/home/view-agent']" [queryParams]="{ agent_id: item.agent_id }"
+                                    <a [routerLink]="['/home/view-agent']" [queryParams]="{ agent_id: item.id }"
                                         class="ct_text_39A1FF">
                                         <i class="fa-solid fa-eye"></i>
                                     </a>

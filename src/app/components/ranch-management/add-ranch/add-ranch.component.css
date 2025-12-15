@@ -1,0 +1,35 @@
+.ct_multiple_img_flex{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  .ct_multiple_img_flex img,
+  .ct_multiple_img_flex video    {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+    .ct_multiple_img_dlt {
+    width: 18px;
+    height: 18px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    outline: none;
+    border: 0px;
+    background-color: var(--red);
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    font-size: 10px;
+  }
+
+  .ct_img_h_214 {
+    height: 214px !important;
+    object-fit: cover;
+    /* max-width: 214px !important; */
+}

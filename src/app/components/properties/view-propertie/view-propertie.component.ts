@@ -20,7 +20,11 @@ export class ViewPropertieComponent {
   properyData: any;
   userImg1: any;
   isLoading: boolean = false;
-  images: any;
+  images: any = [
+    'https://trophy-talk-bucket.s3.us-east-2.amazonaws.com/images/1758107753471-af89bb3d-artyom-kabajev-ZcCv6qUye8c-unsplash.jpg',
+    'img/np_pro.png',
+    'https://trophy-talk-bucket.s3.us-east-2.amazonaws.com/images/1758107753471-af89bb3d-artyom-kabajev-ZcCv6qUye8c-unsplash.jpg'
+  ];
   property_videos: any;
   property_reels: any;
   thumbsSwiper: any;
@@ -61,17 +65,14 @@ export class ViewPropertieComponent {
   }
 
   getSingleProperty(property_id: any) {
-    this.isLoading = true;
-    this.service.get(`admin/get-property/${property_id}`).subscribe({
+    //this.isLoading = true;
+    this.service.get(`admin/property-details/${property_id}`).subscribe({
       next: (resp: any) => {
         this.isLoading = false;
         this.properyData = resp.data;
-        this.images = resp.data.property_images;
+        //this.images = resp.data.images;
         this.property_reels = resp.data.property_reels;
         this.property_videos = resp.data.property_videos;
-        // debugger
-        // this.property_around = JSON.parse(resp.data.property_around);
-
         const raw = resp.data.property_around;
 
         if (raw) {

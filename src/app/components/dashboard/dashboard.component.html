@@ -5,9 +5,9 @@
             <div class="col-xxl-3 col-lg-6 col-md-6 mb-4">
                 <div class="ct_dash_card">
                     <div class="ct_card_title">
-                        <h4 class="mb-0 ct_fs_28 ct_fw_700">4759</h4>
+                        <h4 class="mb-0 ct_fs_28 ct_fw_700">{{data?.total_revenue}}</h4>
                         <h6 class="ct_fs_18 mt-2 ct_black_text ct_text_op_07">
-                            Total Users
+                            Total Revenue
                         </h6>
                     </div>
                     <div>
@@ -18,9 +18,9 @@
             <div class="col-xxl-3 col-lg-6 col-md-6 mb-4">
                 <div class="ct_dash_card">
                     <div class="ct_card_title">
-                        <h4 class="mb-0 ct_fs_28 ct_fw_700">759</h4>
+                        <h4 class="mb-0 ct_fs_28 ct_fw_700">{{data?.total_sellers}}</h4>
                         <h6 class="ct_fs_18 mt-2 ct_black_text ct_text_op_07">
-                            Property Listed
+                            Property Sellers
                         </h6>
                     </div>
                     <div>
@@ -31,9 +31,9 @@
             <div class="col-xxl-3 col-lg-6 col-md-6 mb-4">
                 <div class="ct_dash_card">
                     <div class="ct_card_title">
-                        <h4 class="mb-0 ct_fs_28 ct_fw_700">1856</h4>
+                        <h4 class="mb-0 ct_fs_28 ct_fw_700">{{data?.total_investors}}</h4>
                         <h6 class="ct_fs_18 mt-2 ct_black_text ct_text_op_07">
-                            Sweepstakes
+                            Total Investors
                         </h6>
                     </div>
                     <div>
@@ -44,9 +44,9 @@
             <div class="col-xxl-3 col-lg-6 col-md-6 mb-4">
                 <div class="ct_dash_card">
                     <div class="ct_card_title">
-                        <h4 class="mb-0 ct_fs_28 ct_fw_700">85</h4>
+                        <h4 class="mb-0 ct_fs_28 ct_fw_700">{{data?.listed_properties}}</h4>
                         <h6 class="ct_fs_18 mt-2 ct_black_text ct_text_op_07">
-                            KYC Verfified
+                            Listed Properties
                         </h6>
                     </div>
                     <div>
@@ -58,91 +58,87 @@
 
 
         <div class="row mt-4">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="d-flex align-items-center justify-content-between gap-3">
-                    <h4 class="mb-0 ct_fs_20 ct_fw_700">Upcoming Schedules</h4>
-                    <a class="ct_dark_blue_link ct_fw_600">View All</a>
+                    <h4 class="mb-0 ct_fs_20 ct_fw_700">Recent Seller Applications</h4>
+                    <!-- <a class="ct_dark_blue_link ct_fw_600">View All</a> -->
                 </div>
 
                 <div class="table-responsive ct_custom_table mt-4">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>S.No</th>
-                                <th>Buyer Name </th>
-                                <th>Agent Name</th>
-                                <th>Scheduled Date</th>
-                                <th>Property</th>
+                                <th>Seller Name </th>
+                                <th>Date</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Emily Parker</td>
-                                <td>Alton Rodriguez</td>
-                                <td>Feb 23, 2024</td>
+                            <tr *ngFor="let item of recent_seller; let i = index">
+                                <td>{{item.full_name}}</td>
+                                <td>{{item.date | date:'dd-MMM-yyyy'}}</td>
                                 <td>
-                                    <span class="ct_overlay_text">Woodland Apartment</span>
+                                    @if(item.kyc_status == '1'){
+                                    <span class="ct_green_clr ct_fw_600">Approved</span>
+                                    }
+                                    @if(item.kyc_status == '2'){
+                                    <span class="ct_red_clr ct_fw_600">Rejected</span>
+                                    }
+                                    @if(item.kyc_status == '0'){
+                                    <span class="ct_orange_clr ct_fw_600">Pending</span>
+                                    }
                                 </td>
-
                                 <td>
-                                    <span class="ct_green_clr ct_fw_600">Completed</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Emily Parker</td>
-                                <td>Alton Rodriguez</td>
-                                <td>Feb 23, 2024</td>
-                                <td>
-                                    <span class="ct_overlay_text">Woodland Apartment</span>
-                                </td>
-
-                                <td>
-                                    <span class="ct_blue_clr ct_fw_600">Upcoming</span>
+                                    <a [routerLink]="['/home/view-agent']" [queryParams]="{ agent_id: item.id }"
+                                        class="ct_text_39A1FF">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Emily Parker</td>
-                                <td>Alton Rodriguez</td>
-                                <td>Feb 23, 2024</td>
-                                <td>
-                                    <span class="ct_overlay_text">Woodland Apartment</span>
-                                </td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
+            <div class="col-md-6">
+                <div class="d-flex align-items-center justify-content-between gap-3">
+                    <h4 class="mb-0 ct_fs_20 ct_fw_700">Recent Investor Applications</h4>
+                    <!-- <a class="ct_dark_blue_link ct_fw_600">View All</a> -->
+                </div>
+
+                <div class="table-responsive ct_custom_table mt-4">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Investor Name </th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of recent_investor; let i = index">
+                                <td>{{item.full_name}}</td>
+                                <td>{{item.date | date:'dd-MMM-yyyy'}}</td>
                                 <td>
-                                    <span class="ct_green_clr ct_fw_600">Completed</span>
+                                    @if(item.application_status == '1'){
+                                    <span class="ct_green_clr ct_fw_600">Approved</span>
+                                    }
+                                    @if(item.application_status == '2'){
+                                    <span class="ct_red_clr ct_fw_600">Rejected</span>
+                                    }
+                                    @if(item.application_status == '0'){
+                                    <span class="ct_orange_clr ct_fw_600">Pending</span>
+                                    }
+                                </td>
+                                <td>
+                                    <a [routerLink]="['/home/view-buyer']" [queryParams]="{ buyer_id: item.id }"
+                                        class="ct_text_39A1FF">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Emily Parker</td>
-                                <td>Alton Rodriguez</td>
-                                <td>Feb 23, 2024</td>
-                                <td>
-                                    <span class="ct_overlay_text">Woodland Apartment</span>
-                                </td>
-
-                                <td>
-                                    <span class="ct_green_clr ct_fw_600">Completed</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Emily Parker</td>
-                                <td>Alton Rodriguez</td>
-                                <td>Feb 23, 2024</td>
-                                <td>
-                                    <span class="ct_overlay_text">Woodland Apartment</span>
-                                </td>
-
-                                <td>
-                                    <span class="ct_green_clr ct_fw_600">Completed</span>
-                                </td>
-                            </tr>
-
                         </tbody>
                     </table>
                 </div>

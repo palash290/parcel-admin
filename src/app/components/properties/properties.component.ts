@@ -30,7 +30,7 @@ export class PropertiesComponent {
 
   getDetails() {
     this.isLoading = true;
-    this.commonService.get('admin/get-all-properties').subscribe({
+    this.commonService.get('admin/property-listings').subscribe({
       next: (resp: any) => {
         this.isLoading = false;
         this.data = resp.data;

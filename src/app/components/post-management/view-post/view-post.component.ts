@@ -39,7 +39,7 @@ export class ViewPostComponent {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.thumbsSwiper = new Swiper('.mySwiperThumbs', {
+      this.thumbsSwiper = new Swiper('.mySwiperThumbs1', {
         spaceBetween: 10,
         slidesPerView: 4,
         watchSlidesProgress: true,

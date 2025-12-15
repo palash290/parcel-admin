@@ -38,14 +38,12 @@ export class ForgotPasswordComponent {
           next: (resp: any) => {
             if (resp.success == true) {
               this.isLoading = false;
-              localStorage.setItem('verifyToken', resp.data)
+              // localStorage.setItem('verifyToken', resp.data);
               this.toastr.success(resp.message);
-              // this.route.navigate(['/reset-password'], {
+              this.route.navigate(['/']);
+              // this.route.navigate(['/verify-otp'], {
               //   queryParams: { email: this.Form.value.email }
               // });
-                this.route.navigate(['/verify-otp'], {
-                queryParams: { email: this.Form.value.email }
-              });
             } else {
               this.isLoading = false;
               this.toastr.warning(resp.message);

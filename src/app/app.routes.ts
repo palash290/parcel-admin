@@ -145,6 +145,18 @@ export const routes: Routes = [
                         path: 'reel-audio',
                         loadComponent: () => import('./components/reel-audio/reel-audio.component').then(m => m.ReelAudioComponent)
                   },
+                  {
+                        path: 'ranch-management',
+                        loadComponent: () => import('./components/ranch-management/ranch-management.component').then(m => m.RanchManagementComponent)
+                  },
+                  {
+                        path: 'add-ranch',
+                        loadComponent: () => import('./components/ranch-management/add-ranch/add-ranch.component').then(m => m.AddRanchComponent)
+                  },
+                  {
+                        path: 'view-ranch',
+                        loadComponent: () => import('./components/ranch-management/view-ranch/view-ranch.component').then(m => m.ViewRanchComponent)
+                  },
             ]
       }
 ];
