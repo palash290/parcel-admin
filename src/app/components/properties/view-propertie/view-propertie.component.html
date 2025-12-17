@@ -2,22 +2,34 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <div class="d-flex align-items-center gap-3 justify-content-between ct_flex_col_575 mb-4">
-          <h4 class="d-flex align-items-center gap-2 ct_fw_600 mb-0 ct_text_061F61 ct_ff_Saira">
-            <a routerLink="/home/properties" class="ct_black_text"><i class="fa-solid fa-angle-left"></i></a>Property
-            Details
+        <div
+          class="d-flex align-items-center gap-3 justify-content-between ct_flex_col_575 mb-4"
+        >
+          <h4
+            class="d-flex align-items-center gap-2 ct_fw_600 mb-0 ct_text_061F61 ct_ff_Saira"
+          >
+            <a routerLink="/home/properties" class="ct_black_text"
+              ><i class="fa-solid fa-angle-left"></i></a
+            >Property Details
           </h4>
           @if(this.properyData?.status == 'PENDING'){
           <div class="d-flex align-items-center justify-content-end gap-3">
-            <button class="ct_approve_green_btn ct_dark_green_btn" data-bs-toggle="modal" data-bs-target="#ct_accept">
+            <button
+              class="ct_approve_green_btn ct_dark_green_btn"
+              data-bs-toggle="modal"
+              data-bs-target="#ct_accept"
+            >
               <i class="fa-solid fa-check me-2"></i> Approve
             </button>
-            <button class="ct_reject_red_btn ct_dark_green_btn" data-bs-toggle="modal" data-bs-target="#ct_reject">
+            <button
+              class="ct_reject_red_btn ct_dark_green_btn"
+              data-bs-toggle="modal"
+              data-bs-target="#ct_reject"
+            >
               <i class="fa-solid fa-xmark me-2"></i>Reject
             </button>
           </div>
           }
-
         </div>
       </div>
     </div>
@@ -27,20 +39,41 @@
         <!-- Pending Alert S -->
         <div class="ct_light_orange_alert mb-3 justify-content-between">
           <div class="d-flex gap-2 align-items-center">
-            <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <mask id="mask0_164_21791" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="2" width="20"
-                height="20">
+            <svg
+              width="20"
+              height="22"
+              viewBox="0 0 20 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask
+                id="mask0_164_21791"
+                style="mask-type: luminance"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="2"
+                width="20"
+                height="20"
+              >
                 <path d="M0 2H20V22H0V2Z" fill="white" />
               </mask>
               <g mask="url(#mask0_164_21791)">
-                <mask id="mask1_164_21791" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="2" width="20"
-                  height="20">
+                <mask
+                  id="mask1_164_21791"
+                  style="mask-type: luminance"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="2"
+                  width="20"
+                  height="20"
+                >
                   <path d="M0 2H20V22H0V2Z" fill="white" />
                 </mask>
                 <g mask="url(#mask1_164_21791)">
                   <path
                     d="M10 4.1875C5.69219 4.1875 2.1875 7.69219 2.1875 12C2.1875 16.3078 5.69219 19.8125 10 19.8125C14.3078 19.8125 17.8125 16.3078 17.8125 12C17.8125 7.69219 14.3078 4.1875 10 4.1875ZM10 7.39062C10.2805 7.39062 10.5198 7.48978 10.7182 7.68809C10.9165 7.88641 11.0156 8.12579 11.0156 8.40625C11.0156 8.68671 10.9165 8.92609 10.7182 9.1244C10.5198 9.32272 10.2805 9.42187 10 9.42188C9.71954 9.42187 9.48016 9.32272 9.28184 9.1244C9.08353 8.92609 8.98437 8.68671 8.98438 8.40625C8.98438 8.12579 9.08353 7.88641 9.28184 7.68809C9.48016 7.48978 9.71954 7.39062 10 7.39062ZM11.875 16.2187H8.4375C8.26491 16.2187 8.1176 16.1577 7.99556 16.0357C7.87352 15.9137 7.8125 15.7663 7.8125 15.5937C7.8125 15.4212 7.87352 15.2738 7.99556 15.1518C8.1176 15.0298 8.26491 14.9687 8.4375 14.9687H9.53125V11.5312H8.90625C8.73366 11.5312 8.58635 11.4702 8.46431 11.3482C8.34227 11.2262 8.28125 11.0788 8.28125 10.9062C8.28125 10.7337 8.34227 10.5863 8.46431 10.4643C8.58635 10.3423 8.73366 10.2812 8.90625 10.2812H10.1562C10.3288 10.2812 10.4762 10.3423 10.5982 10.4643C10.7202 10.5863 10.7812 10.7337 10.7812 10.9062V14.9687H11.875C12.0476 14.9687 12.1949 15.0298 12.3169 15.1518C12.439 15.2738 12.5 15.4212 12.5 15.5937C12.5 15.7663 12.439 15.9137 12.3169 16.0357C12.1949 16.1577 12.0476 16.2187 11.875 16.2187Z"
-                    fill="#FF903F" />
+                    fill="#FF903F"
+                  />
                 </g>
               </g>
             </svg>
@@ -49,19 +82,30 @@
             </div>
           </div>
         </div>
-        }
-
-        @if(properyData?.status == 'APPROVED'){
+        } @if(properyData?.status == 'APPROVED'){
         <!-- Approved Review Alert S -->
         <div class="ct_light_green_alert justify-content-between mb-3">
           <div class="d-flex gap-2 align-items-center">
-            <svg width="26" height="27" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path opacity="0.3" fill-rule="evenodd" clip-rule="evenodd"
+            <svg
+              width="26"
+              height="27"
+              viewBox="0 0 26 27"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                opacity="0.3"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
                 d="M11.4679 2.94024C11.8514 2.55726 12.3645 2.3319 12.906 2.30864C13.4474 2.28538 13.978 2.46589 14.3929 2.81458L14.5316 2.94133L16.5899 4.99858H19.4997C20.0462 4.99868 20.5724 5.20525 20.973 5.5769C21.3735 5.94856 21.6189 6.45785 21.6599 7.00274L21.6664 7.16524V10.0751L23.7247 12.1334C24.108 12.517 24.3336 13.0303 24.3568 13.572C24.3801 14.1137 24.1994 14.6445 23.8504 15.0595L23.7236 15.1971L21.6653 17.2554V20.1652C21.6655 20.7119 21.459 21.2384 21.0874 21.6392C20.7157 22.04 20.2062 22.2855 19.6611 22.3265L19.4997 22.3319H16.591L14.5326 24.3902C14.1491 24.7735 13.6358 24.9991 13.094 25.0223C12.5523 25.0456 12.0215 24.8649 11.6066 24.5159L11.469 24.3902L9.41064 22.3319H6.49972C5.9531 22.3321 5.42661 22.1256 5.0258 21.754C4.62498 21.3823 4.37947 20.8728 4.33847 20.3277L4.33306 20.1652V17.2554L2.27472 15.1971C1.89143 14.8135 1.66589 14.3002 1.64262 13.7585C1.61936 13.2168 1.80006 12.686 2.14906 12.271L2.27472 12.1334L4.33306 10.0751V7.16524C4.33316 6.61881 4.53973 6.09259 4.91138 5.692C5.28303 5.29142 5.79233 5.04606 6.33722 5.00508L6.49972 4.99858H9.40956L11.4679 2.94024Z"
-                fill="#22C55E" />
-              <path fill-rule="evenodd" clip-rule="evenodd"
+                fill="#22C55E"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
                 d="M16.3351 10.3979L11.7375 14.9955L9.82213 13.0802C9.61885 12.8771 9.3432 12.763 9.05583 12.7631C8.76845 12.7632 8.49288 12.8775 8.28975 13.0807C8.08662 13.284 7.97255 13.5597 7.97266 13.847C7.97276 14.1344 8.08701 14.41 8.29029 14.6131L10.8946 17.2174C11.0053 17.3282 11.1367 17.416 11.2813 17.4759C11.4259 17.5358 11.5809 17.5667 11.7375 17.5667C11.894 17.5667 12.049 17.5358 12.1936 17.4759C12.3382 17.416 12.4696 17.3282 12.5803 17.2174L17.867 11.9297C18.0643 11.7254 18.1735 11.4517 18.171 11.1677C18.1686 10.8836 18.0546 10.6119 17.8538 10.4111C17.6529 10.2102 17.3812 10.0963 17.0971 10.0938C16.8131 10.0913 16.5394 10.2005 16.3351 10.3979Z"
-                fill="#22C55E" />
+                fill="#22C55E"
+              />
             </svg>
             <div>
               <h5 class="ct_fs_18 ct_fw_700 mb-0">Approved</h5>
@@ -69,20 +113,34 @@
           </div>
           <div>
             <p class="mb-0">Approved On:</p>
-            <p class="mb-0">{{properyData?.approved_at | date:'dd-MM-yyyy'}}</p>
+            <p class="mb-0">
+              {{ properyData?.approved_at | date : "dd-MM-yyyy" }}
+            </p>
           </div>
         </div>
-        }
-
-        @if(properyData?.status == 'REJECTED'){
+        } @if(properyData?.status == 'REJECTED'){
         <!-- Rejected Review Alert S -->
         <div class="ct_light_red_alert justify-content-between mb-3">
           <div class="d-flex gap-2 align-items-center">
-            <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect y="0.5" width="21" height="21" rx="10.5" fill="#FF0000" fill-opacity="0.2" />
+            <svg
+              width="21"
+              height="22"
+              viewBox="0 0 21 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                y="0.5"
+                width="21"
+                height="21"
+                rx="10.5"
+                fill="#FF0000"
+                fill-opacity="0.2"
+              />
               <path
                 d="M10.5 9.61125L13.2362 6.875L13.3058 6.94454L13.3655 7.03411C13.656 7.46991 14.0298 7.84389 14.4655 8.1345L14.5559 8.19461L14.625 8.26414L11.8891 11L14.625 13.7362L14.5555 13.8054L14.4659 13.8655C14.0301 14.156 13.6561 14.5298 13.3655 14.9655L13.3054 15.0559L13.2362 15.125L10.5 12.3891L7.76414 15.125L7.69461 15.0555L7.6345 14.9659C7.34405 14.5301 6.97019 14.1561 6.5345 13.8655L6.44414 13.8054L6.375 13.7362L9.11125 11L6.375 8.26414L6.44454 8.19461L6.5345 8.1345C6.97016 7.84401 7.34401 7.47016 7.6345 7.0345L7.69461 6.94414L7.76414 6.875L10.5 9.61125Z"
-                stroke="#DB0006" />
+                stroke="#DB0006"
+              />
             </svg>
             <div>
               <h5 class="ct_fs_18 ct_fw_700 mb-0">Rejected</h5>
@@ -90,204 +148,716 @@
           </div>
           <div>
             <p class="mb-0">Rejected On:</p>
-            <p class="mb-0">{{properyData?.rejected_at | date:'dd-MM-yyyy'}}</p>
+            <p class="mb-0">
+              {{ properyData?.rejected_at | date : "dd-MM-yyyy" }}
+            </p>
           </div>
         </div>
         }
       </div>
     </div>
-    <div class="ct_white_bg">
-      <div class="row align-items-center">
-        <div class="col-lg-7 mb-4 mb-lg-0">
-          <div class="ct_gallery p-0">
-            <!-- <div class="ct_gallery_left">
-              <img [src]="properyData?.cover_image ? properyData?.cover_image : 'img/apartment_detail_big_ing.jpg'"
-                alt="Cover" />
-            </div> -->
-            <div class="ct_gallery_right">
-              <ng-container *ngFor="let img of getDisplayImages(properyData?.images)">
-                <img [src]="img" alt="property image" />
-              </ng-container>
-              <button class="ct_show_all_images_btn" data-bs-toggle="modal" data-bs-target="#ct_show_all_photos">
-                <i class="fa-regular fa-image me-1"></i>
-                Show all Photos
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-5 mb-4 mb-lg-0">
-          <span class="ct_light_green_badge mb-3">For Sale</span>
-          <h4 class="ct_fs_20 ct_fw_600 mb-3">{{properyData?.property_title}}</h4>
-          <ul>
-            <li>
-              <img src="img/lsicon_building-outline.svg" alt="" class="me-1" />
-              {{properyData?.property_category.title}}
-            </li>
-            <li class="mt-3">
-              <img src="img/ep_location.svg" alt="" class="me-1" />
-              {{properyData?.address}}, {{properyData?.state}}, {{properyData?.city}}
-            </li>
-            <li class="mt-3">
-              <img src="img/lets-icons_calendar-light.svg" alt="" class="me-1" />
-              {{properyData?.created_at | date:'dd-MM-yyyy'}}
-            </li>
-            <li class="mt-3">
-              <img src="img/amenties_icon_8.svg" alt="" />
-              {{properyData?.built_up_area}}sqft
-            </li>
-            <li class="mt-3">
-              <img src="img/amenties_icon_11.svg" alt="" />
-              {{properyData?.bedrooms}} Bathroom
-            </li>
-            <li class="mt-3">
-              <img src="img/amenties_icon_12.svg" alt="" />
-              {{properyData?.bathrooms}} Bedrooms
-            </li>
-
-          </ul>
-          @if(properyData?.type == 'RENT'){
-          <div class="mt-3">
-            <h4 class="ct_fs_20 ct_fw_600 mb-3">
-              Pricing Details: <span class="ct_fw_700">${{properyData?.rent_price}}</span>
-            </h4>
-          </div>
-          }
-          @if(properyData?.type == 'BUY'){
-          <div class="mt-3">
-            <h4 class="ct_fs_20 ct_fw_600 mb-3">
-              Pricing Details: <span class="ct_fw_700">${{properyData?.selling_price}}</span>
-            </h4>
-          </div>
-          }
-
-          <div class="mt-4 d-none">
-            <a class="ct_orange_btn">View on Site</a>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="pt-4">
-            <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">About</h4>
-            <p class="ct_para_scroll ct_pe_40 ct_custom_scroll">
-              {{properyData?.about_property}}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+   
     <div class="row">
       <div class="col-md-12">
-
-        <div class="ct_white_bg h-auto mt-4 pe-0">
-          <div class="row">
-            <div class="col-xl-12 mb-xl-0">
-              <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">
-                Top Ameneties
-              </h4>
-              <ul class="ct_para_scroll ct_custom_scroll ct_amenties_list mt-4 ct_pe_40">
-                <li *ngFor="let amenity of properyData?.property_amenities">
-                  {{ amenity.amenity.title }}
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="ct_white_bg h-auto mt-4 pe-0">
-          <div class="row">
-            <div class="col-xl-12 mb-xl-0">
-              <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">
-                Property Around
-              </h4>
-              <ul class="ct_para_scroll ct_custom_scroll ct_amenties_list mt-4 ct_pe_40">
-                <li *ngFor="let item of property_around">
-                  {{ item }}
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="ct_white_bg h-auto mt-4 pe-0">
-          <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">
-            Videos
-          </h4>
-          <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4" *ngFor="let video of property_videos">
-              <div class="">
-                <ng-container *ngIf="property_videos?.length; else noVideos">
-                  <div class="mb-3">
-                    <video [src]="video.file" controls width="100%"></video>
-                  </div>
-                </ng-container>
-                <ng-template #noVideos>
-                  <p class="text-muted">No videos available</p>
-                </ng-template>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ct_white_bg h-auto mt-4 pe-0">
-          <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">
-            Reels
-          </h4>
-          <div class="row">
-            <div class="col-lg-3 col-md-6 mb-4" *ngFor="let video of property_reels">
-              <div class="">
-                <ng-container *ngIf="property_reels?.length; else noVideos">
-                  <div class="mb-3">
-                    <video [src]="video.file" controls width="100%"></video>
-                  </div>
-                </ng-container>
-                <ng-template #noVideos>
-                  <p class="text-muted">No reels available</p>
-                </ng-template>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ct_white_bg h-auto mt-4">
-          <h4 class="ct_fs_24 ct_fw_600 mb-3 ct_pe_40">Listed By</h4>
-          <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_col_575">
+        <div
+          class="ct_white_bg h-auto  d-flex align-items-center justify-content-between gap-3 p-4 ct_flex_col_575"
+        >
+          <div class="d-flex align-items-start gap-3">
             <div>
-              <div class="d-flex align-items-center gap-2">
-                <img src="img/np_pro.png" alt="" class="ct_img_60" data-bs-toggle="modal"
-                  data-bs-target="#full_view_img" />
-                <div>
-                  <p class="mb-0 ct_fs_18 ct_fw_600 ct_text_clr_4B5563">
-                    {{properyData?.agent.full_name}}
-                  </p>
-                  <p class="ct_fs_16 mb-0 ct_text_clr_4B5563">
-                    {{properyData?.agent.email}}
-                  </p>
-                  <p class="ct_fs_16 mb-0 ct_text_clr_4B5563">
-                    {{properyData?.agent.phone_number}}
-                  </p>
+              <svg
+                width="15"
+                height="28"
+                viewBox="0 0 15 28"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M15 28H0V0H15V28Z" stroke="#E5E7EB" />
+                <g clip-path="url(#clip0_555_1418)">
+                  <path
+                    d="M1.875 3.5C0.839844 3.5 0 4.33984 0 5.375V21.625C0 22.6602 0.839844 23.5 1.875 23.5H5.625V20.375C5.625 19.3398 6.46484 18.5 7.5 18.5C8.53516 18.5 9.375 19.3398 9.375 20.375V23.5H13.125C14.1602 23.5 15 22.6602 15 21.625V5.375C15 4.33984 14.1602 3.5 13.125 3.5H1.875ZM2.5 12.875C2.5 12.5312 2.78125 12.25 3.125 12.25H4.375C4.71875 12.25 5 12.5312 5 12.875V14.125C5 14.4688 4.71875 14.75 4.375 14.75H3.125C2.78125 14.75 2.5 14.4688 2.5 14.125V12.875ZM6.875 12.25H8.125C8.46875 12.25 8.75 12.5312 8.75 12.875V14.125C8.75 14.4688 8.46875 14.75 8.125 14.75H6.875C6.53125 14.75 6.25 14.4688 6.25 14.125V12.875C6.25 12.5312 6.53125 12.25 6.875 12.25ZM10 12.875C10 12.5312 10.2812 12.25 10.625 12.25H11.875C12.2188 12.25 12.5 12.5312 12.5 12.875V14.125C12.5 14.4688 12.2188 14.75 11.875 14.75H10.625C10.2812 14.75 10 14.4688 10 14.125V12.875ZM3.125 7.25H4.375C4.71875 7.25 5 7.53125 5 7.875V9.125C5 9.46875 4.71875 9.75 4.375 9.75H3.125C2.78125 9.75 2.5 9.46875 2.5 9.125V7.875C2.5 7.53125 2.78125 7.25 3.125 7.25ZM6.25 7.875C6.25 7.53125 6.53125 7.25 6.875 7.25H8.125C8.46875 7.25 8.75 7.53125 8.75 7.875V9.125C8.75 9.46875 8.46875 9.75 8.125 9.75H6.875C6.53125 9.75 6.25 9.46875 6.25 9.125V7.875ZM10.625 7.25H11.875C12.2188 7.25 12.5 7.53125 12.5 7.875V9.125C12.5 9.46875 12.2188 9.75 11.875 9.75H10.625C10.2812 9.75 10 9.46875 10 9.125V7.875C10 7.53125 10.2812 7.25 10.625 7.25Z"
+                    fill="#2563EB"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_555_1418">
+                    <path d="M0 3.5H15V23.5H0V3.5Z" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+            <div>
+              <h4 class="ct_fs_20 ct_fw_600 mb-0">
+                Prime Riverside Commercial Hub
+              </h4>
+              <p class="mb-0 ct_tex_6B7280 ct_fs_14">
+                Submitted by: John Richards • BlueStone Holdings LLC
+              </p>
+            </div>
+          </div>
+          <div>
+            <button
+              class="ct_outline_btn ct_fullsale_btn_outline px-5 ct_white_nowrap"
+            >
+              Full Sale
+            </button>
+          </div>
+        </div>
+
+        <div class="ct_white_bg h-auto mt-4 p-4">
+          <div class="row">
+            <div class="col-xl-12 mb-xl-0">
+              <h4
+                class="ct_fs_18 ct_fw_600 mb-4 ct_pe_40 d-flex align-items-center gap-2"
+              >
+                <svg
+                  width="21"
+                  height="28"
+                  viewBox="0 0 21 28"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M20.25 28H0V0H20.25V28Z" stroke="#E5E7EB" />
+                  <g clip-path="url(#clip0_555_1430)">
+                    <path
+                      d="M20.243 13.2324C20.243 13.8652 19.7156 14.3609 19.118 14.3609H17.993L18.0176 19.993C18.0176 20.0879 18.0105 20.1828 18 20.2777V20.8438C18 21.6207 17.3707 22.25 16.5938 22.25H16.0312C15.9926 22.25 15.9539 22.25 15.9152 22.2465C15.866 22.25 15.8168 22.25 15.7676 22.25H14.625H13.7812C13.0043 22.25 12.375 21.6207 12.375 20.8438V20V17.75C12.375 17.1277 11.8723 16.625 11.25 16.625H9C8.37773 16.625 7.875 17.1277 7.875 17.75V20V20.8438C7.875 21.6207 7.2457 22.25 6.46875 22.25H5.625H4.50352C4.45078 22.25 4.39805 22.2465 4.34531 22.243C4.30312 22.2465 4.26094 22.25 4.21875 22.25H3.65625C2.8793 22.25 2.25 21.6207 2.25 20.8438V16.9062C2.25 16.8746 2.25 16.8395 2.25352 16.8078V14.3609H1.125C0.492188 14.3609 0 13.8687 0 13.2324C0 12.916 0.105469 12.6348 0.351562 12.3887L9.36562 4.53125C9.61172 4.28516 9.89297 4.25 10.1391 4.25C10.3852 4.25 10.6664 4.32031 10.8773 4.49609L19.8562 12.3887C20.1375 12.6348 20.2781 12.916 20.243 13.2324Z"
+                      fill="#2563EB"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_555_1430">
+                      <path d="M0 4.25H20.25V22.25H0V4.25Z" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+
+                Property Basics
+              </h4>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <div>
+                    <p class="ct_tex_6B7280 ct_fs_14 mb-1">Address</p>
+                    <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                      123 Riverside Ave, Miami, FL
+                    </h4>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div>
+                    <p class="ct_tex_6B7280 ct_fs_14 mb-1">Property Type</p>
+                    <h4 class="mb-0 ct_fw_500 ct_fs_16">Commercial Building</h4>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div>
+                    <p class="ct_tex_6B7280 ct_fs_14 mb-1">Year Built</p>
+                    <h4 class="mb-0 ct_fw_500 ct_fs_16">2018</h4>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div>
+                    <p class="ct_tex_6B7280 ct_fs_14 mb-1">Square Footage</p>
+                    <h4 class="mb-0 ct_fw_500 ct_fs_16">45,000 sq. ft</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-md-12">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-2">Photos</p>
+                  <ul
+                    class="ct_photo_gallery_list position-relative ct_para_scroll ct_custom_scroll"
+                  >
+                    <li>
+                      <img src="img/gallary_img_1.png" />
+                    </li>
+                    <li>
+                      <img src="img/gallary_img_1.png" />
+                    </li>
+                    <li>
+                      <img src="img/gallary_img_1.png" />
+                    </li>
+                    <li>
+                      <img src="img/gallary_img_1.png" />
+                    </li>
+                    <li>
+                      <img src="img/gallary_img_1.png" />
+                    </li>
+                    <li>
+                      <button
+                        class="ct_show_all_images_btn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#ct_show_all_photos"
+                      >
+                        <i class="fa-regular fa-image me-1"></i>
+                        Show all Photos
+                      </button>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
-            <div>
+          </div>
+        </div>
 
-              <p class="mb-0 ct_light_orange_badge ct_border_radius_10 ct_white_nowrap">
-                Agent
-              </p>
-              <div class="mt-3">
-                <p class="ct_text_clr_4B5563 ct_fs_14 mb-0 ct_white_nowrap">
-                  Joined on:
-                </p>
-                <p class="ct_text_clr_4B5563 ct_fs_14 mb-0 ct_white_nowrap">
-                  {{properyData?.created_at | date:'dd-MM-yyyy'}}
-                </p>
+        <div class="ct_white_bg h-auto mt-4 p-4">
+          <div class="row">
+            <div class="col-xl-12 mb-xl-0">
+              <h4
+                class="ct_fs_18 ct_fw_600 mb-4 ct_pe_40 d-flex align-items-center gap-2"
+              >
+                <svg
+                  width="23"
+                  height="28"
+                  viewBox="0 0 23 28"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M22.5 28H0V0H22.5V28Z" stroke="#E5E7EB" />
+                  <g clip-path="url(#clip0_555_1476)">
+                    <path
+                      d="M1.6875 4.25C0.755859 4.25 0 5.00586 0 5.9375V20.5625C0 21.4941 0.755859 22.25 1.6875 22.25H5.0625V19.4375C5.0625 18.5059 5.81836 17.75 6.75 17.75C7.68164 17.75 8.4375 18.5059 8.4375 19.4375V22.25H11.598C11.3766 21.8914 11.25 21.4695 11.25 21.016C11.25 19.3672 12.157 17.9293 13.5 17.177V13.8055V5.9375C13.5 5.00586 12.7441 4.25 11.8125 4.25H1.6875ZM2.25 12.6875C2.25 12.3781 2.50312 12.125 2.8125 12.125H3.9375C4.24687 12.125 4.5 12.3781 4.5 12.6875V13.8125C4.5 14.1219 4.24687 14.375 3.9375 14.375H2.8125C2.50312 14.375 2.25 14.1219 2.25 13.8125V12.6875ZM6.1875 12.125H7.3125C7.62187 12.125 7.875 12.3781 7.875 12.6875V13.8125C7.875 14.1219 7.62187 14.375 7.3125 14.375H6.1875C5.87813 14.375 5.625 14.1219 5.625 13.8125V12.6875C5.625 12.3781 5.87813 12.125 6.1875 12.125ZM9 12.6875C9 12.3781 9.25313 12.125 9.5625 12.125H10.6875C10.9969 12.125 11.25 12.3781 11.25 12.6875V13.8125C11.25 14.1219 10.9969 14.375 10.6875 14.375H9.5625C9.25313 14.375 9 14.1219 9 13.8125V12.6875ZM2.8125 7.625H3.9375C4.24687 7.625 4.5 7.87812 4.5 8.1875V9.3125C4.5 9.62187 4.24687 9.875 3.9375 9.875H2.8125C2.50312 9.875 2.25 9.62187 2.25 9.3125V8.1875C2.25 7.87812 2.50312 7.625 2.8125 7.625ZM5.625 8.1875C5.625 7.87812 5.87813 7.625 6.1875 7.625H7.3125C7.62187 7.625 7.875 7.87812 7.875 8.1875V9.3125C7.875 9.62187 7.62187 9.875 7.3125 9.875H6.1875C5.87813 9.875 5.625 9.62187 5.625 9.3125V8.1875ZM9.5625 7.625H10.6875C10.9969 7.625 11.25 7.87812 11.25 8.1875V9.3125C11.25 9.62187 10.9969 9.875 10.6875 9.875H9.5625C9.25313 9.875 9 9.62187 9 9.3125V8.1875C9 7.87812 9.25313 7.625 9.5625 7.625ZM20.25 13.8125C20.25 13.0666 19.9537 12.3512 19.4262 11.8238C18.8988 11.2963 18.1834 11 17.4375 11C16.6916 11 15.9762 11.2963 15.4488 11.8238C14.9213 12.3512 14.625 13.0666 14.625 13.8125C14.625 14.5584 14.9213 15.2738 15.4488 15.8012C15.9762 16.3287 16.6916 16.625 17.4375 16.625C18.1834 16.625 18.8988 16.3287 19.4262 15.8012C19.9537 15.2738 20.25 14.5584 20.25 13.8125ZM12.375 21.023C12.375 21.7016 12.9234 22.25 13.602 22.25H21.273C21.9516 22.25 22.5 21.7016 22.5 21.023C22.5 19.216 21.034 17.75 19.227 17.75H15.648C13.841 17.75 12.375 19.216 12.375 21.023Z"
+                      fill="#2563EB"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_555_1476">
+                      <path d="M0 4.25H22.5V22.25H0V4.25Z" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+
+                Ownership Entity
+              </h4>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <div>
+                    <p class="ct_tex_6B7280 ct_fs_14 mb-1">Owning Entity</p>
+                    <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                      BlueStone Holdings LLC
+                    </h4>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div>
+                    <p class="ct_tex_6B7280 ct_fs_14 mb-1">Contact Person</p>
+                    <h4 class="mb-0 ct_fw_500 ct_fs_16">John Richards</h4>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div>
+                    <p class="ct_tex_6B7280 ct_fs_14 mb-1">Entity Type</p>
+                    <h4 class="mb-0 ct_fw_500 ct_fs_16">Registered Company</h4>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div>
+                    <p class="ct_tex_6B7280 ct_fs_14 mb-1">Contact Number</p>
+                    <h4 class="mb-0 ct_fw_500 ct_fs_16">+1 202 555 0123</h4>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div>
+                    <p class="ct_tex_6B7280 ct_fs_14 mb-1">
+                      Registered Address
+                    </p>
+                    <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                      250 Grand Blvd, Suite 10, Miami, FL
+                    </h4>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div>
+                    <p class="ct_tex_6B7280 ct_fs_14 mb-1">
+                      Proof of Ownership
+                    </p>
+                    <h4 class="mb-0 ct_fw_500 ct_fs_16" style="color: #2563eb">
+                      <i class="fa-solid fa-download me-1"></i>ownership_doc.pdf
+                    </h4>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="text-end mt-4">
-            <a [routerLink]="['/home/view-agent']" [queryParams]="{ agent_id: properyData?.agent_id }"
-              class="ct_green_clr ct_fw_600">View Profile</a>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="ct_white_bg h-100 mt-4 p-4">
+              <h4
+                class="ct_fs_18 ct_fw_600 mb-4 ct_pe_40 d-flex align-items-center gap-2"
+              >
+                <svg
+                  width="12"
+                  height="28"
+                  viewBox="0 0 12 28"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M11.25 28H0V0H11.25V28Z" stroke="#E5E7EB" />
+                  <g clip-path="url(#clip0_555_1516)">
+                    <path
+                      d="M5.62481 4.25C6.24707 4.25 6.74981 4.75273 6.74981 5.375V6.63008C6.80606 6.63711 6.85879 6.64414 6.91504 6.65469C6.9291 6.6582 6.93965 6.6582 6.95371 6.66172L8.64121 6.97109C9.25293 7.08359 9.65723 7.6707 9.54473 8.27891C9.43223 8.88711 8.84512 9.29492 8.23692 9.18242L6.56699 8.87656C5.4666 8.71484 4.49629 8.82383 3.81426 9.09453C3.13223 9.36523 2.85801 9.73789 2.79473 10.0824C2.72442 10.4586 2.77715 10.6695 2.83692 10.7996C2.9002 10.9367 3.03028 11.0914 3.28692 11.2637C3.85996 11.6398 4.73887 11.8859 5.87793 12.1883L5.97989 12.2164C6.98535 12.4836 8.21582 12.807 9.12989 13.4047C9.6291 13.7316 10.1002 14.1746 10.392 14.7934C10.6908 15.4227 10.7541 16.1258 10.617 16.8746C10.3744 18.2105 9.45332 19.1035 8.31074 19.5711C7.8291 19.768 7.30528 19.8945 6.74981 19.9578V21.125C6.74981 21.7473 6.24707 22.25 5.62481 22.25C5.00254 22.25 4.49981 21.7473 4.49981 21.125V19.898C4.48574 19.8945 4.46817 19.8945 4.4541 19.891H4.44707C3.58926 19.7574 2.17949 19.3883 1.23028 18.9664C0.66426 18.7133 0.407619 18.0488 0.660744 17.4828C0.913869 16.9168 1.57832 16.6602 2.14434 16.9133C2.8791 17.2402 4.08848 17.5637 4.78809 17.6727C5.90957 17.8379 6.83418 17.743 7.45996 17.4863C8.0541 17.2437 8.32481 16.8922 8.40215 16.4703C8.46895 16.0977 8.41621 15.8832 8.35645 15.7531C8.28965 15.6125 8.15957 15.4578 7.89942 15.2855C7.32285 14.9094 6.44043 14.6633 5.29785 14.3609L5.19942 14.3363C4.19746 14.0691 2.96699 13.7422 2.05293 13.1445C1.55371 12.8176 1.08613 12.3711 0.794338 11.7523C0.499025 11.123 0.43926 10.4199 0.579885 9.67109C0.83301 8.32812 1.83848 7.45625 2.98106 7.00273C3.44863 6.81641 3.96192 6.68984 4.49981 6.61602V5.375C4.49981 4.75273 5.00254 4.25 5.62481 4.25Z"
+                      fill="#2563EB"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_555_1516">
+                      <path d="M0 4.25H11.25V22.25H0V4.25Z" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+                Price & Assets
+              </h4>
+              <ul>
+                <li class="mb-3">
+                  <p class="mb-1 ct_tex_6B7280 ct_fs_14">Asking Price</p>
+                  <h4 class="ct_fs_24 ct_fw_600 ct_green_text mb-0">
+                    $8,500,000
+                  </h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Included Assets</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                    Tenant leases, Fixtures, Structure, Land, Parking
+                  </h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Asset Details</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                    Includes 4 retail units, 2 levels of parking, and rooftop
+                    solar installation.
+                  </h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Attachments</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16" style="color: #2563eb">
+                    <i class="fa-solid fa-paperclip me-1"></i>asset_overview.pdf
+                  </h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="ct_white_bg h-100 mt-4 p-4">
+              <h4
+                class="ct_fs_18 ct_fw_600 mb-4 ct_pe_40 d-flex align-items-center gap-2"
+              >
+                <svg
+                  width="18"
+                  height="28"
+                  viewBox="0 0 18 28"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M18 28H0V0H18V28Z" stroke="#E5E7EB" />
+                  <g clip-path="url(#clip0_555_1545)">
+                    <path
+                      d="M11.201 4.58057C10.7615 4.14111 10.0479 4.14111 9.6084 4.58057L5.38965 8.79932C4.9502 9.23877 4.9502 9.95244 5.38965 10.3919L5.95215 10.9544C6.3916 11.3938 7.10527 11.3938 7.54473 10.9544L7.68535 10.8138L11.44 14.5649L11.2994 14.7056C10.86 15.145 10.86 15.8587 11.2994 16.2981L11.8619 16.8606C12.3014 17.3001 13.015 17.3001 13.4545 16.8606L17.6732 12.6419C18.1127 12.2024 18.1127 11.4888 17.6732 11.0493L17.1107 10.4868C16.6713 10.0474 15.9576 10.0474 15.5182 10.4868L15.3775 10.6274L11.6229 6.87275L11.7635 6.73213C12.2029 6.29268 12.2029 5.579 11.7635 5.13955L11.201 4.57705V4.58057ZM5.85723 14.7056C5.41777 14.2661 4.7041 14.2661 4.26465 14.7056L0.327148 18.6431C-0.112305 19.0825 -0.112305 19.7962 0.327148 20.2356L2.01465 21.9231C2.4541 22.3626 3.16777 22.3626 3.60723 21.9231L7.54473 17.9856C7.98418 17.5462 7.98418 16.8325 7.54473 16.3931L7.49551 16.3438L9.5627 14.2802L7.97012 12.6876L5.90645 14.7513L5.85723 14.7021V14.7056Z"
+                      fill="#2563EB"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_555_1545">
+                      <path d="M0 4.25H18V22.25H0V4.25Z" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+
+                Liens & Encumbrances
+              </h4>
+              <ul>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Lien Type</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">Mortgage</h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Holder Name</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">First Trust Bank</h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Outstanding Amount</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16 text-danger">
+                    $1,200,000
+                  </h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Notes</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                    Expected to be cleared before closing.
+                  </h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Supporting Docs</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16" style="color: #2563eb">
+                    <i class="fa-solid fa-file-pdf me-1"></i>lien_document.pdf
+                  </h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 mb-4">
+            <div class="ct_white_bg h-auto mt-4 p-4">
+              <h4
+                class="ct_fs_18 ct_fw_600 mb-4 ct_pe_40 d-flex align-items-center gap-2"
+              >
+                <svg
+                  width="16"
+                  height="28"
+                  viewBox="0 0 16 28"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M15.75 28H0V0H15.75V28Z" stroke="#E5E7EB" />
+                  <g clip-path="url(#clip0_555_1578)">
+                    <path
+                      d="M3.375 5.375V6.5H1.6875C0.755859 6.5 0 7.25586 0 8.1875V9.875H15.75V8.1875C15.75 7.25586 14.9941 6.5 14.0625 6.5H12.375V5.375C12.375 4.75273 11.8723 4.25 11.25 4.25C10.6277 4.25 10.125 4.75273 10.125 5.375V6.5H5.625V5.375C5.625 4.75273 5.12227 4.25 4.5 4.25C3.87773 4.25 3.375 4.75273 3.375 5.375ZM15.75 11H0V20.5625C0 21.4941 0.755859 22.25 1.6875 22.25H14.0625C14.9941 22.25 15.75 21.4941 15.75 20.5625V11Z"
+                      fill="#2563EB"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_555_1578">
+                      <path d="M0 4.25H15.75V22.25H0V4.25Z" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+
+                Timeline & Transition Plans
+              </h4>
+
+              <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                  <p class="mb-1 ct_tex_6B7280 ct_fs_14">Target Sell Date</p>
+                  <h4 class="ct_fs_16 ct_fw_600 mb-0">30/12/2025</h4>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                  <p class="mb-1 ct_tex_6B7280 ct_fs_14">Handover Timeline</p>
+                  <h4 class="ct_fs_16 ct_fw_600 mb-0">
+                    Within 6 months of sale
+                  </h4>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                  <p class="mb-1 ct_tex_6B7280 ct_fs_14">
+                    Tenant Transition Plan
+                  </p>
+                  <h4 class="ct_fs_16 mb-0">
+                    Existing tenants on long-term leases to continue under new
+                    ownership.
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="ct_fs_24 mb-4 ct_fw_600">Due Diligence Materials</h4>
+            <p>Uploaded Documents</p>
+            <ul class="ct_para_scroll ct_custom_scroll">
+              <li>
+                <div class="ct_outline_bg d-flex align-items-center gap-3 py-2 px-4">
+                  <img
+                    src="img/empty_doc.png"
+                    alt=""
+                    class="ct_flex_shrink_0 ct_img_40 ct_border_radius_5"
+                  />
+                  <div
+                    class="d-flex align-items-center justify-content-between gap-3 ct_flex_1"
+                  >
+                   <div>
+                     <h5 class="ct_fs_16 ct_fw_600 mb-0">
+                      Title Report.pdf
+                    </h5>
+                    <p class="mb-0 ct_text_4B5563">2.4 MB</p>
+                   </div>
+                    <a
+                      ><i
+                        data-bs-toggle="modal"
+                        data-bs-target="#full_view_img"
+                        class="fa-regular fa-eye"
+                      ></i
+                    ></a>
+                  </div>
+                </div>
+              </li>
+               <li class="mt-4">
+                <div class="ct_outline_bg d-flex align-items-center gap-3 py-2 px-4">
+                  <img
+                    src="img/empty_doc.png"
+                    alt=""
+                    class="ct_flex_shrink_0 ct_img_40 ct_border_radius_5"
+                  />
+                  <div
+                    class="d-flex align-items-center justify-content-between gap-3 ct_flex_1"
+                  >
+                   <div>
+                     <h5 class="ct_fs_16 ct_fw_600 mb-0">
+                      Title Report.pdf
+                    </h5>
+                    <p class="mb-0 ct_text_4B5563">2.4 MB</p>
+                   </div>
+                    <a
+                      ><i
+                        data-bs-toggle="modal"
+                        data-bs-target="#full_view_img"
+                        class="fa-regular fa-eye"
+                      ></i
+                    ></a>
+                  </div>
+                </div>
+              </li>
+               <li class="mt-4">
+                <div class="ct_outline_bg d-flex align-items-center gap-3 py-2 px-4">
+                  <img
+                    src="img/empty_doc.png"
+                    alt=""
+                    class="ct_flex_shrink_0 ct_img_40 ct_border_radius_5"
+                  />
+                  <div
+                    class="d-flex align-items-center justify-content-between gap-3 ct_flex_1"
+                  >
+                   <div>
+                     <h5 class="ct_fs_16 ct_fw_600 mb-0">
+                      Title Report.pdf
+                    </h5>
+                    <p class="mb-0 ct_text_4B5563">2.4 MB</p>
+                   </div>
+                    <a
+                      ><i
+                        data-bs-toggle="modal"
+                        data-bs-target="#full_view_img"
+                        class="fa-regular fa-eye"
+                      ></i
+                    ></a>
+                  </div>
+                </div>
+              </li>
+               <li class="mt-4">
+                <div class="ct_outline_bg d-flex align-items-center gap-3 py-2 px-4">
+                  <img
+                    src="img/empty_doc.png"
+                    alt=""
+                    class="ct_flex_shrink_0 ct_img_40 ct_border_radius_5"
+                  />
+                  <div
+                    class="d-flex align-items-center justify-content-between gap-3 ct_flex_1"
+                  >
+                   <div>
+                     <h5 class="ct_fs_16 ct_fw_600 mb-0">
+                      Title Report.pdf
+                    </h5>
+                    <p class="mb-0 ct_text_4B5563">2.4 MB</p>
+                   </div>
+                    <a
+                      ><i
+                        data-bs-toggle="modal"
+                        data-bs-target="#full_view_img"
+                        class="fa-regular fa-eye"
+                      ></i
+                    ></a>
+                  </div>
+                </div>
+              </li>
+               <li class="mt-4">
+                <div class="ct_outline_bg d-flex align-items-center gap-3 py-2 px-4">
+                  <img
+                    src="img/empty_doc.png"
+                    alt=""
+                    class="ct_flex_shrink_0 ct_img_40 ct_border_radius_5"
+                  />
+                  <div
+                    class="d-flex align-items-center justify-content-between gap-3 ct_flex_1"
+                  >
+                   <div>
+                     <h5 class="ct_fs_16 ct_fw_600 mb-0">
+                      Title Report.pdf
+                    </h5>
+                    <p class="mb-0 ct_text_4B5563">2.4 MB</p>
+                   </div>
+                    <a
+                      ><i
+                        data-bs-toggle="modal"
+                        data-bs-target="#full_view_img"
+                        class="fa-regular fa-eye"
+                      ></i
+                    ></a>
+                  </div>
+                </div>
+              </li>
+               <li class="mt-4">
+                <div class="ct_outline_bg d-flex align-items-center gap-3 py-2 px-4">
+                  <img
+                    src="img/empty_doc.png"
+                    alt=""
+                    class="ct_flex_shrink_0 ct_img_40 ct_border_radius_5"
+                  />
+                  <div
+                    class="d-flex align-items-center justify-content-between gap-3 ct_flex_1"
+                  >
+                   <div>
+                     <h5 class="ct_fs_16 ct_fw_600 mb-0">
+                      Title Report.pdf
+                    </h5>
+                    <p class="mb-0 ct_text_4B5563">2.4 MB</p>
+                   </div>
+                    <a
+                      ><i
+                        data-bs-toggle="modal"
+                        data-bs-target="#full_view_img"
+                        class="fa-regular fa-eye"
+                      ></i
+                    ></a>
+                  </div>
+                </div>
+              </li>
+               <li class="mt-4">
+                <div class="ct_outline_bg d-flex align-items-center gap-3 py-2 px-4">
+                  <img
+                    src="img/empty_doc.png"
+                    alt=""
+                    class="ct_flex_shrink_0 ct_img_40 ct_border_radius_5"
+                  />
+                  <div
+                    class="d-flex align-items-center justify-content-between gap-3 ct_flex_1"
+                  >
+                   <div>
+                     <h5 class="ct_fs_16 ct_fw_600 mb-0">
+                      Title Report.pdf
+                    </h5>
+                    <p class="mb-0 ct_text_4B5563">2.4 MB</p>
+                   </div>
+                    <a
+                      ><i
+                        data-bs-toggle="modal"
+                        data-bs-target="#full_view_img"
+                        class="fa-regular fa-eye"
+                      ></i
+                    ></a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+          <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="ct_white_bg h-100 mt-4 p-4">
+              <h4
+                class="ct_fs_18 ct_fw_600 mb-4 ct_pe_40 d-flex align-items-center gap-2"
+              >
+                <svg
+                  width="12"
+                  height="28"
+                  viewBox="0 0 12 28"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M11.25 28H0V0H11.25V28Z" stroke="#E5E7EB" />
+                  <g clip-path="url(#clip0_555_1516)">
+                    <path
+                      d="M5.62481 4.25C6.24707 4.25 6.74981 4.75273 6.74981 5.375V6.63008C6.80606 6.63711 6.85879 6.64414 6.91504 6.65469C6.9291 6.6582 6.93965 6.6582 6.95371 6.66172L8.64121 6.97109C9.25293 7.08359 9.65723 7.6707 9.54473 8.27891C9.43223 8.88711 8.84512 9.29492 8.23692 9.18242L6.56699 8.87656C5.4666 8.71484 4.49629 8.82383 3.81426 9.09453C3.13223 9.36523 2.85801 9.73789 2.79473 10.0824C2.72442 10.4586 2.77715 10.6695 2.83692 10.7996C2.9002 10.9367 3.03028 11.0914 3.28692 11.2637C3.85996 11.6398 4.73887 11.8859 5.87793 12.1883L5.97989 12.2164C6.98535 12.4836 8.21582 12.807 9.12989 13.4047C9.6291 13.7316 10.1002 14.1746 10.392 14.7934C10.6908 15.4227 10.7541 16.1258 10.617 16.8746C10.3744 18.2105 9.45332 19.1035 8.31074 19.5711C7.8291 19.768 7.30528 19.8945 6.74981 19.9578V21.125C6.74981 21.7473 6.24707 22.25 5.62481 22.25C5.00254 22.25 4.49981 21.7473 4.49981 21.125V19.898C4.48574 19.8945 4.46817 19.8945 4.4541 19.891H4.44707C3.58926 19.7574 2.17949 19.3883 1.23028 18.9664C0.66426 18.7133 0.407619 18.0488 0.660744 17.4828C0.913869 16.9168 1.57832 16.6602 2.14434 16.9133C2.8791 17.2402 4.08848 17.5637 4.78809 17.6727C5.90957 17.8379 6.83418 17.743 7.45996 17.4863C8.0541 17.2437 8.32481 16.8922 8.40215 16.4703C8.46895 16.0977 8.41621 15.8832 8.35645 15.7531C8.28965 15.6125 8.15957 15.4578 7.89942 15.2855C7.32285 14.9094 6.44043 14.6633 5.29785 14.3609L5.19942 14.3363C4.19746 14.0691 2.96699 13.7422 2.05293 13.1445C1.55371 12.8176 1.08613 12.3711 0.794338 11.7523C0.499025 11.123 0.43926 10.4199 0.579885 9.67109C0.83301 8.32812 1.83848 7.45625 2.98106 7.00273C3.44863 6.81641 3.96192 6.68984 4.49981 6.61602V5.375C4.49981 4.75273 5.00254 4.25 5.62481 4.25Z"
+                      fill="#2563EB"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_555_1516">
+                      <path d="M0 4.25H11.25V22.25H0V4.25Z" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+               Listing Preferences
+              </h4>
+              <ul>
+                <li class="mb-3">
+                  <p class="mb-1 ct_tex_6B7280 ct_fs_14">Preferred Title</p>
+                  <h4 class="ct_fs_16 ct_fw_500 mb-0">
+                    Prime Riverside Commercial Hub – Fully Leased Retail Plaza
+                  </h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Description</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                    A high-demand retail property located in Miami's most active district. Fully leased with stable tenants and strong annual yields.
+                  </h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Key Highlights</p>
+                  <div class="d-flex align-items-center gap-3 flex-wrap">
+                    <span class="ct_custom_badge py-1" style="background-color: #DBEAFE;color: #1E40AF;">High-demand location</span>
+                    <span class="ct_custom_badge py-1" style="background-color: #DBEAFE;color: #1E40AF;">Long-term leases</span>
+                    <span class="ct_custom_badge py-1" style="background-color: #DBEAFE;color: #1E40AF;">Renovated in 2024</span>
+
+                  </div>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Contact Info</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                  John Richards <br>
+                  john&#64;bluestoneholdings.com <br>
+                  +1 202 555 0123
+                  </h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="ct_white_bg h-100 mt-4 p-4">
+              <h4
+                class="ct_fs_18 ct_fw_600 mb-4 ct_pe_40 d-flex align-items-center gap-2"
+              >
+                <svg
+                  width="18"
+                  height="28"
+                  viewBox="0 0 18 28"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M18 28H0V0H18V28Z" stroke="#E5E7EB" />
+                  <g clip-path="url(#clip0_555_1545)">
+                    <path
+                      d="M11.201 4.58057C10.7615 4.14111 10.0479 4.14111 9.6084 4.58057L5.38965 8.79932C4.9502 9.23877 4.9502 9.95244 5.38965 10.3919L5.95215 10.9544C6.3916 11.3938 7.10527 11.3938 7.54473 10.9544L7.68535 10.8138L11.44 14.5649L11.2994 14.7056C10.86 15.145 10.86 15.8587 11.2994 16.2981L11.8619 16.8606C12.3014 17.3001 13.015 17.3001 13.4545 16.8606L17.6732 12.6419C18.1127 12.2024 18.1127 11.4888 17.6732 11.0493L17.1107 10.4868C16.6713 10.0474 15.9576 10.0474 15.5182 10.4868L15.3775 10.6274L11.6229 6.87275L11.7635 6.73213C12.2029 6.29268 12.2029 5.579 11.7635 5.13955L11.201 4.57705V4.58057ZM5.85723 14.7056C5.41777 14.2661 4.7041 14.2661 4.26465 14.7056L0.327148 18.6431C-0.112305 19.0825 -0.112305 19.7962 0.327148 20.2356L2.01465 21.9231C2.4541 22.3626 3.16777 22.3626 3.60723 21.9231L7.54473 17.9856C7.98418 17.5462 7.98418 16.8325 7.54473 16.3931L7.49551 16.3438L9.5627 14.2802L7.97012 12.6876L5.90645 14.7513L5.85723 14.7021V14.7056Z"
+                      fill="#2563EB"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_555_1545">
+                      <path d="M0 4.25H18V22.25H0V4.25Z" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+
+               Additional Notes
+              </h4>
+              <ul>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Special Requirements</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">Buyer to maintain existing management team for 6 months post-sale.</h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Disclosures</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16 text-center " style="color: #A16207; padding: 11px 16px;background-color: #FEFCE8;">Environmental certification pending renewal.</h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Document Visibility</p>
+                  <div class="d-flex align-items-center gap-2 justify-content-between">
+                     <h4 class="mb-0 ct_fw_500 ct_fs_16 ">
+                   rent_roll.pdf
+                  </h4>
+                  <span class="ct_custom_badge py-1" style="color: #166534; background-color: #DCFCE7;">Public</span>
+                  </div>
+                    <div class="d-flex align-items-center gap-2 justify-content-between mt-2">
+                     <h4 class="mb-0 ct_fw_500 ct_fs_16 ">
+                   rent_roll.pdf
+                  </h4>
+                  <span class="ct_custom_badge py-1" style="color: #9A3412; background-color: #FFEDD5;">Investor-only</span>
+                  </div>
+                </li>
+             
+             
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -295,46 +865,79 @@
   </div>
 </div>
 
-
-
-
-<div class="modal fade" id="ct_reject" tabindex="-1" aria-labelledby="ct_delete_postLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="ct_reject"
+  tabindex="-1"
+  aria-labelledby="ct_delete_postLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body pt-5 pb-4">
         <div class="ct_delete_post_modal">
           <figure>
             <div class="ct_delete_post_icon text-center">
-              <svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg
+                width="48"
+                height="49"
+                viewBox="0 0 48 49"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <g clip-path="url(#clip0_107_2124)">
                   <path
                     d="M24 0.166992C10.7452 0.166992 0 10.9122 0 24.167V24.203C0 37.4578 10.7092 48.167 23.964 48.167H24C37.2548 48.167 48 37.4578 48 24.203V24.167C48 10.9122 37.2908 0.166992 24.036 0.166992H24Z"
-                    fill="#81101E" fill-opacity="0.1" />
-                  <mask id="mask0_107_2124" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="12" y="12"
-                    width="24" height="25">
+                    fill="#81101E"
+                    fill-opacity="0.1"
+                  />
+                  <mask
+                    id="mask0_107_2124"
+                    style="mask-type: luminance"
+                    maskUnits="userSpaceOnUse"
+                    x="12"
+                    y="12"
+                    width="24"
+                    height="25"
+                  >
                     <path d="M12 12.167H36V36.167H12V12.167Z" fill="white" />
                   </mask>
                   <g mask="url(#mask0_107_2124)">
-                    <mask id="mask1_107_2124" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="12" y="12"
-                      width="24" height="25">
+                    <mask
+                      id="mask1_107_2124"
+                      style="mask-type: luminance"
+                      maskUnits="userSpaceOnUse"
+                      x="12"
+                      y="12"
+                      width="24"
+                      height="25"
+                    >
                       <path d="M12 12.167H36V36.167H12V12.167Z" fill="white" />
                     </mask>
                     <g mask="url(#mask1_107_2124)">
                       <path
                         d="M16.0109 32.3349H31.9887C32.1404 32.3349 32.2661 32.3066 32.3659 32.2499C32.4658 32.1933 32.5546 32.0998 32.6324 31.9695C32.7102 31.8393 32.7504 31.7167 32.7529 31.6019C32.7554 31.4872 32.7207 31.363 32.6488 31.2294L24.6604 16.3935C24.591 16.2647 24.4963 16.1659 24.3763 16.0973C24.2617 16.0318 24.1362 15.999 23.9998 15.999C23.8635 15.999 23.738 16.0318 23.6233 16.0973C23.5033 16.1659 23.4086 16.2647 23.3391 16.3937L15.3508 31.2294C15.2789 31.363 15.2442 31.4872 15.2467 31.6019C15.2493 31.7167 15.2895 31.8393 15.3673 31.9695C15.4451 32.0998 15.5339 32.1933 15.6337 32.2499C15.7335 32.3066 15.8592 32.3349 16.0109 32.3349ZM16.0108 33.8349C15.5951 33.8349 15.2225 33.7414 14.8932 33.5544C14.5638 33.3674 14.2926 33.0955 14.0794 32.7386C13.8663 32.3817 13.7555 32.0139 13.7471 31.6353C13.7387 31.2567 13.833 30.8843 14.0301 30.5183L22.0186 15.6822C22.2238 15.3014 22.5105 15.0057 22.8788 14.7952C23.2241 14.5977 23.5978 14.499 23.9998 14.499C24.4019 14.499 24.7755 14.5977 25.1208 14.7952C25.4891 15.0057 25.7759 15.3015 25.9811 15.6824L33.9696 30.5183C34.1667 30.8843 34.261 31.2567 34.2525 31.6353C34.2441 32.0139 34.1333 32.3817 33.9202 32.7386C33.7071 33.0955 33.4358 33.3674 33.1064 33.5544C32.7771 33.7414 32.4045 33.8349 31.9887 33.8349H16.0108Z"
-                        fill="#81101E" />
+                        fill="#81101E"
+                      />
                       <path
                         d="M24.4799 21.2908L24.749 27.0095L23.9998 27.0448L23.2506 27.0096L23.5192 21.2932C23.5129 21.4319 23.5577 21.5508 23.6536 21.6502C23.7494 21.7495 23.8663 21.7984 24.0043 21.7971C24.1397 21.7958 24.2541 21.7462 24.3475 21.6483C24.441 21.5504 24.4852 21.4338 24.4803 21.2986L24.4799 21.2908ZM22.9813 21.3535C22.9708 21.0669 23.0645 20.82 23.2625 20.6125C23.4605 20.4051 23.7029 20.3 23.9897 20.2972C24.2821 20.2943 24.5299 20.3981 24.7329 20.6086C24.936 20.819 25.0309 21.0707 25.0176 21.3636L24.749 27.08C24.7468 27.1262 24.7404 27.1719 24.7298 27.2169C24.7192 27.262 24.7045 27.3057 24.6858 27.348C24.6671 27.3903 24.6447 27.4306 24.6185 27.4688C24.5923 27.5069 24.5629 27.5424 24.5302 27.5751C24.4974 27.6078 24.462 27.6373 24.4238 27.6634C24.3856 27.6896 24.3454 27.7121 24.3031 27.7308C24.2607 27.7495 24.217 27.7641 24.172 27.7748C24.1269 27.7854 24.0813 27.7918 24.0351 27.794C23.9859 27.7963 23.9369 27.7938 23.8882 27.7864C23.8395 27.7791 23.792 27.7671 23.7457 27.7504C23.6994 27.7337 23.6551 27.7127 23.6129 27.6873C23.5707 27.6619 23.5314 27.6326 23.495 27.5995C23.4586 27.5663 23.4257 27.5299 23.3965 27.4903C23.3672 27.4507 23.3421 27.4086 23.3212 27.3641C23.3002 27.3195 23.2838 27.2733 23.2719 27.2255C23.2601 27.1777 23.253 27.1292 23.2507 27.08L22.9816 21.3613L22.9813 21.3535Z"
-                        fill="#81101E" />
+                        fill="#81101E"
+                      />
                       <path
                         d="M24 30.7881C23.7411 30.7881 23.5201 30.6966 23.3371 30.5135C23.154 30.3304 23.0625 30.1095 23.0625 29.8506C23.0625 29.5917 23.154 29.3707 23.3371 29.1877C23.5201 29.0046 23.7411 28.9131 24 28.9131C24.2589 28.9131 24.4798 29.0046 24.6629 29.1877C24.846 29.3707 24.9375 29.5917 24.9375 29.8506C24.9375 30.1095 24.846 30.3304 24.6629 30.5135C24.4798 30.6966 24.2589 30.7881 24 30.7881Z"
-                        fill="#81101E" />
+                        fill="#81101E"
+                      />
                     </g>
                   </g>
                 </g>
                 <defs>
                   <clipPath id="clip0_107_2124">
-                    <rect width="48" height="48" fill="white" transform="translate(0 0.166992)" />
+                    <rect
+                      width="48"
+                      height="48"
+                      fill="white"
+                      transform="translate(0 0.166992)"
+                    />
                   </clipPath>
                 </defs>
               </svg>
@@ -344,14 +947,31 @@
               <p class="mb-0">Are you sure you want to reject this property?</p>
             </figcaption>
           </figure>
-          <div class="modal-footer justify-content-center border-0 ct_modal_footer">
-            <button type="button" class="ct_outline_btn w-100 ct_fw_600" data-bs-dismiss="modal">
+          <div
+            class="modal-footer justify-content-center border-0 ct_modal_footer"
+          >
+            <button
+              type="button"
+              class="ct_outline_btn w-100 ct_fw_600"
+              data-bs-dismiss="modal"
+            >
               Cancel
             </button>
-            <a (click)="reject()" class="ct_border_radius_10 ct_dark_green_btn w-100 ct_fw_600 text-center">
+            <a
+              (click)="reject()"
+              class="ct_border_radius_10 ct_dark_green_btn w-100 ct_fw_600 text-center"
+            >
               Yes
             </a>
-            <button hidden type="button" class="btn btn-secondary" #closeModalRej data-bs-dismiss="modal">Close</button>
+            <button
+              hidden
+              type="button"
+              class="btn btn-secondary"
+              #closeModalRej
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
           </div>
         </div>
       </div>
@@ -359,29 +979,53 @@
   </div>
 </div>
 
-
-<div class="modal fade" id="ct_accept" tabindex="-1" aria-labelledby="ct_delete_postLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="ct_accept"
+  tabindex="-1"
+  aria-labelledby="ct_delete_postLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body pt-5 pb-4">
         <div class="ct_delete_post_modal">
           <figure>
             <div class="ct_delete_post_icon text-center">
-              <img src="img/right.png" alt="" class="ct_img_34">
+              <img src="img/right.png" alt="" class="ct_img_34" />
             </div>
             <figcaption class="mt-4 text-center">
               <h4 class="ct_fs_18 ct_fw_600">Approve Property</h4>
-              <p class="mb-0">Are you sure you want to approve this property?</p>
+              <p class="mb-0">
+                Are you sure you want to approve this property?
+              </p>
             </figcaption>
           </figure>
-          <div class="modal-footer justify-content-center border-0 ct_modal_footer">
-            <button type="button" class="ct_outline_btn w-100 ct_fw_600" data-bs-dismiss="modal">
+          <div
+            class="modal-footer justify-content-center border-0 ct_modal_footer"
+          >
+            <button
+              type="button"
+              class="ct_outline_btn w-100 ct_fw_600"
+              data-bs-dismiss="modal"
+            >
               Cancel
             </button>
-            <a (click)="accept()" class="ct_border_radius_10 ct_dark_green_btn w-100 ct_fw_600 text-center">
+            <a
+              (click)="accept()"
+              class="ct_border_radius_10 ct_dark_green_btn w-100 ct_fw_600 text-center"
+            >
               Yes
             </a>
-            <button hidden type="button" class="btn btn-secondary" #closeModalAcc data-bs-dismiss="modal">Close</button>
+            <button
+              hidden
+              type="button"
+              class="btn btn-secondary"
+              #closeModalAcc
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
           </div>
         </div>
       </div>
@@ -390,13 +1034,23 @@
 </div>
 
 <!-- Show all Photos Modal S -->
-<div class="modal fade modal-lg" id="ct_show_all_photos" tabindex="-1" aria-labelledby="ct_show_all_photosLabel"
-  aria-hidden="true">
+<div
+  class="modal fade modal-lg"
+  id="ct_show_all_photos"
+  tabindex="-1"
+  aria-labelledby="ct_show_all_photosLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-dialog-centered">
-    <div class=" modal-content">
+    <div class="modal-content">
       <div class="modal-header border-0 pb-2">
         <h4 class="ct_fs_20 ct_fw_600 mb-0">All Photos</h4>
-        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <!-- <div class="owl-carousel owl-theme ct_product_gallary_slider">
@@ -418,7 +1072,6 @@
         </div> -->
 
         <div class="ct_post_slider_img mb-3">
-
           <!-- Show VIDEO -->
           <!-- <video *ngIf="userData.media_type == 'VIDEO'" [src]="userData.video"
                 [poster]="userData.thumbnail" controls width="100%">
@@ -435,9 +1088,7 @@
             @if(images?.length > 1){
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
-            }
-          
-            @if(images?.length > 1){
+            } @if(images?.length > 1){
             <div class="swiper mySwiperThumbs ct_card_small_thumb mt-3">
               <div class="swiper-wrapper">
                 <div class="swiper-slide" *ngFor="let img of images">
@@ -448,9 +1099,7 @@
             }
           </div>
           <!-- </div> -->
-
         </div>
-
       </div>
     </div>
   </div>
