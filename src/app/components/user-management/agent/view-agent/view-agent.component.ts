@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { CommonService } from '../../../../services/common.service';
 import { Location } from '@angular/common';
@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-view-agent',
-  imports: [RouterLink, CommonModule],
+  imports: [CommonModule],
   templateUrl: './view-agent.component.html',
   styleUrl: './view-agent.component.css'
 })

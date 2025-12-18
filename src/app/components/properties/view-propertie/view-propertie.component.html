@@ -183,21 +183,12 @@
                 <div class="col-md-12">
                   <p class="ct_tex_6B7280 ct_fs_14 mb-2">Photos</p>
                   <ul class="ct_photo_gallery_list position-relative ct_para_scroll ct_custom_scroll">
+                    @for (url of properyData?.listing.images.slice(0, 4); track $index) {
                     <li>
-                      <img src="img/gallary_img_1.png" />
+                      <img [src]="url" />
                     </li>
-                    <li>
-                      <img src="img/gallary_img_1.png" />
-                    </li>
-                    <li>
-                      <img src="img/gallary_img_1.png" />
-                    </li>
-                    <li>
-                      <img src="img/gallary_img_1.png" />
-                    </li>
-                    <li>
-                      <img src="img/gallary_img_1.png" />
-                    </li>
+                    }
+                    @if(properyData?.listing.images?.length > 4) {
                     <li>
                       <button class="ct_show_all_images_btn" data-bs-toggle="modal"
                         data-bs-target="#ct_show_all_photos">
@@ -205,6 +196,7 @@
                         Show all Photos
                       </button>
                     </li>
+                    }
                   </ul>
                 </div>
               </div>
@@ -283,7 +275,6 @@
                   </div>
                 </div>
                 }
-
               </div>
             </div>
           </div>
@@ -311,7 +302,7 @@
                 <li class="mb-3">
                   <p class="mb-1 ct_tex_6B7280 ct_fs_14">Asking Price</p>
                   <h4 class="ct_fs_24 ct_fw_600 ct_green_text mb-0">
-                    $8,500,000
+                    {{properyData?.listing.asking_price | currency:'USD'}}
                   </h4>
                 </li>
                 <li class="mb-3">
@@ -323,15 +314,16 @@
                 <li class="mb-3">
                   <p class="ct_tex_6B7280 ct_fs_14 mb-1">Asset Details</p>
                   <h4 class="mb-0 ct_fw_500 ct_fs_16">
-                    Includes 4 retail units, 2 levels of parking, and rooftop
-                    solar installation.
+                    {{properyData?.listing.asset_details}}
                   </h4>
                 </li>
                 <li class="mb-3">
                   <p class="ct_tex_6B7280 ct_fs_14 mb-1">Attachments</p>
-                  <h4 class="mb-0 ct_fw_500 ct_fs_16" style="color: #2563eb">
-                    <i class="fa-solid fa-paperclip me-1"></i>asset_overview.pdf
-                  </h4>
+                  <a [href]="properyData?.listing.asset_attachments" download target="_blank"
+                    class="mb-0 ct_fw_500 ct_fs_16 d-inline-block" style="color: #2563eb; cursor: pointer;">
+                    <i class="fa-solid fa-paperclip me-1"></i>
+                    asset_overview.pdf
+                  </a>
                 </li>
               </ul>
             </div>
@@ -352,35 +344,36 @@
                     </clipPath>
                   </defs>
                 </svg>
-
                 Liens & Encumbrances
               </h4>
               <ul>
                 <li class="mb-3">
                   <p class="ct_tex_6B7280 ct_fs_14 mb-1">Lien Type</p>
-                  <h4 class="mb-0 ct_fw_500 ct_fs_16">Mortgage</h4>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing.lien_type_name}}</h4>
                 </li>
                 <li class="mb-3">
                   <p class="ct_tex_6B7280 ct_fs_14 mb-1">Holder Name</p>
-                  <h4 class="mb-0 ct_fw_500 ct_fs_16">First Trust Bank</h4>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing.holder_name}}</h4>
                 </li>
                 <li class="mb-3">
                   <p class="ct_tex_6B7280 ct_fs_14 mb-1">Outstanding Amount</p>
                   <h4 class="mb-0 ct_fw_500 ct_fs_16 text-danger">
-                    $1,200,000
+                    {{properyData?.listing.amount_outstanding | currency:'USD'}}
                   </h4>
                 </li>
                 <li class="mb-3">
                   <p class="ct_tex_6B7280 ct_fs_14 mb-1">Notes</p>
                   <h4 class="mb-0 ct_fw_500 ct_fs_16">
-                    Expected to be cleared before closing.
+                    {{properyData?.listing.lien_notes}}
                   </h4>
                 </li>
                 <li class="mb-3">
-                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Supporting Docs</p>
-                  <h4 class="mb-0 ct_fw_500 ct_fs_16" style="color: #2563eb">
-                    <i class="fa-solid fa-file-pdf me-1"></i>lien_document.pdf
-                  </h4>
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Attachments</p>
+                  <a [href]="properyData?.listing.lien_documents" download target="_blank"
+                    class="mb-0 ct_fw_500 ct_fs_16 d-inline-block" style="color: #2563eb; cursor: pointer;">
+                    <i class="fa-solid fa-paperclip me-1"></i>
+                    lien_document.pdf
+                  </a>
                 </li>
               </ul>
             </div>
@@ -410,12 +403,12 @@
               <div class="row">
                 <div class="col-md-4 mb-3 mb-md-0">
                   <p class="mb-1 ct_tex_6B7280 ct_fs_14">Target Sell Date</p>
-                  <h4 class="ct_fs_16 ct_fw_600 mb-0">30/12/2025</h4>
+                  <h4 class="ct_fs_16 ct_fw_600 mb-0">{{properyData?.listing?.target_sell_date | date}}</h4>
                 </div>
                 <div class="col-md-4 mb-3 mb-md-0">
                   <p class="mb-1 ct_tex_6B7280 ct_fs_14">Handover Timeline</p>
                   <h4 class="ct_fs_16 ct_fw_600 mb-0">
-                    Within 6 months of sale
+                    {{properyData?.listing?.handover_timeline_name}}
                   </h4>
                 </div>
                 <div class="col-md-4 mb-3 mb-md-0">
@@ -423,121 +416,40 @@
                     Tenant Transition Plan
                   </p>
                   <h4 class="ct_fs_16 mb-0">
-                    Existing tenants on long-term leases to continue under new
-                    ownership.
+                    {{properyData?.listing?.tenant_transition_plan}}
                   </h4>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        @if(properyData?.listing?.custom_documents?.length > 0){
         <div class="row">
           <div class="col-md-12">
             <h4 class="ct_fs_24 mb-4 ct_fw_600">Due Diligence Materials</h4>
             <p>Uploaded Documents</p>
             <ul class="ct_para_scroll ct_custom_scroll">
+              @for(item of properyData?.listing?.custom_documents; track $index){
               <li>
                 <div class="ct_outline_bg d-flex align-items-center gap-3 py-2 px-4">
                   <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0 ct_img_40 ct_border_radius_5" />
                   <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
                     <div>
                       <h5 class="ct_fs_16 ct_fw_600 mb-0">
-                        Title Report.pdf
+                        Title Report {{ $index + 1 }}.pdf
                       </h5>
                       <p class="mb-0 ct_text_4B5563">2.4 MB</p>
                     </div>
-                    <a><i data-bs-toggle="modal" data-bs-target="#full_view_img" class="fa-regular fa-eye"></i></a>
+                    <a [href]="item" target="_blank"><i data-bs-toggle="modal" data-bs-target="#full_view_img"
+                        class="fa-regular fa-eye"></i></a>
                   </div>
                 </div>
               </li>
-              <li class="mt-4">
-                <div class="ct_outline_bg d-flex align-items-center gap-3 py-2 px-4">
-                  <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0 ct_img_40 ct_border_radius_5" />
-                  <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
-                    <div>
-                      <h5 class="ct_fs_16 ct_fw_600 mb-0">
-                        Title Report.pdf
-                      </h5>
-                      <p class="mb-0 ct_text_4B5563">2.4 MB</p>
-                    </div>
-                    <a><i data-bs-toggle="modal" data-bs-target="#full_view_img" class="fa-regular fa-eye"></i></a>
-                  </div>
-                </div>
-              </li>
-              <li class="mt-4">
-                <div class="ct_outline_bg d-flex align-items-center gap-3 py-2 px-4">
-                  <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0 ct_img_40 ct_border_radius_5" />
-                  <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
-                    <div>
-                      <h5 class="ct_fs_16 ct_fw_600 mb-0">
-                        Title Report.pdf
-                      </h5>
-                      <p class="mb-0 ct_text_4B5563">2.4 MB</p>
-                    </div>
-                    <a><i data-bs-toggle="modal" data-bs-target="#full_view_img" class="fa-regular fa-eye"></i></a>
-                  </div>
-                </div>
-              </li>
-              <li class="mt-4">
-                <div class="ct_outline_bg d-flex align-items-center gap-3 py-2 px-4">
-                  <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0 ct_img_40 ct_border_radius_5" />
-                  <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
-                    <div>
-                      <h5 class="ct_fs_16 ct_fw_600 mb-0">
-                        Title Report.pdf
-                      </h5>
-                      <p class="mb-0 ct_text_4B5563">2.4 MB</p>
-                    </div>
-                    <a><i data-bs-toggle="modal" data-bs-target="#full_view_img" class="fa-regular fa-eye"></i></a>
-                  </div>
-                </div>
-              </li>
-              <li class="mt-4">
-                <div class="ct_outline_bg d-flex align-items-center gap-3 py-2 px-4">
-                  <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0 ct_img_40 ct_border_radius_5" />
-                  <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
-                    <div>
-                      <h5 class="ct_fs_16 ct_fw_600 mb-0">
-                        Title Report.pdf
-                      </h5>
-                      <p class="mb-0 ct_text_4B5563">2.4 MB</p>
-                    </div>
-                    <a><i data-bs-toggle="modal" data-bs-target="#full_view_img" class="fa-regular fa-eye"></i></a>
-                  </div>
-                </div>
-              </li>
-              <li class="mt-4">
-                <div class="ct_outline_bg d-flex align-items-center gap-3 py-2 px-4">
-                  <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0 ct_img_40 ct_border_radius_5" />
-                  <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
-                    <div>
-                      <h5 class="ct_fs_16 ct_fw_600 mb-0">
-                        Title Report.pdf
-                      </h5>
-                      <p class="mb-0 ct_text_4B5563">2.4 MB</p>
-                    </div>
-                    <a><i data-bs-toggle="modal" data-bs-target="#full_view_img" class="fa-regular fa-eye"></i></a>
-                  </div>
-                </div>
-              </li>
-              <li class="mt-4">
-                <div class="ct_outline_bg d-flex align-items-center gap-3 py-2 px-4">
-                  <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0 ct_img_40 ct_border_radius_5" />
-                  <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
-                    <div>
-                      <h5 class="ct_fs_16 ct_fw_600 mb-0">
-                        Title Report.pdf
-                      </h5>
-                      <p class="mb-0 ct_text_4B5563">2.4 MB</p>
-                    </div>
-                    <a><i data-bs-toggle="modal" data-bs-target="#full_view_img" class="fa-regular fa-eye"></i></a>
-                  </div>
-                </div>
-              </li>
+              }
             </ul>
           </div>
         </div>
-
+        }
         <div class="row">
           <div class="col-md-6 mb-4">
             <div class="ct_white_bg h-100 mt-4 p-4">
@@ -561,34 +473,29 @@
                 <li class="mb-3">
                   <p class="mb-1 ct_tex_6B7280 ct_fs_14">Preferred Title</p>
                   <h4 class="ct_fs_16 ct_fw_500 mb-0">
-                    Prime Riverside Commercial Hub – Fully Leased Retail Plaza
+                    {{properyData?.listing?.preferred_title}}
                   </h4>
                 </li>
                 <li class="mb-3">
                   <p class="ct_tex_6B7280 ct_fs_14 mb-1">Description</p>
                   <h4 class="mb-0 ct_fw_500 ct_fs_16">
-                    A high-demand retail property located in Miami's most active district. Fully leased with stable
-                    tenants and strong annual yields.
+                    {{properyData?.listing?.description}}
                   </h4>
                 </li>
                 <li class="mb-3">
                   <p class="ct_tex_6B7280 ct_fs_14 mb-1">Key Highlights</p>
                   <div class="d-flex align-items-center gap-3 flex-wrap">
-                    <span class="ct_custom_badge py-1" style="background-color: #DBEAFE;color: #1E40AF;">High-demand
-                      location</span>
-                    <span class="ct_custom_badge py-1" style="background-color: #DBEAFE;color: #1E40AF;">Long-term
-                      leases</span>
-                    <span class="ct_custom_badge py-1" style="background-color: #DBEAFE;color: #1E40AF;">Renovated in
-                      2024</span>
-
+                    @for(item of properyData?.listing?.highlights; track $index){
+                    <span class="ct_custom_badge py-1" style="background-color: #DBEAFE;color: #1E40AF;">{{item}}</span>
+                    }
                   </div>
                 </li>
                 <li class="mb-3">
                   <p class="ct_tex_6B7280 ct_fs_14 mb-1">Contact Info</p>
                   <h4 class="mb-0 ct_fw_500 ct_fs_16">
-                    John Richards <br>
-                    john&#64;bluestoneholdings.com <br>
-                    +1 202 555 0123
+                    {{properyData?.listing?.contact_full_name}} <br>
+                    {{properyData?.listing?.contact_email}} <br>
+                    {{properyData?.listing?.country_code}} {{properyData?.listing?.contact_phone}}
                   </h4>
                 </li>
               </ul>
@@ -610,39 +517,39 @@
                     </clipPath>
                   </defs>
                 </svg>
-
                 Additional Notes
               </h4>
               <ul>
                 <li class="mb-3">
                   <p class="ct_tex_6B7280 ct_fs_14 mb-1">Special Requirements</p>
-                  <h4 class="mb-0 ct_fw_500 ct_fs_16">Buyer to maintain existing management team for 6 months post-sale.
-                  </h4>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing?.special_requirements}}</h4>
                 </li>
+                @if(properyData?.listing?.additional_notes){
                 <li class="mb-3">
-                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Disclosures</p>
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Additional Requirements</p>
                   <h4 class="mb-0 ct_fw_500 ct_fs_16 text-center "
-                    style="color: #A16207; padding: 11px 16px;background-color: #FEFCE8;">Environmental certification
-                    pending renewal.</h4>
+                    style="color: #A16207; padding: 11px 16px;background-color: #FEFCE8;">
+                    {{properyData?.listing?.additional_notes}}</h4>
                 </li>
+                }
                 <li class="mb-3">
                   <p class="ct_tex_6B7280 ct_fs_14 mb-1">Document Visibility</p>
                   <div class="d-flex align-items-center gap-2 justify-content-between">
-                    <h4 class="mb-0 ct_fw_500 ct_fs_16 ">
-                      rent_roll.pdf
-                    </h4>
+                    <a class="mb-0 ct_fw_500 ct_fs_16 " style="color: #2563eb; cursor: pointer;"
+                      [href]="properyData?.listing?.financial_statements" target="_blank">
+                      financials_roll.pdf
+                    </a>
                     <span class="ct_custom_badge py-1" style="color: #166534; background-color: #DCFCE7;">Public</span>
                   </div>
                   <div class="d-flex align-items-center gap-2 justify-content-between mt-2">
-                    <h4 class="mb-0 ct_fw_500 ct_fs_16 ">
+                    <a class="mb-0 ct_fw_500 ct_fs_16 " style="color: #2563eb; cursor: pointer;"
+                      [href]="properyData?.listing?.rent_roll_doc" target="_blank">
                       rent_roll.pdf
-                    </h4>
+                    </a>
                     <span class="ct_custom_badge py-1"
                       style="color: #9A3412; background-color: #FFEDD5;">Investor-only</span>
                   </div>
                 </li>
-
-
               </ul>
             </div>
           </div>
@@ -786,17 +693,25 @@
           <!-- <div *ngIf="userData.media_type === 'IMAGE' && userData.images?.length > 0"> -->
           <div class="swiper mySwiperMain ct_product_slider_12">
             <div class="swiper-wrapper">
-              <div class="swiper-slide" *ngFor="let img of images">
+              @for (img of properyData?.listing.images; track $index) {
+              <div class="swiper-slide">
                 <img [src]="img" />
               </div>
+              }
+              @if(properyData?.listing.videos?.length > 0){
+              @for (video of properyData?.listing.videos; track $index) {
+              <div class="swiper-slide">
+                <video [src]="video" controls width="100%"></video>
+              </div>
+              }
+              }
             </div>
-            @if(images?.length > 1){
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
-            } @if(images?.length > 1){
+            @if(properyData?.listing.images?.length > 1){
             <div class="swiper mySwiperThumbs ct_card_small_thumb mt-3">
               <div class="swiper-wrapper">
-                <div class="swiper-slide" *ngFor="let img of images">
+                <div class="swiper-slide" *ngFor="let img of properyData?.listing.images">
                   <img [src]="img" />
                 </div>
               </div>

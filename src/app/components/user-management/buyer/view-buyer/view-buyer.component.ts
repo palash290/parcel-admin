@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonService } from '../../../../services/common.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -9,7 +9,7 @@ import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-view-buyer',
-  imports: [RouterLink, CommonModule],
+  imports: [CommonModule],
   templateUrl: './view-buyer.component.html',
   styleUrl: './view-buyer.component.css'
 })

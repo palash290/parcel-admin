@@ -49,18 +49,6 @@ export class ViewPropertieComponent {
         slideToClickedSlide: true,
         loop: false
       });
-
-      new Swiper('.mySwiperMain', {
-        spaceBetween: 10,
-        loop: true,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        thumbs: {
-          swiper: this.thumbsSwiper,
-        },
-      });
     }, 1000);
   }
 
@@ -92,7 +80,7 @@ export class ViewPropertieComponent {
         } else {
           this.property_around = [];
         }
-
+        this.loadSwiper();
       },
       error: error => {
         this.isLoading = false;
@@ -100,7 +88,19 @@ export class ViewPropertieComponent {
     });
   }
 
-
+  loadSwiper() {
+    new Swiper('.mySwiperMain', {
+      spaceBetween: 10,
+      loop: this.properyData?.listing.images?.length > 1,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      thumbs: {
+        swiper: this.thumbsSwiper,
+      },
+    });
+  }
 
 
   reject() {

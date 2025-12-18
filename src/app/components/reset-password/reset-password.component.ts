@@ -1,16 +1,13 @@
 import { Component } from '@angular/core';
-import { ValidationErrorService } from '../../services/validation-error.service';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { CommonService } from '../../services/common.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { CommonModule } from '@angular/common';
-import { NzInputOtpComponent } from 'ng-zorro-antd/input';
-import { NzFlexDirective } from 'ng-zorro-antd/flex';
 
 @Component({
   selector: 'app-reset-password',
-  imports: [ReactiveFormsModule, CommonModule, RouterLink],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.css'
 })

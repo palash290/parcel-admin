@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CommonService } from '../../services/common.service';
@@ -9,7 +8,7 @@ import { ValidationErrorService } from '../../services/validation-error.service'
 
 @Component({
   selector: 'app-category-management',
-  imports: [RouterLink, CommonModule, ReactiveFormsModule, FormsModule, NgxPaginationModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, NgxPaginationModule],
   templateUrl: './category-management.component.html',
   styleUrl: './category-management.component.css'
 })
