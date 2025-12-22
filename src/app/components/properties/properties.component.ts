@@ -48,14 +48,13 @@ export class PropertiesComponent {
     let filtered = this.data;
 
     if (this.selectedStatus != 'ALL') {
-      filtered = filtered.filter((item: { status: string; }) => item.status == this.selectedStatus);
+      filtered = filtered.filter((item: { payment_status: string; }) => item.payment_status == this.selectedStatus);
     }
 
     if (this.searchText.trim()) {
       const keyword = this.searchText.trim().toLowerCase();
-      filtered = filtered.filter((item: { property_title: string; agent: any; }) =>
-      (item.property_title?.toLowerCase().includes(keyword) ||
-        item.agent.full_name?.toLowerCase().includes(keyword))
+      filtered = filtered.filter((item: { property_name: string; }) =>
+        (item.property_name?.toLowerCase().includes(keyword))
       );
     }
     this.filteredData = filtered;

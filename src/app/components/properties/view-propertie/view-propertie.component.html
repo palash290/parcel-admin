@@ -120,7 +120,7 @@
                 {{properyData?.listing.preferred_title}}
               </h4>
               <p class="mb-0 ct_tex_6B7280 ct_fs_14">
-                Submitted by: {{properyData?.listing.contact_full_name}}
+                Submitted by: {{properyData?.listing?.contact_full_name}}
               </p>
             </div>
           </div>
@@ -178,17 +178,33 @@
                     <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing.square_footage}} sq. ft</h4>
                   </div>
                 </div>
+
+                @if(properyData?.listing.listing_intent == 'Raise Capital'){
+                <div class="col-md-6 mb-3">
+                  <div>
+                    <p class="ct_tex_6B7280 ct_fs_14 mb-1">Occupancy Rate</p>
+                    <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing.occupancy_rate}} %</h4>
+                  </div>
+                </div>
+                }
+
               </div>
               <div class="row mt-2">
                 <div class="col-md-12">
                   <p class="ct_tex_6B7280 ct_fs_14 mb-2">Photos</p>
                   <ul class="ct_photo_gallery_list position-relative ct_para_scroll ct_custom_scroll">
-                    @for (url of properyData?.listing.images.slice(0, 4); track $index) {
+                    @for (url of properyData?.listing.images.slice(0, 2); track $index) {
                     <li>
                       <img [src]="url" />
                     </li>
                     }
-                    @if(properyData?.listing.images?.length > 4) {
+                    @for (url of properyData?.listing.videos.slice(0, 2); track $index) {
+                    <li>
+                      <video [src]="url.video_url" controls></video>
+                    </li>
+                    }
+                    <!-- Show All Button -->
+                    @if (totalMediaCount > 4) {
                     <li>
                       <button class="ct_show_all_images_btn" data-bs-toggle="modal"
                         data-bs-target="#ct_show_all_photos">
@@ -224,6 +240,32 @@
                 Ownership Entity
               </h4>
 
+              @if(properyData?.listing.listing_intent == 'Raise Capital'){
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <div>
+                    <p class="ct_tex_6B7280 ct_fs_14 mb-1">Owning Entity</p>
+                    <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                      {{properyData?.listing.owning_entity}}
+                    </h4>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div>
+                    <p class="ct_tex_6B7280 ct_fs_14 mb-1">principals_sponsors</p>
+                    <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                      {{ properyData?.listing?.principals_sponsors?.join(', ') }}
+                    </h4>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <div>
+                    <p class="ct_tex_6B7280 ct_fs_14 mb-1">Manager After Closing</p>
+                    <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing.manager_after_closing}}</h4>
+                  </div>
+                </div>
+              </div>
+              } @else {
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <div>
@@ -236,7 +278,7 @@
                 <div class="col-md-6 mb-3">
                   <div>
                     <p class="ct_tex_6B7280 ct_fs_14 mb-1">Contact Person</p>
-                    <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing.contact_full_name}}</h4>
+                    <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing?.contact_full_name}}</h4>
                   </div>
                 </div>
                 <div class="col-md-6 mb-3">
@@ -252,16 +294,6 @@
                       {{properyData?.listing.contact_phone}}</h4>
                   </div>
                 </div>
-                <!-- <div class="col-md-6 mb-3">
-                  <div>
-                    <p class="ct_tex_6B7280 ct_fs_14 mb-1">
-                      Registered Address
-                    </p>
-                    <h4 class="mb-0 ct_fw_500 ct_fs_16">
-                      250 Grand Blvd, Suite 10, Miami, FL
-                    </h4>
-                  </div>
-                </div> -->
                 @if(properyData?.listing?.proof_of_ownership){
                 <div class="col-md-6 mb-3">
                   <div>
@@ -270,15 +302,141 @@
                     <a [href]="properyData?.listing?.proof_of_ownership" download target="_blank"
                       class="mb-0 ct_fw_500 ct_fs_16 d-inline-block" style="color: #2563eb; cursor: pointer;">
                       <i class="fa-solid fa-download me-1"></i>
-                      ownership_doc.pdf
+                      ownership_doc
                     </a>
                   </div>
                 </div>
                 }
               </div>
+              }
             </div>
           </div>
         </div>
+        @if(properyData?.listing.listing_intent == 'Raise Capital'){
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="ct_white_bg h-100 mt-4 p-4">
+              <h4 class="ct_fs_18 ct_fw_600 mb-4 ct_pe_40 d-flex align-items-center gap-2">
+                <svg width="12" height="28" viewBox="0 0 12 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.25 28H0V0H11.25V28Z" stroke="#E5E7EB" />
+                  <g clip-path="url(#clip0_555_1516)">
+                    <path
+                      d="M5.62481 4.25C6.24707 4.25 6.74981 4.75273 6.74981 5.375V6.63008C6.80606 6.63711 6.85879 6.64414 6.91504 6.65469C6.9291 6.6582 6.93965 6.6582 6.95371 6.66172L8.64121 6.97109C9.25293 7.08359 9.65723 7.6707 9.54473 8.27891C9.43223 8.88711 8.84512 9.29492 8.23692 9.18242L6.56699 8.87656C5.4666 8.71484 4.49629 8.82383 3.81426 9.09453C3.13223 9.36523 2.85801 9.73789 2.79473 10.0824C2.72442 10.4586 2.77715 10.6695 2.83692 10.7996C2.9002 10.9367 3.03028 11.0914 3.28692 11.2637C3.85996 11.6398 4.73887 11.8859 5.87793 12.1883L5.97989 12.2164C6.98535 12.4836 8.21582 12.807 9.12989 13.4047C9.6291 13.7316 10.1002 14.1746 10.392 14.7934C10.6908 15.4227 10.7541 16.1258 10.617 16.8746C10.3744 18.2105 9.45332 19.1035 8.31074 19.5711C7.8291 19.768 7.30528 19.8945 6.74981 19.9578V21.125C6.74981 21.7473 6.24707 22.25 5.62481 22.25C5.00254 22.25 4.49981 21.7473 4.49981 21.125V19.898C4.48574 19.8945 4.46817 19.8945 4.4541 19.891H4.44707C3.58926 19.7574 2.17949 19.3883 1.23028 18.9664C0.66426 18.7133 0.407619 18.0488 0.660744 17.4828C0.913869 16.9168 1.57832 16.6602 2.14434 16.9133C2.8791 17.2402 4.08848 17.5637 4.78809 17.6727C5.90957 17.8379 6.83418 17.743 7.45996 17.4863C8.0541 17.2437 8.32481 16.8922 8.40215 16.4703C8.46895 16.0977 8.41621 15.8832 8.35645 15.7531C8.28965 15.6125 8.15957 15.4578 7.89942 15.2855C7.32285 14.9094 6.44043 14.6633 5.29785 14.3609L5.19942 14.3363C4.19746 14.0691 2.96699 13.7422 2.05293 13.1445C1.55371 12.8176 1.08613 12.3711 0.794338 11.7523C0.499025 11.123 0.43926 10.4199 0.579885 9.67109C0.83301 8.32812 1.83848 7.45625 2.98106 7.00273C3.44863 6.81641 3.96192 6.68984 4.49981 6.61602V5.375C4.49981 4.75273 5.00254 4.25 5.62481 4.25Z"
+                      fill="#2563EB" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_555_1516">
+                      <path d="M0 4.25H11.25V22.25H0V4.25Z" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+                Offering Details
+              </h4>
+              <ul>
+                <li class="mb-3">
+                  <p class="mb-1 ct_tex_6B7280 ct_fs_14">Target raise Amount</p>
+                  <h4 class="ct_fs_24 ct_fw_600 ct_green_text mb-0">
+                    {{properyData?.listing.target_raise_amount | currency:'USD'}}
+                  </h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Minimum Raise Amount</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                    {{properyData?.listing.minimum_raise_amount ? properyData?.listing.minimum_raise_amount : '-'}}
+                  </h4>
+                </li>
+
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Minimum Share</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                    {{properyData?.listing.min_investment_per_investor ?
+                    properyData?.listing.min_investment_per_investor : '-'}}
+                  </h4>
+                </li>
+
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Start Date - End Date</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                    {{properyData?.listing.start_date | date:'dd-MMM-yyyy'}} - {{properyData?.listing.end_date |
+                    date:'dd-MMM-yyyy'}}
+                  </h4>
+                </li>
+
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Accept partial raise?</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                    {{properyData?.listing.accept_partial_raise == '1' ? 'Yes' : 'No' }}
+                  </h4>
+                </li>
+
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Funds held in escrow until closing?</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                    {{properyData?.listing.funds_held_in_escrow == '1' ? 'Yes' : 'No'}}
+                  </h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="ct_white_bg h-100 mt-4 p-4">
+              <h4 class="ct_fs_18 ct_fw_600 mb-4 ct_pe_40 d-flex align-items-center gap-2">
+                <svg width="18" height="28" viewBox="0 0 18 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 28H0V0H18V28Z" stroke="#E5E7EB" />
+                  <g clip-path="url(#clip0_555_1545)">
+                    <path
+                      d="M11.201 4.58057C10.7615 4.14111 10.0479 4.14111 9.6084 4.58057L5.38965 8.79932C4.9502 9.23877 4.9502 9.95244 5.38965 10.3919L5.95215 10.9544C6.3916 11.3938 7.10527 11.3938 7.54473 10.9544L7.68535 10.8138L11.44 14.5649L11.2994 14.7056C10.86 15.145 10.86 15.8587 11.2994 16.2981L11.8619 16.8606C12.3014 17.3001 13.015 17.3001 13.4545 16.8606L17.6732 12.6419C18.1127 12.2024 18.1127 11.4888 17.6732 11.0493L17.1107 10.4868C16.6713 10.0474 15.9576 10.0474 15.5182 10.4868L15.3775 10.6274L11.6229 6.87275L11.7635 6.73213C12.2029 6.29268 12.2029 5.579 11.7635 5.13955L11.201 4.57705V4.58057ZM5.85723 14.7056C5.41777 14.2661 4.7041 14.2661 4.26465 14.7056L0.327148 18.6431C-0.112305 19.0825 -0.112305 19.7962 0.327148 20.2356L2.01465 21.9231C2.4541 22.3626 3.16777 22.3626 3.60723 21.9231L7.54473 17.9856C7.98418 17.5462 7.98418 16.8325 7.54473 16.3931L7.49551 16.3438L9.5627 14.2802L7.97012 12.6876L5.90645 14.7513L5.85723 14.7021V14.7056Z"
+                      fill="#2563EB" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_555_1545">
+                      <path d="M0 4.25H18V22.25H0V4.25Z" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+                Key Financials
+              </h4>
+              <ul>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Current value</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing.current_value}}</h4>
+                </li>
+
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Rent Roll</p>
+                  <a [href]="properyData?.listing.rent_roll_file" download target="_blank"
+                    class="mb-0 ct_fw_500 ct_fs_16 d-inline-block" style="color: #2563eb; cursor: pointer;">
+                    <i class="fa-solid fa-paperclip me-1"></i>
+                    rent_roll_file
+                  </a>
+                </li>
+
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Operating Statements</p>
+                  <a [href]="properyData?.listing.operating_statements_file" download target="_blank"
+                    class="mb-0 ct_fw_500 ct_fs_16 d-inline-block" style="color: #2563eb; cursor: pointer;">
+                    <i class="fa-solid fa-paperclip me-1"></i>
+                    operating_statements_file
+                  </a>
+                </li>
+
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Projected Annual Returns</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing.projected_IRR}} %</h4>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing.annual_returns_cash}} %</h4>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing.annual_returns_equity}}</h4>
+                </li>
+
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Major Planned Improvements</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing.planned_improvements}}</h4>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+        } @else {
         <div class="row">
           <div class="col-md-6 mb-4">
             <div class="ct_white_bg h-100 mt-4 p-4">
@@ -306,12 +464,6 @@
                   </h4>
                 </li>
                 <li class="mb-3">
-                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Included Assets</p>
-                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
-                    Tenant leases, Fixtures, Structure, Land, Parking
-                  </h4>
-                </li>
-                <li class="mb-3">
                   <p class="ct_tex_6B7280 ct_fs_14 mb-1">Asset Details</p>
                   <h4 class="mb-0 ct_fw_500 ct_fs_16">
                     {{properyData?.listing.asset_details}}
@@ -322,7 +474,7 @@
                   <a [href]="properyData?.listing.asset_attachments" download target="_blank"
                     class="mb-0 ct_fw_500 ct_fs_16 d-inline-block" style="color: #2563eb; cursor: pointer;">
                     <i class="fa-solid fa-paperclip me-1"></i>
-                    asset_overview.pdf
+                    asset_overview
                   </a>
                 </li>
               </ul>
@@ -372,13 +524,15 @@
                   <a [href]="properyData?.listing.lien_documents" download target="_blank"
                     class="mb-0 ct_fw_500 ct_fs_16 d-inline-block" style="color: #2563eb; cursor: pointer;">
                     <i class="fa-solid fa-paperclip me-1"></i>
-                    lien_document.pdf
+                    lien_document
                   </a>
                 </li>
               </ul>
             </div>
           </div>
         </div>
+        }
+        @if(properyData?.listing?.listing_intent !== 'Raise Capital'){
         <div class="row">
           <div class="col-md-12 mb-4">
             <div class="ct_white_bg h-auto mt-4 p-4">
@@ -396,7 +550,6 @@
                     </clipPath>
                   </defs>
                 </svg>
-
                 Timeline & Transition Plans
               </h4>
 
@@ -423,6 +576,8 @@
             </div>
           </div>
         </div>
+        }
+
         @if(properyData?.listing?.custom_documents?.length > 0){
         <div class="row">
           <div class="col-md-12">
@@ -430,15 +585,15 @@
             <p>Uploaded Documents</p>
             <ul class="ct_para_scroll ct_custom_scroll">
               @for(item of properyData?.listing?.custom_documents; track $index){
-              <li>
+              <li class="mt-2">
                 <div class="ct_outline_bg d-flex align-items-center gap-3 py-2 px-4">
                   <img src="img/empty_doc.png" alt="" class="ct_flex_shrink_0 ct_img_40 ct_border_radius_5" />
                   <div class="d-flex align-items-center justify-content-between gap-3 ct_flex_1">
                     <div>
                       <h5 class="ct_fs_16 ct_fw_600 mb-0">
-                        Title Report {{ $index + 1 }}.pdf
+                        Title Report {{ $index + 1 }}
                       </h5>
-                      <p class="mb-0 ct_text_4B5563">2.4 MB</p>
+                      <!-- <p class="mb-0 ct_text_4B5563">2.4 MB</p> -->
                     </div>
                     <a [href]="item" target="_blank"><i data-bs-toggle="modal" data-bs-target="#full_view_img"
                         class="fa-regular fa-eye"></i></a>
@@ -450,6 +605,110 @@
           </div>
         </div>
         }
+
+        @if(properyData?.listing.listing_intent == 'Raise Capital'){
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="ct_white_bg h-100 mt-4 p-4">
+              <h4 class="ct_fs_18 ct_fw_600 mb-4 ct_pe_40 d-flex align-items-center gap-2">
+                <svg width="12" height="28" viewBox="0 0 12 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.25 28H0V0H11.25V28Z" stroke="#E5E7EB" />
+                  <g clip-path="url(#clip0_555_1516)">
+                    <path
+                      d="M5.62481 4.25C6.24707 4.25 6.74981 4.75273 6.74981 5.375V6.63008C6.80606 6.63711 6.85879 6.64414 6.91504 6.65469C6.9291 6.6582 6.93965 6.6582 6.95371 6.66172L8.64121 6.97109C9.25293 7.08359 9.65723 7.6707 9.54473 8.27891C9.43223 8.88711 8.84512 9.29492 8.23692 9.18242L6.56699 8.87656C5.4666 8.71484 4.49629 8.82383 3.81426 9.09453C3.13223 9.36523 2.85801 9.73789 2.79473 10.0824C2.72442 10.4586 2.77715 10.6695 2.83692 10.7996C2.9002 10.9367 3.03028 11.0914 3.28692 11.2637C3.85996 11.6398 4.73887 11.8859 5.87793 12.1883L5.97989 12.2164C6.98535 12.4836 8.21582 12.807 9.12989 13.4047C9.6291 13.7316 10.1002 14.1746 10.392 14.7934C10.6908 15.4227 10.7541 16.1258 10.617 16.8746C10.3744 18.2105 9.45332 19.1035 8.31074 19.5711C7.8291 19.768 7.30528 19.8945 6.74981 19.9578V21.125C6.74981 21.7473 6.24707 22.25 5.62481 22.25C5.00254 22.25 4.49981 21.7473 4.49981 21.125V19.898C4.48574 19.8945 4.46817 19.8945 4.4541 19.891H4.44707C3.58926 19.7574 2.17949 19.3883 1.23028 18.9664C0.66426 18.7133 0.407619 18.0488 0.660744 17.4828C0.913869 16.9168 1.57832 16.6602 2.14434 16.9133C2.8791 17.2402 4.08848 17.5637 4.78809 17.6727C5.90957 17.8379 6.83418 17.743 7.45996 17.4863C8.0541 17.2437 8.32481 16.8922 8.40215 16.4703C8.46895 16.0977 8.41621 15.8832 8.35645 15.7531C8.28965 15.6125 8.15957 15.4578 7.89942 15.2855C7.32285 14.9094 6.44043 14.6633 5.29785 14.3609L5.19942 14.3363C4.19746 14.0691 2.96699 13.7422 2.05293 13.1445C1.55371 12.8176 1.08613 12.3711 0.794338 11.7523C0.499025 11.123 0.43926 10.4199 0.579885 9.67109C0.83301 8.32812 1.83848 7.45625 2.98106 7.00273C3.44863 6.81641 3.96192 6.68984 4.49981 6.61602V5.375C4.49981 4.75273 5.00254 4.25 5.62481 4.25Z"
+                      fill="#2563EB" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_555_1516">
+                      <path d="M0 4.25H11.25V22.25H0V4.25Z" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+                Investor Terms
+              </h4>
+              <ul>
+                <li class="mb-3">
+                  <p class="mb-1 ct_tex_6B7280 ct_fs_14">Equity Split Investors</p>
+                  <h4 class="ct_fs_16 ct_fw_500 mb-0">
+                    {{properyData?.listing?.equity_split_investors}} %
+                  </h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Equity Split Sponsors</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                    {{properyData?.listing?.equity_split_sponsors}} %
+                  </h4>
+                </li>
+
+                @if(properyData?.listing?.preferred_return){
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Preferred Return</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                    $ {{properyData?.listing?.preferred_return}}
+                  </h4>
+                </li>
+                }
+
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Sponsor/Management Fees</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                    {{properyData?.listing?.sponsor_fees}} %
+                  </h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Hold Period</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                    {{properyData?.listing?.hold_period_years}} Years
+                  </h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="ct_white_bg h-100 mt-4 p-4">
+              <h4 class="ct_fs_18 ct_fw_600 mb-4 ct_pe_40 d-flex align-items-center gap-2">
+                <svg width="18" height="28" viewBox="0 0 18 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 28H0V0H18V28Z" stroke="#E5E7EB" />
+                  <g clip-path="url(#clip0_555_1545)">
+                    <path
+                      d="M11.201 4.58057C10.7615 4.14111 10.0479 4.14111 9.6084 4.58057L5.38965 8.79932C4.9502 9.23877 4.9502 9.95244 5.38965 10.3919L5.95215 10.9544C6.3916 11.3938 7.10527 11.3938 7.54473 10.9544L7.68535 10.8138L11.44 14.5649L11.2994 14.7056C10.86 15.145 10.86 15.8587 11.2994 16.2981L11.8619 16.8606C12.3014 17.3001 13.015 17.3001 13.4545 16.8606L17.6732 12.6419C18.1127 12.2024 18.1127 11.4888 17.6732 11.0493L17.1107 10.4868C16.6713 10.0474 15.9576 10.0474 15.5182 10.4868L15.3775 10.6274L11.6229 6.87275L11.7635 6.73213C12.2029 6.29268 12.2029 5.579 11.7635 5.13955L11.201 4.57705V4.58057ZM5.85723 14.7056C5.41777 14.2661 4.7041 14.2661 4.26465 14.7056L0.327148 18.6431C-0.112305 19.0825 -0.112305 19.7962 0.327148 20.2356L2.01465 21.9231C2.4541 22.3626 3.16777 22.3626 3.60723 21.9231L7.54473 17.9856C7.98418 17.5462 7.98418 16.8325 7.54473 16.3931L7.49551 16.3438L9.5627 14.2802L7.97012 12.6876L5.90645 14.7513L5.85723 14.7021V14.7056Z"
+                      fill="#2563EB" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_555_1545">
+                      <path d="M0 4.25H18V22.25H0V4.25Z" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+                Legal & Compliance
+              </h4>
+              <ul>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Lecurities Exemption Used</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing?.securities_exemption_used}}</h4>
+                </li>
+
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Accredited Investors Only</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing?.accredited_investors_only == '1' ? 'Yes' :
+                    'No'}}</h4>
+                </li>
+
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Who verified accreditation?</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing?.who_verified_accreditation}}</h4>
+                </li>
+
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Who prepared offering documents?</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing?.who_prepared_offering_docs}}</h4>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+        } @else {
         <div class="row">
           <div class="col-md-6 mb-4">
             <div class="ct_white_bg h-100 mt-4 p-4">
@@ -519,6 +778,8 @@
                 </svg>
                 Additional Notes
               </h4>
+
+
               <ul>
                 <li class="mb-3">
                   <p class="ct_tex_6B7280 ct_fs_14 mb-1">Special Requirements</p>
@@ -539,7 +800,8 @@
                       [href]="properyData?.listing?.financial_statements" target="_blank">
                       financials_roll.pdf
                     </a>
-                    <span class="ct_custom_badge py-1" style="color: #166534; background-color: #DCFCE7;">Public</span>
+                    <span class="ct_custom_badge py-1"
+                      style="color: #166534; background-color: #DCFCE7;">{{properyData?.listing?.document_financial_visibility}}</span>
                   </div>
                   <div class="d-flex align-items-center gap-2 justify-content-between mt-2">
                     <a class="mb-0 ct_fw_500 ct_fs_16 " style="color: #2563eb; cursor: pointer;"
@@ -547,13 +809,128 @@
                       rent_roll.pdf
                     </a>
                     <span class="ct_custom_badge py-1"
-                      style="color: #9A3412; background-color: #FFEDD5;">Investor-only</span>
+                      style="color: #9A3412; background-color: #FFEDD5;">{{properyData?.listing?.document_rent_roll_visibility}}</span>
                   </div>
                 </li>
               </ul>
             </div>
           </div>
         </div>
+        }
+
+
+        @if(properyData?.listing.listing_intent == 'Raise Capital'){
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="ct_white_bg h-100 mt-4 p-4">
+              <h4 class="ct_fs_18 ct_fw_600 mb-4 ct_pe_40 d-flex align-items-center gap-2">
+                <svg width="12" height="28" viewBox="0 0 12 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11.25 28H0V0H11.25V28Z" stroke="#E5E7EB" />
+                  <g clip-path="url(#clip0_555_1516)">
+                    <path
+                      d="M5.62481 4.25C6.24707 4.25 6.74981 4.75273 6.74981 5.375V6.63008C6.80606 6.63711 6.85879 6.64414 6.91504 6.65469C6.9291 6.6582 6.93965 6.6582 6.95371 6.66172L8.64121 6.97109C9.25293 7.08359 9.65723 7.6707 9.54473 8.27891C9.43223 8.88711 8.84512 9.29492 8.23692 9.18242L6.56699 8.87656C5.4666 8.71484 4.49629 8.82383 3.81426 9.09453C3.13223 9.36523 2.85801 9.73789 2.79473 10.0824C2.72442 10.4586 2.77715 10.6695 2.83692 10.7996C2.9002 10.9367 3.03028 11.0914 3.28692 11.2637C3.85996 11.6398 4.73887 11.8859 5.87793 12.1883L5.97989 12.2164C6.98535 12.4836 8.21582 12.807 9.12989 13.4047C9.6291 13.7316 10.1002 14.1746 10.392 14.7934C10.6908 15.4227 10.7541 16.1258 10.617 16.8746C10.3744 18.2105 9.45332 19.1035 8.31074 19.5711C7.8291 19.768 7.30528 19.8945 6.74981 19.9578V21.125C6.74981 21.7473 6.24707 22.25 5.62481 22.25C5.00254 22.25 4.49981 21.7473 4.49981 21.125V19.898C4.48574 19.8945 4.46817 19.8945 4.4541 19.891H4.44707C3.58926 19.7574 2.17949 19.3883 1.23028 18.9664C0.66426 18.7133 0.407619 18.0488 0.660744 17.4828C0.913869 16.9168 1.57832 16.6602 2.14434 16.9133C2.8791 17.2402 4.08848 17.5637 4.78809 17.6727C5.90957 17.8379 6.83418 17.743 7.45996 17.4863C8.0541 17.2437 8.32481 16.8922 8.40215 16.4703C8.46895 16.0977 8.41621 15.8832 8.35645 15.7531C8.28965 15.6125 8.15957 15.4578 7.89942 15.2855C7.32285 14.9094 6.44043 14.6633 5.29785 14.3609L5.19942 14.3363C4.19746 14.0691 2.96699 13.7422 2.05293 13.1445C1.55371 12.8176 1.08613 12.3711 0.794338 11.7523C0.499025 11.123 0.43926 10.4199 0.579885 9.67109C0.83301 8.32812 1.83848 7.45625 2.98106 7.00273C3.44863 6.81641 3.96192 6.68984 4.49981 6.61602V5.375C4.49981 4.75273 5.00254 4.25 5.62481 4.25Z"
+                      fill="#2563EB" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_555_1516">
+                      <path d="M0 4.25H11.25V22.25H0V4.25Z" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+                Listing Preferences
+              </h4>
+              <ul>
+                <li class="mb-3">
+                  <p class="mb-1 ct_tex_6B7280 ct_fs_14">Preferred Title</p>
+                  <h4 class="ct_fs_16 ct_fw_500 mb-0">
+                    {{properyData?.listing?.preferred_title}}
+                  </h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Description</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                    {{properyData?.listing?.description}}
+                  </h4>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Key Highlights</p>
+                  <div class="d-flex align-items-center gap-3 flex-wrap">
+                    @for(item of properyData?.listing?.highlights; track $index){
+                    <span class="ct_custom_badge py-1" style="background-color: #DBEAFE;color: #1E40AF;">{{item}}</span>
+                    }
+                  </div>
+                </li>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Contact Info</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">
+                    {{properyData?.listing?.contact_full_name}} <br>
+                    {{properyData?.listing?.contact_email}} <br>
+                    {{properyData?.listing?.country_code}} {{properyData?.listing?.contact_phone}}
+                  </h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="ct_white_bg h-100 mt-4 p-4">
+              <h4 class="ct_fs_18 ct_fw_600 mb-4 ct_pe_40 d-flex align-items-center gap-2">
+                <svg width="18" height="28" viewBox="0 0 18 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 28H0V0H18V28Z" stroke="#E5E7EB" />
+                  <g clip-path="url(#clip0_555_1545)">
+                    <path
+                      d="M11.201 4.58057C10.7615 4.14111 10.0479 4.14111 9.6084 4.58057L5.38965 8.79932C4.9502 9.23877 4.9502 9.95244 5.38965 10.3919L5.95215 10.9544C6.3916 11.3938 7.10527 11.3938 7.54473 10.9544L7.68535 10.8138L11.44 14.5649L11.2994 14.7056C10.86 15.145 10.86 15.8587 11.2994 16.2981L11.8619 16.8606C12.3014 17.3001 13.015 17.3001 13.4545 16.8606L17.6732 12.6419C18.1127 12.2024 18.1127 11.4888 17.6732 11.0493L17.1107 10.4868C16.6713 10.0474 15.9576 10.0474 15.5182 10.4868L15.3775 10.6274L11.6229 6.87275L11.7635 6.73213C12.2029 6.29268 12.2029 5.579 11.7635 5.13955L11.201 4.57705V4.58057ZM5.85723 14.7056C5.41777 14.2661 4.7041 14.2661 4.26465 14.7056L0.327148 18.6431C-0.112305 19.0825 -0.112305 19.7962 0.327148 20.2356L2.01465 21.9231C2.4541 22.3626 3.16777 22.3626 3.60723 21.9231L7.54473 17.9856C7.98418 17.5462 7.98418 16.8325 7.54473 16.3931L7.49551 16.3438L9.5627 14.2802L7.97012 12.6876L5.90645 14.7513L5.85723 14.7021V14.7056Z"
+                      fill="#2563EB" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_555_1545">
+                      <path d="M0 4.25H18V22.25H0V4.25Z" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+                Additional Notes
+              </h4>
+
+
+              <ul>
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Special Requirements</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16">{{properyData?.listing?.special_requirements
+                    ?properyData?.listing?.special_requirements : '-'}}</h4>
+                </li>
+                @if(properyData?.listing?.additional_notes){
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Additional Requirements</p>
+                  <h4 class="mb-0 ct_fw_500 ct_fs_16 text-center "
+                    style="color: #A16207; padding: 11px 16px;background-color: #FEFCE8;">
+                    {{properyData?.listing?.additional_notes ? properyData?.listing?.additional_notes : '-'}}</h4>
+                </li>
+                }
+                <li class="mb-3">
+                  <p class="ct_tex_6B7280 ct_fs_14 mb-1">Document Visibility</p>
+                  <div class="d-flex align-items-center gap-2 justify-content-between">
+                    <a class="mb-0 ct_fw_500 ct_fs_16 " style="color: #2563eb; cursor: pointer;"
+                      [href]="properyData?.listing?.financial_statements" target="_blank">
+                      financials_roll.pdf
+                    </a>
+                    <span class="ct_custom_badge py-1"
+                      style="color: #166534; background-color: #DCFCE7;">{{properyData?.listing?.document_operating_visibility}}</span>
+                  </div>
+                  <div class="d-flex align-items-center gap-2 justify-content-between mt-2">
+                    <a class="mb-0 ct_fw_500 ct_fs_16 " style="color: #2563eb; cursor: pointer;"
+                      [href]="properyData?.listing?.rent_roll_doc" target="_blank">
+                      rent_roll.pdf
+                    </a>
+                    <span class="ct_custom_badge py-1"
+                      style="color: #9A3412; background-color: #FFEDD5;">{{properyData?.listing?.document_rent_roll_visibility}}</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        }
+
+
       </div>
     </div>
   </div>
@@ -701,7 +1078,7 @@
               @if(properyData?.listing.videos?.length > 0){
               @for (video of properyData?.listing.videos; track $index) {
               <div class="swiper-slide">
-                <video [src]="video" controls width="100%"></video>
+                <video [src]="video.video_url" controls width="100%"></video>
               </div>
               }
               }
@@ -709,13 +1086,13 @@
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
             @if(properyData?.listing.images?.length > 1){
-            <div class="swiper mySwiperThumbs ct_card_small_thumb mt-3">
+            <!-- <div class="swiper mySwiperThumbs ct_card_small_thumb mt-3">
               <div class="swiper-wrapper">
                 <div class="swiper-slide" *ngFor="let img of properyData?.listing.images">
                   <img [src]="img" />
                 </div>
               </div>
-            </div>
+            </div> -->
             }
           </div>
           <!-- </div> -->

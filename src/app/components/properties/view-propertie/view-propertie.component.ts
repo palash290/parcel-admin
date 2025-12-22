@@ -102,6 +102,12 @@ export class ViewPropertieComponent {
     });
   }
 
+  get totalMediaCount(): number {
+    const images = this.properyData?.listing?.images?.length || 0;
+    const videos = this.properyData?.listing?.videos?.length || 0;
+    return images + videos;
+  }
+
 
   reject() {
     this.isLoading = true;
@@ -127,6 +133,13 @@ export class ViewPropertieComponent {
         }
       })
   }
+
+  get totalSlides(): number {
+  const images = this.properyData?.listing?.images?.length || 0;
+  const videos = this.properyData?.listing?.videos?.length || 0;
+  return images + videos;
+}
+
 
   accept() {
     this.isLoading = true;
